@@ -2,4 +2,5 @@
 echo "リポジトリを作成しました<br>";
 echo "修正を加えました";
 echo "iiiiiiiiiiii";
+echo "yay";
 ?>
