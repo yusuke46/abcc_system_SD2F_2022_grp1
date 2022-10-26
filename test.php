@@ -5,5 +5,5 @@ echo "iiiiiiiiiiii";
 echo "yay";
 echo "n-buna";
 echo "田中";
-echo "ringo";
+echo "はぐれメタル";
 ?>
