@@ -9,4 +9,5 @@ echo "はぐれメタル";
 echo "齋藤飛鳥しか勝たん";
 echo "タカヒロ";
 echo "世界を救います";
+echo "aiueqk";
 ?>
