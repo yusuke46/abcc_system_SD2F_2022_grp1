@@ -6,4 +6,7 @@ echo "yay";
 echo "n-buna";
 echo "田中";
 echo "はぐれメタル";
+echo "齋藤飛鳥しか勝たん";
+echo "タカヒロ";
+echo "世界を救います";
 ?>
