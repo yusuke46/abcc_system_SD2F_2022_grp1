@@ -5,4 +5,5 @@ echo "iiiiiiiiiiii";
 echo "yay";
 echo "n-buna";
 echo "田中";
+echo "齋藤飛鳥しか勝たん";
 ?>
