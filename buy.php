@@ -19,9 +19,13 @@
 <nav class="navbar bg-light" aria-label="Light offcanvas navbar">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">タイトル名</a>
+      <ul class="navbar-nav">
+        <li class="nav-item"><a href="#" class="nav-link">予約</a></li>
+      </ul>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarLight" aria-controls="offcanvasNavbarLight">
         <span class="navbar-toggler-icon"></span>
       </button>
+      </div>
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbarLight" aria-labelledby="offcanvasNavbarLightLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasNavbarLightLabel">メニュー一覧</h5>
