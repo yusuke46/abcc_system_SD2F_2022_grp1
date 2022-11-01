@@ -21,6 +21,18 @@
           border-bottom: 5px solid 	#8a2be2;
         }
         </style>
+        <script>  //ここにjavascript
+          function onButtonClickToConfirmationPage(){
+            check = document.form.CheckBox.checked;
+            error = document.getElementById("error");
+
+            if(check == true){
+              location.href = 'http://localhost/web/buy_ConfirmationPage.php'; //仮の遷移
+            }else{
+              error.innerHTML = "※「個人情報の取り扱いについて」「利用規約（会員規約）」に同意をしてください。<br>";
+            }
+          }
+          </script>
 </head>
 <body>
 
@@ -75,7 +87,7 @@
   </nav>
   <!--ここから-->
   <h2 class="mt-4 mb-5" style="text-align:center">購入画面</h2>
-  <h3 class="offset-2 mt-3 mb-3">ご注文情報</h3>
+  <h3 class="offset-1 mt-3 mb-3">ご注文情報</h3>
   <div class="container-fluid">
     <div class="row">
         <!--   phpループ↓   -->
@@ -119,8 +131,6 @@
     </div>
         <div class="col-2">
     </div>
-    </div>
-    <p style="border-bottom: 3px solid  #A9A9A9" class="m-5 rounded"></p>
     <!--   phpループ↑   -->
   <?php
 //　　　rowの中に商品情報
@@ -132,41 +142,81 @@
   ?>
   </div>
     </div>
+    <p style="border-bottom: 3px solid  #A9A9A9" class="m-5 rounded"></p>
     <!-- ここからお客様情報 -->
     <h3 class="offset-1 mb-4">お客様情報</h3>
-    <h5 class="offset-2 mb-2">お客様名（全角）　　:$_POST['customer_name_B']</h4>
-    <h5 class="offset-2 mb-2">お客様名（全角カナ）:$_POST['customer_name_S']</h4>
-    <h5 class="offset-2 mb-2">メールアドレス　　　　:$_POST['customer_mailaddress']</h4>
-    <h5 class="offset-2 mb-2">郵便番号　　　　　:$_POST['customer_postcode']</h4>
-    <h5 class="offset-2 mb-2">住所　　　　　　　:$_POST['customer_address']</h4>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-6 offset-2 mb-3">
+    <h5>お客様名（全角）</h5>
+    </div>
+    <div class="col-lg-4 mb-3 offset-sm-2 offset-lg-0">
+    <h5>$_POST['customer_name_B']</h5>
+</div>
+<div class="col-lg-6 offset-2 mb-3">
+    <h5>お客様名（全角カナ）</h5>
+</div>
+<div class="col-lg-4 mb-3 offset-sm-2 offset-lg-0">
+    <h5>$_POST['customer_name_S']</h5>
+    </div>
+    <div class="col-lg-6 offset-2 mb-3">
+    <h5>メールアドレス</h5>
+    </div>
+    <div class="col-lg-4 mb-3 offset-sm-2 offset-lg-0">
+      <h5>$_POST['customer_mailaddress']</h5>
+      </div>
+      <div class="col-lg-6 offset-2 mb-3">
+    <h5>郵便番号</h5>
+    </div>
+    <div class="col-lg-4 mb-3 offset-sm-2 offset-lg-0">
+      <h5>$_POST['customer_postcode']</h5>
+</div>
+<div class="col-lg-6 offset-2 mb-3">
+    <h5>住所</h5>
+</div>
+<div class="col-lg-4 mb-3 offset-sm-2 offset-lg-0">
+    <h5>$_POST['customer_address']</h5>
+      </div>
+    </div>
+  </div>
     <?php
-    // echo '<h5 class="offset-3 mb-2">お客様名（全角）：' . $_POST['customer_name_B'] . "</h4>";
-    // echo '<h5 class="offset-3 mb-2">お客様名（全角カナ）：' . $_POST['customer_name_S'] . "</h4>";
-    // echo '<h5 class="offset-3 mb-2">メールアドレス：' . $_POST['customer_mailaddress'] . "</h4>";
-    // echo '<h5 class="offset-3 mb-2">郵便番号：' . $_POST['customer_postcode'] . "</h4>";
-    // echo '<h5 class="offset-3 mb-2">住所：' . $_POST['customer_address'] . "</h4>";
+    //お客様情報の情報を取得
     ?>
     <p style="border-bottom: 3px solid  #A9A9A9" class="m-5 rounded"></p>
-    <p class="text-center mb-3">下記「個人情報の取り扱いについて」、<br>「利用規約（会員規約）」にご同意の上、お申込みください。</p>
-    <p class="text-center mb-3">個人情報の取り扱いについて</p>
-    <p class="offset-1">【個人情報の取り扱いについて】<br>・----------------------------------------------------------------------------------------------<br>
-    --------------------------------------------------------------------------------------------------------------------------------------------<br>
-    ・------------------------------------------------------------------------------------------------------------<br>
-    ・-----------------------------------------------------------------------------------------------------------------------<br>
-    <p class="text-center mb-3">利用規約（会員規約）</p>
+    <!-- ここから利用規約 -->
+    <p class="text-center mb-5">下記「個人情報の取り扱いについて」、<br>「利用規約（会員規約）」にご同意の上、お申込みください。</p>
+    <p class="text-center mb-4"><b>個人情報の取り扱いについて</b></p>
+    <p class="offset-3">【個人情報の取り扱いについて】</p>
+    <p class="text-center">・---------------------------------------------------------------------------------------------------<br>
+    ・---------------------------------------------------------------------------------------------------<br>
+    ・---------------------------------------------------------------------------------------------------<br>
+    ・---------------------------------------------------------------------------------------------------</p><br>
+    <p class="text-center mb-4 mt-5"><b>利用規約（会員規約）</b></p>
     <p class="text-center mb-3">当社は運営する「推し事」の利用について、以下のとおり本規約を定めます。</p>
-    <p class="offset-3 mb-3">第1条（定義）</p>
+    <p class="offset-3 mb-1">第1条（定義）</p>
     <p class="text-center mb-5">本規約においては、次の各記号記載の用語はそれぞれ次の意味で使用します。<br>「推し事」は商品またはサービスの規定において、</p>
-    <form action="???.php" method="post">
-        <div class="text-center">
-    <input type="checkbox" name="kiyaku" style="transform: scale(3.0);">　　「個人情報の取り扱いについて」、<br>　　　　　　　　　　
-    「ご利用規約（会員規約）」「注意事項」に同意する<br>
+        <form name="form" action="">
+    <div class="text-center">
+    <input type="checkbox" name="kiyaku" id="CheckBox" style="transform: scale(3.0);">　　<a style="position:relative;bottom:10px;margin-left:px">「個人情報の取り扱いについて」、</a><br>　　　
+    <a style="position:relative;bottom:15px;margin-left:120px">「ご利用規約（会員規約）」「注意事項」に同意する</a><br>
+    <div id="error" class="mt-2 text-danger" ></div>
 </div>
-<div class="text-center">
-    <input class="btn text-white mt-3 mb-3" style="background-color: #800080;" type="button" value="注文内容の確認ページへ"><br>
-    <input class="btn text-dark border" style="background-color: #dcdcdc;" type="button" value="　　　カートに戻る　　　">
+<div class="text-center mb-5">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="mt-3 col-lg-2 offset-lg-4">
+    <input class="btn text-white rounded-pill" style="background-color: #800080;" type="button" value="注文内容確認ページへ" onclick="onButtonClickToConfirmationPage();"/><br>
+</div>  
+  </form>
+  <div class="mt-3 col-lg-2">
+    <input class="btn btn-outline-dark rounded-pill" style="background-color: #dcdcdc;" type="button" onclick="location.href = '??????'" value="　　カートに戻る　　">
 </div>
-</form>
+</div>
+</div>
+</div>
+
+
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
     </html>
