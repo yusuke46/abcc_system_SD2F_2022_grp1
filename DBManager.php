@@ -1,5 +1,5 @@
 <?php
-class DBManeger{
+class DBManager{
     private function dbConnect(){
         $pdo= new PDO('mysql:host=localhost;dbname=osigoto;charset=utf8','webuser', 'abccsd2');
         return $pdo;
@@ -98,6 +98,16 @@ class DBManeger{
         $ps->execute();
         $searchArray=$ps->fetchAll();
         return $searchArray;
+    }
+
+    public function getByCartShohinSourse(){
+        $pdo = $this->dbConnect();
+        $sql="SELECT * FROM shohin_tbl WHERE shohin_mei = ?";
+        $ps=$pdo->prepare($sql);
+        $ps->bindValue(1,$_POST[''],PDO::PARAM_STR);
+        $ps->execute();
+        $array=$ps->fetchAll();
+        return $array;
     }
 }
 ?>
