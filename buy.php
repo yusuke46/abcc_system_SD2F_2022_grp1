@@ -20,6 +20,10 @@
         #main_nav{
           border-bottom: 5px solid 	#8a2be2;
         }
+
+          #nav-link_css{
+            text-align:left;
+          }
         </style>
         <script>  //ここにjavascript
           function onButtonClickToConfirmationPage(){
@@ -62,22 +66,22 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link" href="#" style="text-align:left;">&nbsp;ログイン/新規登録<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
+              <a class="nav-link" href="#" id="nav-link_css">&nbsp;ログイン/新規登録<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" style="text-align:left;">&nbsp;商品<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
+              <a class="nav-link" href="#" id="nav-link_css">&nbsp;商品<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" style="text-align:left;">&nbsp;注目商品<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
+              <a class="nav-link" href="#" id="nav-link_css">&nbsp;注目商品<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" style="text-align:left;">&nbsp;特集商品<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
+              <a class="nav-link" href="#" id="nav-link_css">&nbsp;特集商品<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" style="text-align:left;">&nbsp;商品の登録はこちら<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
+              <a class="nav-link" href="#" id="nav-link_css">&nbsp;商品の登録はこちら<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" style="text-align:left;">&nbsp;お問い合わせ・Q&A<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
+              <a class="nav-link" href="#" id="nav-link_css">&nbsp;お問い合わせ・Q&A<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
             </li>
           </ul>
         </div>
