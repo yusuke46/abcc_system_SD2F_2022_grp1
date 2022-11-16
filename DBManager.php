@@ -66,13 +66,38 @@ class DBManeger{
 
     public function getDelete(){
         $pdo = $this->dbConnect();
-        $sql="DELETE FROM login_tbl WHERE user_id = ?";
+        $sql="UPDATE login_tbl SET user_mei = '', user_meikata = '', user_e-mail = '', user_pass = '', user_address = '', user_phone = '', user_birth = '', user_gender = ''";
         $ps=$pdo->prepare($sql);
-        $ps->bindValue(1,$_POST[''],PDO::PARAM_INT);
         $ps->execute();
         $searchArray= $ps->fetchAll();
         return $searchArray;
     }
-    
+
+    public function getUpdate(){
+        $pdo = $this->dbConnect();
+        $sql="UPDATE login_tbl SET user_mei = '?', user_meikata = '?', user_e-mail = '?', user_address = '?', user_phone = '?', user_birth = '?', user_gender = '?'";
+        $ps=$pdo->prepare($sql);
+        $ps->bindValue(1,$_POST[''],PDO::PARAM_STR);
+        $ps->bindValue(2,$_POST[''],PDO::PARAM_STR);
+        $ps->bindValue(3,$_POST[''],PDO::PARAM_STR);
+        $ps->bindValue(4,$_POST[''],PDO::PARAM_STR);
+        $ps->bindValue(5,$_POST[''],PDO::PARAM_INT);
+        $ps->bindValue(6,$_POST[''],PDO::PARAM_STR);
+        $ps->bindValue(7,$_POST[''],PDO::PARAM_STR);
+        $ps->bindValue(8,$_POST[''],PDO::PARAM_STR);
+        $ps->execute();
+        $searchArray= $ps->fetchAll();
+        return $searchArray;
+    }
+
+    public function getCheck($email){
+        $pdo = $this->dbConnect();
+        $sql="SELECT * FROM login_tbl WHERE user_e-mail = ?";
+        $ps=$pdo->prepare($sql);
+        $ps->bindValue(1,$_POST[''],PDO::PARAM_STR);
+        $ps->execute();
+        $searchArray=$ps->fetchAll();
+        return $searchArray;
+    }
 }
 ?>
