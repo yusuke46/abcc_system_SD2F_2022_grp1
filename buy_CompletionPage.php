@@ -5,23 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <style>
+         body { 
+        padding-top: 130px;
+        }
         .nav-item{
             border-bottom: 1px solid #C0C0C0;
             padding-bottom: 2px;
             padding-top: 2px;
         }
+
         #icon{
             padding-top: 2px;
         }
+        
         #main_nav{
           border-bottom: 5px solid 	#8a2be2;
+        }
+        #BackToCartButton{
+            margin-top: 300px;
         }
         </style>
 </head>
 <body>
-    <!--ここからNB-->
+
 <div class="container-fluid">
-<nav class="navbar fixed-top bg-light p-4 row" id="main_nav" aria-label="Light offcanvas navbar">
+<nav class="navbar fixed-top bg-light row p-4" id="main_nav" aria-label="Light offcanvas navbar">
         <div class="col-lg-8 col-md-8 col-sm-4">
     <a class="navbar-brand" href="#">タイトル名</a>
       </div>
@@ -69,25 +77,13 @@
       </div>
       </div>
   </nav>
-      <!--ここまでNB-->
-        <h1 class="text-center">商品一覧</h1>
-    <!--ここからcard-->
-    <div name="maindiv" class="container">
-        <div class="row mt-5 gy-3 gt-3">
-            <!--PCサイズで横3枚、tablet以下で横2枚にしてます。-->
-            <div class="col-6 col-md-4">
-                <div class="card">
-                    <img src="" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">【予約商品】衣装キーホルダー/好きというのはロックだぜ！</h5>
-                        <h5 class="card-money">¥9999</h5>
-                    </div>
-                </div>
-            </div>
-            <!--カード区切り-->
-        </div>
+  <!--この下から書き加える-->
+  <h2 class="mt-5 mb-5" style="text-align:center">購入完了画面</h2>
+  <h3 style="text-align:center">購入しました</h3>
+  <div style="text-align:center">
+  <input class="btn btn-lg btn-outline-dark rounded-pill" style="background-color: #ff00ff;" type="button" id="BackToCartButton" onclick="location.href = '????????'" value="　　ホームに戻る　　">
     </div>
-    <!--ここまでcard-->
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
     </html>
