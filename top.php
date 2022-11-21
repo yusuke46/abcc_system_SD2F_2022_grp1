@@ -50,7 +50,6 @@
     </style>
 </head>
 <body>
-
 <!--ここからNB-->
 <div class="container-fluid">
   <nav class="navbar fixed-top bg-light p-4 row" id="main_nav" aria-label="Light offcanvas navbar">
@@ -148,7 +147,8 @@
   </div>
       
   <div class="container">
-    <div class="row align-self-end">
+    <div class="row">
+      <div class="col-48">　</div>
         <button class="button col-md-4 offset-md-2 btn btn-primary">
           <img src="img/tokino_2.png" class="img">
           <br>推し事
@@ -164,4 +164,4 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
-    </html>
+</html>
