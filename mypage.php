@@ -1,26 +1,26 @@
 <!DOCKTYPE HTML>
 <html>
-    <head>
+<head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <style>
-      body { padding-top: 90px; }
+    body { padding-top: 90px; }
 
-        .nav-item{
-            border-bottom: 1px solid #C0C0C0;
-            padding-bottom: 2px;
-            padding-top: 2px;
-        }
+    .nav-item{
+        border-bottom: 1px solid #C0C0C0;
+        padding-bottom: 2px;
+        padding-top: 2px;
+    }
 
-        #icon{
-            padding-top: 2px;
-        }
+    #icon{
+        padding-top: 2px;
+    }
         
-        #main_nav{
-          border-bottom: 5px solid 	#8a2be2;
-        }
-        </style>
+    #main_nav{
+        border-bottom: 5px solid 	#8a2be2;
+    }
+    </style>
 </head>
 <body>
     <div class="container-fluid">
@@ -72,84 +72,69 @@
             </div>
         </nav>
   <!--この下から書き加える-->
-
         <style>
-        .mozi{
-            margin-top: 5%;
+
+        .mypage{
+            font-weight: bold;
             text-align: center;
             font-size: 300%;
+            margin-top: 5%;
+            
         }
 
-        .kategori{
-            margin-top: 3%;
-            margin-left: 27%;
-            font-size: 150%;
-        }
-
-        .syousai{
-            margin-left: 27%;
-            font-size: 150%;
+        .name{
+            font-weight: bold;
+            text-align: center;
+            font-size: 200%;
             margin-top: 1%;
         }
-
-        .selectbox{
-            width: 600;
-            height: 12%;
-            margin-left: 37%;
+        .btn {
+        margin-top: 1%;
+        display: block;
+        width: 450px;
+        height: 50px;
+        text-align: left;
+        line-height: 40px;
+        background: rgb(216, 216, 216);
+        font-weight: bold;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-left:auto;
+        margin-right: auto;
+        }
+        .btn span{
+        color: rgb(0, 0, 0);
+        position: relative;
+        padding-left: 30px;
+        }
+        .btn span::before{
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 7px;
+        height: 7px;
+        border-top: 2px solid rgb(0, 0, 0);
+        border-right: 2px solid rgb(0, 0, 0);
+        transform: rotate(45deg);
+        margin-top: -5px;
         }
 
-        .textbox{
-            margin-left: 37%;
-            border-radius: 100vh;
-            border: 1px solid #ccc;
-            width: 620;
-            height: 7%;
-            background-color: aliceblue;
+        .btn:hover{
+        background-color: #cacaca;
+            font-size: 20px;
+            font-weight: bold;
         }
 
-        .btn-gradient-radius{
-            margin-top:3% ; 
-            margin-left: 37%;
-            width: 450;
-            height: 9%;
-            display: inline-block;
-            padding: 7px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            text-align: center;
-            font-size: 150%;
-            color: #FFF;
-            background-image: linear-gradient(45deg, #cd07ff 0%, #c402f5 100%);
-            transition: .4s;
-        }
-
-        .btn-gradient-radius:hover {
-            background-image: linear-gradient(45deg, #b49d9d5d 0%, #bbb8b86b 100%);
-        }
+        
         </style>
-        <div class="mozi">商品検索</div>
 
-        <div class="kategori container-fluid" style="float: left">カテゴリー</div>
-        <div class="container-fluid" style="float: left">
-            <form>
-                <select class="selectbox container-fluid">
-                    <option class="container-fluid" value="1">すべてのカテゴリ</option>
-                    <option value="2" >4</option>
-                    <option value="3">3</option>
-                    <option value="4">2</option>
-                    <option value="5">1</option>
-                    <option value="6">0</option>
-                </select>
-            </form>
-        </div>
-        <br style="clear:both">
+        <div class="mypage container-fluid">マ イ ページ</div>
+        <div class="name container-fluid">○○ ○○さん</div>
 
-
-
-        <div class="syousai container-fluid" style="float: left">キーワード</div>
-        <input class="textbox container-fluid" type="text" value="" placeholder="キーワードを入力" ><br>
-
-        <a  href="#" class="btn-gradient-radius">検索</a>
+        <a href="" class="btn content"><span><b>会員登録情報</b></span></a>
+        <a href="" class="btn content"><span>注文履歴一覧</span></a>
+        <a href="" class="btn content"><span>退会手続き</span></a>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
