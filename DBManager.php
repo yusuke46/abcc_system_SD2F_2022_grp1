@@ -60,8 +60,8 @@ class DBManager{
         $ps->bindValue(7,$_POST[''],PDO::PARAM_STR);
         $ps->bindValue(8,$_POST[''],PDO::PARAM_STR);
         $ps->execute();
-        $searchArray= $ps->fetchAll();
-        return $searchArray;
+        $Insert= $ps->fetchAll();
+        return $Insert;
     }
 
     public function getDelete(){
@@ -69,8 +69,8 @@ class DBManager{
         $sql="UPDATE login_tbl SET user_mei = '', user_meikata = '', user_e-mail = '', user_pass = '', user_address = '', user_phone = '', user_birth = '', user_gender = ''";
         $ps=$pdo->prepare($sql);
         $ps->execute();
-        $searchArray= $ps->fetchAll();
-        return $searchArray;
+        $Delete= $ps->fetchAll();
+        return $Delete;
     }
 
     public function getUpdate(){
@@ -86,8 +86,8 @@ class DBManager{
         $ps->bindValue(7,$_POST[''],PDO::PARAM_STR);
         $ps->bindValue(8,$_POST[''],PDO::PARAM_STR);
         $ps->execute();
-        $searchArray= $ps->fetchAll();
-        return $searchArray;
+        $Update= $ps->fetchAll();
+        return $Update;
     }
 
     public function getCheck($email){
@@ -108,6 +108,32 @@ class DBManager{
         $ps->execute();
         $array=$ps->fetchAll();
         return $array;
+    }
+
+    public function searchPickUp(){
+        $pdo = $this->dbConnect();
+        $sql="SELECT * FROM shohin_tbl WHERE shohin_attention = ?";
+        $ps=$pdo->prepare($sql);
+        $ps->bindValue(1,$_POST[''],PDO::PARAM_STR);
+        $PickUp=$ps->fetchAll();
+        return $PickUp;
+    }
+
+    public function searchFeature(){
+        $pdo = $this->dbConnect();
+        $sql="SELECT * FROM shohin_tbl WHERE shohin_feature = ?";
+        $ps=$pdo->prepare($sql);
+        $ps->bindValue(1,$_POST[''],PDO::PARAM_STR);
+        $Feature=$ps->fetchAll();
+        return $Feature;
+    }
+
+    public function getByShohinSource(){
+        $pdo = $this->dbConnect();
+        $sql="SELECT * FROM shohin_tbl";
+        $ps=$pdo->prepare($sql);
+        $ShohinSource=$ps->fetchAll();
+        return $ShohinSource;
     }
 }
 ?>
