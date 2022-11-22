@@ -2,7 +2,8 @@ new Vue({
     el: '#app',
     data(){
         return{
-            count: 1
+            count: 1,
+            isActive: false
         };
     },
     methods:{
@@ -11,6 +12,9 @@ new Vue({
         },
         decrement(){
             this.count--;
+        },
+        toggleButton(){
+            this.isActive = !this.isActive;
         }
     }
 });

@@ -77,22 +77,22 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link" href="#" style="text-align:left;">&nbsp;ログイン/新規登録<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
+              <a class="nav-link" href="mypage.php" style="text-align:left;">&nbsp;マイページ<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" style="text-align:left;">&nbsp;商品<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
+              <a class="nav-link" href="shohin.php" style="text-align:left;">&nbsp;商品<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" style="text-align:left;">&nbsp;注目商品<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
+              <a class="nav-link" href="pickup.php" style="text-align:left;">&nbsp;注目商品<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" style="text-align:left;">&nbsp;特集商品<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
+              <a class="nav-link" href="feature.php" style="text-align:left;">&nbsp;特集商品<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#" style="text-align:left;">&nbsp;商品の登録はこちら<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" style="text-align:left;">&nbsp;お問い合わせ・Q&A<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
+              <a class="nav-link" href="question.php" style="text-align:left;">&nbsp;お問い合わせ・Q&A<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
             </li>
           </ul>
         </div>
@@ -106,11 +106,11 @@
         <!-- ここが回る画像の場所 -->
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="img/one.png"></div>
-        <div class="swiper-slide"><img src="img/two.png"></div>
-        <div class="swiper-slide"><img src="img/tree.png"></div>
-        <div class="swiper-slide"><img src="img/for.png"></div>
-        <div class="swiper-slide"><img src="img/kawaii.png"></div>
+        <div class="swiper-slide"><img src="img/1.jfif"></div>
+        <div class="swiper-slide"><img src="img/2.jfif"></div>
+        <div class="swiper-slide"><img src="img/3.jfif"></div>
+        <div class="swiper-slide"><img src="img/4.jfif"></div>
+        <div class="swiper-slide"><img src="img/5.jfif"></div>
       </div>
         <!-- これはいじっちゃダメ -->
       <div class="swiper-button-next"></div>
