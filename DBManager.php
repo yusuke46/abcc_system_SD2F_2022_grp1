@@ -54,7 +54,7 @@ class DBManager{
         $ps->bindValue(1,$_POST[''],PDO::PARAM_STR);
         $ps->bindValue(2,$_POST[''],PDO::PARAM_STR);
         $ps->bindValue(3,$_POST[''],PDO::PARAM_STR);
-        $ps->bindValue(4,$_POST[''],PDO::PARAM_STR);
+        $ps->bindValue(4,password_hash($_POST['passw'],PASSWORD_DEFAULT),PDO::PARAM_STR);
         $ps->bindValue(5,$_POST[''],PDO::PARAM_STR);
         $ps->bindValue(6,$_POST[''],PDO::PARAM_INT);
         $ps->bindValue(7,$_POST[''],PDO::PARAM_STR);
