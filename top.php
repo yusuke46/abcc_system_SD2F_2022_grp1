@@ -133,6 +133,39 @@
         list-style: none;
         text-decoration: none;
       }
+        ul {
+            list-style: none;
+        }
+        .companySet .companySetLists {
+            display: -webkit-box;
+            display: flex;
+            margin: 3rem auto 0;
+            -webkit-box-pack: center;
+            justify-content: center;
+            -ms-flex-flow: wrap;
+            flex-flow: wrap;
+            width: 90%;
+        }
+        .companySet .companySetList {
+            margin: 0 0 1em;
+        }
+        .companySet .companySetList a {
+            color: inherit;
+        }
+        .companySet .companySetList + .companySetList {
+            margin: 0 0 1em 2em;
+            position: relative;
+        }
+        .companySet .companySetList + .companySetList::before {
+            content: "";
+            width: 1px;
+            height: 60%;
+            background: #000;
+            position: absolute;
+            left: -1em;
+            top: 50%;
+            transform: translate(0, -50%);
+        }
     </style>
 </head>
 <body>
@@ -159,16 +192,32 @@
             <i></i>
             <i></i>
           </span>
-          <nav class="nav">
-            <ul class="nav_menu_ul">
-              <li class="nav_menu_li"><a href="login.php">ログイン・新規登録</a></li>
-              <li class="nav_menu_li"><a href="shohin.php">商品</a></li>
-              <li class="nav_menu_li"><a href="pickup.php">注目商品</a></li>
-              <li class="nav_menu_li"><a href="feature.php">特集商品</a></li>
-              <li class="nav_menu_li"><a href="#">商品の登録はこちら</a></li>
-              <li class="nav_menu_li"><a href="question.php">お問い合わせ・Q&A</a></li>
-            </ul>
-          </nav>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbarLight" aria-labelledby="offcanvasNavbarLightLabel">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarLight" aria-controls="offcanvasNavbarLight">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLightLabel">メニュー一覧</h5>
+            </div>
+            <div class="offcanvas-body">
+              <nav class="nav">
+                <ul class="nav_menu_ul justify-content-end flex-grow-1 pe-3">
+                  <li class="nav_menu_li"><a href="login.php" style="text-align:left;">&nbsp;<h3>ログイン/新規登録</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
+                  <hr>
+                  <li class="nav_menu_li"><a href="shohin.php" style="text-align:left;">&nbsp;<h3>商品</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
+                  <hr>
+                  <li class="nav_menu_li"><a href="pickup.php" style="text-align:left;">&nbsp;<h3>注目商品</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
+                  <hr>
+                  <li class="nav_menu_li"><a href="feature.php"style="text-align:left;" >&nbsp;<h3>特集商品</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
+                  <hr>
+                  <li class="nav_menu_li"><a href="#" style="text-align:left;">&nbsp;<h3>商品の登録はこちら</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
+                  <hr>
+                  <li class="nav_menu_li"><a href="question.php" style="text-align:left;">&nbsp;<h3>お問い合わせ・Q&A</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
+                  <hr>
+                </ul>
+              </nav>
+            </div>
+          </div>
         </li>
       </ul>
     </div>
@@ -250,7 +299,28 @@
       
     </div>
   </div>
+
+  <hr>
   
+  <div class="companySet">
+        <ul class="companySetLists">
+            <li class="companySetList">
+                <a href="https://www.yahoo.co.jp/">運営企業情報</a>
+            </li>
+            <li class="companySetList">
+                <a href="https://www.google.co.jp/">特定商取引法に基づく表示</a>
+            </li>
+            <li class="companySetList">
+                <a href="https://www.google.co.jp/intl/ja/chrome/">ご利用ガイド</a>
+            </li>
+            <li class="companySetList">
+                <a href="https://www.metro.tokyo.lg.jp/">プライバシーポリシー</a>
+            </li>
+            <li class="companySetList">
+                <a href="https://www.kunaicho.go.jp/about/shisetsu/kokyo/kokyo.html">お問い合わせ・Q&A</a>
+            </li>
+        </ul>
+    </div>
 
       <!-- CDN -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
