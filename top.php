@@ -9,6 +9,13 @@
       body { 
         padding-top: 90px; 
       }
+
+      /*空白行*/
+      .nl{
+        height: 100px;
+      }
+
+      /*ナビゲーションバー*/
       .nav-item{
         border-bottom: 1px solid #C0C0C0;
         padding-bottom: 2px;
@@ -20,6 +27,8 @@
       #main_nav{
         border-bottom: 5px solid 	#8a2be2;
       }
+
+      /*トップ一番上の動くやつ*/
       .swiper-container{
         height: 350px;
       }
@@ -43,10 +52,49 @@
       .img{
         width: 200px;
         height: 200px;
+        border-radius:100px;
       }
       .button{
         font-size: 40px;
       }
+      
+      /*一番下のプラポリとかのやつ*/
+      a {
+            text-decoration: none;
+        }
+        ul {
+            list-style: none;
+        }
+        .companySet .companySetLists {
+            display: -webkit-box;
+            display: flex;
+            margin: 3rem auto 0;
+            -webkit-box-pack: center;
+            justify-content: center;
+            -ms-flex-flow: wrap;
+            flex-flow: wrap;
+            width: 90%;
+        }
+        .companySet .companySetList {
+            margin: 0 0 1em;
+        }
+        .companySet .companySetList a {
+            color: inherit;
+        }
+        .companySet .companySetList + .companySetList {
+            margin: 0 0 1em 2em;
+            position: relative;
+        }
+        .companySet .companySetList + .companySetList::before {
+            content: "";
+            width: 1px;
+            height: 60%;
+            background: #000;
+            position: absolute;
+            left: -1em;
+            top: 50%;
+            transform: translate(0, -50%);
+        }
     </style>
 </head>
 <body>
@@ -146,10 +194,13 @@
     </script>
   </div>
       
+     <!-- 改行 -->
+  <div class="nl"></div>
+
+     <!-- 商品一覧へ行くやつ -->
   <div class="container">
     <div class="row">
-      <div class="col-48">　</div>
-        <button class="button col-md-4 offset-md-2 btn btn-primary">
+        <button class="button col-md-4 offset-md-2 col-sm-4 btn btn-primary">
           <img src="img/tokino_2.png" class="img">
           <br>推し事
         </button>
@@ -159,6 +210,30 @@
       </button>
     </div>
   </div>
+  
+     <!-- 改行 -->
+     <div class="nl"></div>
+
+     <!-- プラポリ系 -->
+  <div class="companySet">
+        <ul class="companySetLists">
+            <li class="companySetList">
+                <a href="https://www.yahoo.co.jp/">運営企業情報</a>
+            </li>
+            <li class="companySetList">
+                <a href="https://www.google.co.jp/">特定商取引法に基づく表示</a>
+            </li>
+            <li class="companySetList">
+                <a href="https://www.google.co.jp/intl/ja/chrome/">ご利用ガイド</a>
+            </li>
+            <li class="companySetList">
+                <a href="https://www.metro.tokyo.lg.jp/">プライバシーポリシー</a>
+            </li>
+            <li class="companySetList">
+                <a href="https://www.kunaicho.go.jp/about/shisetsu/kokyo/kokyo.html">お問い合わせ・Q&A</a>
+            </li>
+        </ul>
+    </div>
 
       <!-- CDN -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
