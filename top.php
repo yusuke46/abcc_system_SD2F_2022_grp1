@@ -234,6 +234,23 @@
       </button>
     </div>
   </div>
+  
+  <p>注目商品</p>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <form action="shohin_detail.php">
+          <?php
+          foreach($results as $row){
+            echo $row['shohin_img'].$row['shohin_mei'].$row['shohin_tanka'];
+          }
+          ?>
+      </form>
+      </div>
+      
+    </div>
+  </div>
+  
 
       <!-- CDN -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>

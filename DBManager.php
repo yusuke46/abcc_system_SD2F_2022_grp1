@@ -94,7 +94,7 @@ class DBManager{
         $pdo = $this->dbConnect();
         $sql="SELECT * FROM login_tbl WHERE user_e-mail = ?";
         $ps=$pdo->prepare($sql);
-        $ps->bindValue(1,$_POST[''],PDO::PARAM_STR);
+        $ps->bindValue(1,$_POST['email'],PDO::PARAM_STR);
         $ps->execute();
         $searchArray=$ps->fetchAll();
         return $searchArray;
