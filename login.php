@@ -1,4 +1,4 @@
-<!DOCKTYPE HTML>
+<?php session_start();?>
 <html>
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -146,12 +146,6 @@
   </style>
 </head>
 <body>
-  <?php
-  session_start();
-  if(isset($_SESSION["user_mail"])==true && isset($_SESSION["user_pass"])==true){
-    header('Location:top_success.php');
-  }
-  ?>
   <nav class="navbar navbar-light navbar-expand-md py-2 navbar-bg fixed-top bg-white" id="main_nav" aria-label="Light offcanvas navbar">
     <div class="container-fluid">
       <div>

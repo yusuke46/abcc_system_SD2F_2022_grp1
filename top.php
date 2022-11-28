@@ -1,4 +1,4 @@
-<!DOCKTYPE HTML>
+<?php session_start();?>
 <html>
     <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -290,13 +290,17 @@
       <div class="card">
         <form action="shohin_detail.php">
           <?php
-          foreach($results as $row){
-            echo $row['shohin_img'].$row['shohin_mei'].$row['shohin_tanka'];
-          }
+          $pdo= new PDO('mysql:host=localhost;dbname=osigoto;charset=utf8','webuser', 'abccsd2');
+          $sql="SELECT * FROM shohin_tbl";
+          $ps=$pdo->prepare($sql);
+          $ps->execute();
+          $result=$ps->fetchAll();
           ?>
-      </form>
+          <?php foreach($result as $row)
+            echo '<img src="'.$row['shohin_img'].'" class="img">';
+          ?>
+        </form>
       </div>
-      
     </div>
   </div>
 

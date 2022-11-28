@@ -1,4 +1,4 @@
-<!DOCKTYPE HTML>
+<?php session_start();?>
 <html>
     <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -127,28 +127,9 @@
             background-image: linear-gradient(45deg, #b49d9d5d 0%, #bbb8b86b 100%);
         }
         </style>
-        <div class="mozi">商品検索</div>
-
-        <div class="kategori container-fluid" style="float: left">カテゴリー</div>
-        <div class="container-fluid" style="float: left">
-            <form>
-                <select class="selectbox container-fluid">
-                    <option class="container-fluid" value="1">すべてのカテゴリ</option>
-                    <option value="2" >4</option>
-                    <option value="3">3</option>
-                    <option value="4">2</option>
-                    <option value="5">1</option>
-                    <option value="6">0</option>
-                </select>
-            </form>
-        </div>
-        <br style="clear:both">
-
-
-
+        <div class="mozi" style="margin-bottom: 50px;">商品検索</div>
         <div class="syousai container-fluid" style="float: left">キーワード</div>
-        <input class="textbox container-fluid" type="text" value="" placeholder="キーワードを入力" ><br>
-
+        <input class="textbox container-fluid" type="text" value="" placeholder="キーワードを入力" style="margin-bottom: 50px;"><br>
         <a  href="#" class="btn-gradient-radius">検索</a>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>

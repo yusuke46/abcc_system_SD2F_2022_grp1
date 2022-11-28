@@ -1,4 +1,4 @@
-<!DOCKTYPE HTML>
+<?php session_start();?>
 <html>
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -81,7 +81,7 @@
     require_once('DBManager.php');
     $db = new DBManager();
     $array = $db->getByCartShohinSourse();
-    if($array == NULL){
+    if(count($array)==0){
       echo '<h5 class="offset-1">';
       echo '現在、カートには商品が入っていません。';
       echo "</h5>";

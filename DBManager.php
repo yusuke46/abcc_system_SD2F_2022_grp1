@@ -92,7 +92,7 @@ class DBManager{
 
     public function getCheck($email){
         $pdo = $this->dbConnect();
-        $sql="SELECT * FROM login_tbl WHERE user_e-mail = ?";
+        $sql="SELECT * FROM login_tbl WHERE user_mail = ?";
         $ps=$pdo->prepare($sql);
         $ps->bindValue(1,$_POST['email'],PDO::PARAM_STR);
         $ps->execute();
@@ -114,7 +114,7 @@ class DBManager{
         $pdo = $this->dbConnect();
         $sql="SELECT * FROM shohin_tbl WHERE shohin_attention = ?";
         $ps=$pdo->prepare($sql);
-        $ps->bindValue(1,$_POST[''],PDO::PARAM_STR);
+        $ps->bindValue(1,'1',PDO::PARAM_STR);
         $PickUp=$ps->fetchAll();
         return $PickUp;
     }
@@ -134,6 +134,11 @@ class DBManager{
         $ps=$pdo->prepare($sql);
         $ShohinSource=$ps->fetchAll();
         return $ShohinSource;
+    }
+
+    public function getByMemeber(){
+        $pdo = $this->dbConnect();
+        $sql="";
     }
 }
 ?>

@@ -1,4 +1,4 @@
-<!DOCKTYPE HTML>
+<?php session_start(); ?>
 <html>
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -129,12 +129,13 @@
         
         </style>
 
-        <div class="mypage container-fluid">マ イ ページ</div>
-        <div class="name container-fluid">○○ ○○さん</div>
+        <div class="mypage container-fluid">マイページ</div>
+        <div class="name container-fluid"><?php echo $_SESSION['user_mei'];?></div>;
+        
 
         <a href="" class="btn content"><span><b>会員登録情報</b></span></a>
         <a href="" class="btn content"><span>注文履歴一覧</span></a>
-        <a href="" class="btn content"><span>退会手続き</span></a>
+        <a href="taikai.php" class="btn content"><span>退会手続き</span></a>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
