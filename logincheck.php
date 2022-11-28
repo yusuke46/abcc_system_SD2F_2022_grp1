@@ -10,9 +10,13 @@
             $_SESSION['user_meikata'] = $row['user_meikata'];
             $_SESSION['user_mail'] = $row['user_mail'];
             $_SESSION['user_pass'] = $row['user_pass'];
+            $_SESSION['user_addressnumber1'] = $row['user_addressnumber1'];
+            $_SESSION['user_addressnumber2'] = $row['user_addressnumber2'];
             $_SESSION['user_address'] = $row['user_address'];
             $_SESSION['user_phone'] = $row['user_phone'];
-            $_SESSION['user_birth'] = $row['user_birth'];
+            $_SESSION['user_year'] = $row['user_year'];
+            $_SESSION['user_month'] = $row['user_month'];
+            $_SESSION['user_day'] = $row['user_day'];
             $_SESSION['user_gender'] = $row['user_gender'];
             $_SESSION['user_id'] = $row['user_id'];
             header('Location:top_success.php');

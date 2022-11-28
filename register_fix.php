@@ -1,4 +1,4 @@
-<?php session_start();?>
+<?php session_start(); ?>
 <html>
     <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -76,6 +76,10 @@
           margin-top: 10%;
           text-align: center;
         }
+        .btnb{
+            margin-top: 5%;
+            text-align: center;
+        }
     </style>  
 </head>
 
@@ -134,67 +138,58 @@
   <!--この下から書き加える-->
   <body class="bg-light">
       <div class="py-5 text-center">
-        <h2>新規会員登録</h2>
+        <h2>会員登録情報修正</h2>
         </div>
         <div class="container">
     <main>
       <div class="row">
         <div class="col-12 offset-md-3 col-md-6"><!--col-md-7 col-lg-8-->
-          <form action="register_confirm.php" name="myForm" class="validationForm" method="post">
+          <form name="myForm" class="validationForm" action="register_fix_confirm.php" method="post" novalidate>
             <!--<div class="row g-3">-->
               <div class="col-12">
                 <label for="username" class="form-label">お客様名（全角）</label>
-                <input type="text" class="form-control required" id="username" name="user">
+                <input type="text" class="form-control required maxlength" id="username" value="<?php echo $_SESSION['user_mei'];?>" name="user">
               </div>
               <div class="col-12">
                 <label for="usernamek" class="form-label">お客様名（カナ）</label>
-                <div class="input-group has-validation">
-                <input type="text" class="form-control required maxlength" id="usernamek" data-maxlength="10" name="usernamek">
-                </div>
+                <input type="text" class="form-control required maxlength" id="usernamek" data-maxlength="10" name="usernamek" value="<?php echo $_SESSION['user_meikata'];?>" name="usernamek">
               </div>
               
               <div class="col-12">
                 <label for="email" class="form-label">メールアドレス</label>
-                <input type="email" class="form-control required email" id="email" autocomplete="new-password" size="30" name="email">
+                <input type="email" class="form-control required email" id="email" autocomplete="new-password" size="30" name="email" value="<?php echo $_SESSION['user_mail'];?>" name="mail">
               </div>
               <div class="col-12">
                 <label for="pass" class="form-label">パスワード</label>
-                <div class="input-group has-validation">
-                  <input type="password" class="form-control required" id="pass" placeholder="" required="" name="passw">
-                </div>
+                  <input type="text" class="form-control required maxlength" id="pass" placeholder="" required="" value="<?php echo $_SESSION['user_pass'];?>" name="passw">
               </div>
-  
               <div class="row">
-              <div class="col-3">
-                <label for="post" class="form-label">郵便番号</label>
-                <div class="input-group has-validation">
-                  <input type="text" class="form-control required" id="post" placeholder="" required="" name="bangou1">
+                <div class="col-3">
+                  <label for="post" class="form-label">郵便番号</label>
+                      <input type="text" class="form-control required maxlength" id="post" placeholder="" required="" value="<?php echo $_SESSION['user_addressnumber1'];?>" name="bangou1">
                 </div>
-              </div>
-              <div class="col-1">
-              <p class="text-success" style="margin-top: 35px;">ー</p>
-              </div>
-              <div class="col-4" style="margin-top: 25px;">
-                <label for="username" class="form-label"></label>
-                <div class="input-group has-validation">
-                  <input type="text" class="form-control" id="username" placeholder="" required="" name="bangou2">
+                <div class="col-1">
+                  <p class="text-success" style="margin-top: 35px;">ー</p>
+                </div>  
+                <div class="col-4" style="margin-top: 25px;">
+                  <label for="username" class="form-label"></label>
+                    <input type="text" class="form-control" id="username" placeholder="" required="" value="<?php echo $_SESSION['user_addressnumber2'];?>" name="bangou2">
                 </div>
-              </div>
               </div>
               <div class="row">
               <div class="col-12">
                 <label for="address" class="form-label">住所</label>
-                <input type="text" class="form-control required" id="address" placeholder="" required="" name="address">
+                <input type="text" class="form-control required maxlength" id="address" placeholder="" required="" value="<?php echo $_SESSION['user_address'];?>" name="address">
               </div>
               <div class="col-sm-12">
                 <label for="tel" class="form-label">電話番号</label>
-                <input type="text" class="form-control required" id="tel" placeholder="" value="" required="" name="phone">
+                <input type="text" class="form-control required tel" id="tel" placeholder="" required="" value="<?php echo $_SESSION['user_phone'];?>" name="phone">
               </div>
 
               <div class="col-3">
                 <label for="birth" class="form-label">生年月日</label>
-                <select class="form-select d-block w-100 required" id="birth" required="" name="year">
-                <option value="">-</option>
+                <select class="form-select d-block w-100" id="birth" required="" name="year">
+                <option selected disabled><?php echo $_SESSION['user_year'];?></option>
                 <option value="1900">1900</option><option value="1901">1901</option>
                 <option value="1902">1902</option><option value="1903">1903</option>
                 <option value="1904">1904</option><option value="1905">1905</option>
@@ -269,7 +264,7 @@
               <div class="col-3">
                 <label for="mbirth" class="form-label" style="margin-top: 25px;"></label>
                 <select class="form-select d-block w-100" id="mbirth" required="" name="month">
-                <option selected></option>
+                <option selected><?php echo $_SESSION['user_month'];?></option>
                 <option value="1">1</option><option value="2">2</option>
                 <option value="3">3</option><option value="4">4</option>
                 <option value="5">5</option><option value="6">6</option>
@@ -284,7 +279,7 @@
               <div class="col-3">
                 <label for="dbirth" class="form-label" style="margin-top: 25px;"></label>
                 <select class="form-select d-block w-100" id="dbirth" required="" name="day">
-                <option selected></option>
+                <option selected><?php echo $_SESSION['user_day'];?></option>
                 <option value="1">1</option><option value="2">2</option>
                 <option value="3">3</option><option value="4">4</option>
                 <option value="5">5</option><option value="6">6</option>
@@ -304,64 +299,38 @@
                 </select>
                 </div>
                 <div class="col-1">
-              <p class="text-success" style="margin-top: 35px;">日</p>
-              </div>
+                  <p class="text-success" style="margin-top: 35px;">日</p>
                 </div>
-            <!--</div>-->
-            <label for="seibetu" class="form-label">性別</label>
-            <div class="my-3">
-              <div class="form-check-inline">
-                <input id="man" name="paymentMethod" type="radio" class="form-check-input" required="" value="男性">
-                <label class="form-check-label" style="margin-right: 220px;" for="man">男性</label>
               </div>
-              <div class="form-check-inline">
-                <input id="woman" name="paymentMethod" type="radio" class="form-check-input" required="" value="女性">
-                <label class="form-check-label" for="woman">女性</label>
+              <label for="seibetu" class="form-label">性別</label>
+              <div class="my-3">
+                <div class="form-check-inline">
+                  <input id="man" name="paymentMethod" type="radio" class="form-check-input" required="" value="男性">
+                  <label class="form-check-label" style="margin-right: 220px;" for="man">男性</label>
+                </div>
+                <div class="form-check-inline">
+                  <input id="woman" name="paymentMethod" type="radio" class="form-check-input" required="" value="女性">
+                  <label class="form-check-label" for="woman">女性</label>
+                </div>
               </div>
-            </div>
-            <hr class="my-4">
-            <div class="py-5 text-center">
-              <h2>利用規約</h2>
-            </div>
-            <div class="col-12 text-center">
-							<p>個人情報の取り扱いについて</p>
-            </div>
-            <div class="col-12">
-							<p>【個人情報の取り扱いについて】<br>
-              
-              ・ご入力頂いた個人情報は、各種会員サービス、商品購入、各種サービスのご案内等のために利用し、弊社事務局担当からご連絡させて頂く場合があります。それ以外の利用や弊社以外への個人情報提供はいたしません。また、ファンクラブおよび本サイト運用業務の一部を運営サービス事業者に委託しております。なお、個人情報を識別できるクッキー情報等を取得することはありません。</p>
-            </div>
-            <div class="col-12 text-center" style="margin-top: 40px;">
-							<p>利用規約</p>
-            </div>
-            <div class="col-12">
-							<p>【個人情報の取り扱いについて】<br>
-              
-              ・ご入力頂いた個人情報は、各種会員サービス、商品購入、各種サービスのご案内等のために利用し、弊社事務局担当からご連絡させて頂く場合があります。それ以外の利用や弊社以外への個人情報提供はいたしません。また、ファンクラブおよび本サイト運用業務の一部を運営サービス事業者に委託しております。なお、個人情報を識別できるクッキー情報等を取得することはありません。</p>
-            </div>
-
-            <div class="col-12">
-							<div class="form-check form-check-inline" style="margin-top: 60px;">
-							  <input class="form-check-input" type="checkbox" id="jp" value="jpop">
-							  <label class="form-check-label" for="jp">「個人情報の取り扱いについて」、「利用規約」に同意する</label>
-							</div>
-            </div>
-            <div class="btna">
-              <input class="btn text-white rounded-pill btn-lg" style="background-color: #800080;" type="submit" value="確認ページへ" onclick="location.href='register_confirm.php'"><br>
-            </div>
+              <div class="btna">
+                <input class="btn text-white rounded-pill btn-lg" style="background-color: #800080;" type="submit" value="確認ページへ" onclick="location.href='register_fix_confirm.php'"><br>
+              </div>
+              <div class="btnb">
+                  <input class="btn btn-outline-dark rounded-pill" style="background-color: #dcdcdc;" type="button" onclick="location.href = 'register_information.php'" value="戻る">
+              </div>
             </form>
-            </div>
-        </div>
-    </main>
-
-  </div>
+          </div>
+        </div> 
+      </main>
+    </div>
 
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10/build/highlight.min.js"></script>
 	<script>hljs.highlightAll();</script>
 	  <!-- JSの設定ファイル -->
-    <script src="form-validation.js"></script>
+  <script src="form-validation.js"></script>
 	<script>
     document.addEventListener('DOMContentLoaded', () => {
   //.validationForm を指定した最初の form 要素を取得

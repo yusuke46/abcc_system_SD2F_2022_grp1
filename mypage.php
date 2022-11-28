@@ -133,7 +133,7 @@
         <div class="name container-fluid"><?php echo $_SESSION['user_mei'];?></div>;
         
 
-        <a href="" class="btn content"><span><b>会員登録情報</b></span></a>
+        <a href="register_information.php" class="btn content"><span><b>会員登録情報</b></span></a>
         <a href="" class="btn content"><span>注文履歴一覧</span></a>
         <a href="taikai.php" class="btn content"><span>退会手続き</span></a>
     </div>

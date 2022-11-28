@@ -47,21 +47,24 @@ class DBManager{
         }
     }
 
-    public function getInsert(){
+    public function getInsert($user,$usernamek,$email,$passw,$bangou1,$bangou2,$address,$phone,$year,$month,$day,$gender){
         $pdo = $this->dbConnect();
-        $sql="INSERT INTO login_tbl (user_mei,user_meikata,user_e-mail,user_pass,user_addressnumber,user_address,user_phone,user_birth,user_gender) VALUES(?,?,?,?,?,?,?,?)";
+        $sql="INSERT INTO login_tbl (user_mei,user_meikata,user_e-mail,user_pass,user_addressnumber1,user_addressnumber2,user_address,user_phone,user_year,user_month,user_day,user_gender) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
         $ps=$pdo->prepare($sql);
         $ps->bindValue(1,$_POST['user'],PDO::PARAM_STR);
         $ps->bindValue(2,$_POST['usernamek'],PDO::PARAM_STR);
         $ps->bindValue(3,$_POST['email'],PDO::PARAM_STR);
         $ps->bindValue(4,$_POST['passw'],PDO::PARAM_STR);
-        $ps->bindValue(5,$_POST['bangou'],PDO::PARAM_INT);
-        $ps->bindValue(6,$_POST['address'],PDO::PARAM_STR);
-        $ps->bindValue(7,$_POST['phone'],PDO::PARAM_INT);
-        $ps->bindValue(8,$_POST['birth'],PDO::PARAM_STR);
-        $ps->bindValue(9,$_POST['gender'],PDO::PARAM_STR);
+        $ps->bindValue(5,$_POST['bangou1'],PDO::PARAM_STR);
+        $ps->bindValue(6,$_POST['bangou2'],PDO::PARAM_STR);
+        $ps->bindValue(7,$_POST['address'],PDO::PARAM_STR);
+        $ps->bindValue(8,$_POST['phone'],PDO::PARAM_STR);
+        $ps->bindValue(9,$_POST['year'],PDO::PARAM_INT);
+        $ps->bindValue(10,$_POST['month'],PDO::PARAM_INT);
+        $ps->bindValue(11,$_POST['day'],PDO::PARAM_INT);
+        $ps->bindValue(12,$_POST['gender'],PDO::PARAM_STR);
         $ps->execute();
-        $Insert= $ps->fetchAll();
+        $Insert=$ps->fetchAll();
         return $Insert;
     }
 
