@@ -143,6 +143,9 @@
         list-style: none;
         text-decoration: none;
       }
+      .btn{
+        width: 300px;
+      }
   </style>
 </head>
 <body>
@@ -197,14 +200,14 @@
               <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="pass">
               <label for="floatingPassword">Password</label>
             </div>
-            <button class="w-75 btn btn-lg btn-primary" style="margin-bottom: 30px;" type="submit">ログイン</button>
+            <input class="btn text-white rounded-pill btna" style="background-color: #800080;" type="submit" value="ログイン"><br>
             <div class="container-fluid">
               <div class="row">
                 <span class="col-lg-6 col-sm-12" style="white-space: nowrap">推し事に参加いただくためには、</span>
                 <span class="col-lg-6 col-sm-12 mr-5">会員登録が必要です。</span>
               </div>
             </div>
-            <button class="w-75 btn btn-lg btn-primary" type="submit">新規会員登録はこちら</button>
+            <input class="btn text-white rounded-pill btna" style="background-color: #800080;" type="button" value="新規登録はこちらから" onclick="location.href='register.php'"><br>
           </form>
         </main>
       </div>

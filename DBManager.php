@@ -49,16 +49,17 @@ class DBManager{
 
     public function getInsert(){
         $pdo = $this->dbConnect();
-        $sql="INSERT INTO login_tbl (user_mei,user_meikata,user_e-mail,user_pass,user_address,user_phone,user_birth,user_gender) VALUES(?,?,?,?,?,?,?,?)";
+        $sql="INSERT INTO login_tbl (user_mei,user_meikata,user_e-mail,user_pass,user_addressnumber,user_address,user_phone,user_birth,user_gender) VALUES(?,?,?,?,?,?,?,?)";
         $ps=$pdo->prepare($sql);
-        $ps->bindValue(1,$_POST[''],PDO::PARAM_STR);
-        $ps->bindValue(2,$_POST[''],PDO::PARAM_STR);
-        $ps->bindValue(3,$_POST[''],PDO::PARAM_STR);
-        $ps->bindValue(4,password_hash($_POST['passw'],PASSWORD_DEFAULT),PDO::PARAM_STR);
-        $ps->bindValue(5,$_POST[''],PDO::PARAM_STR);
-        $ps->bindValue(6,$_POST[''],PDO::PARAM_INT);
-        $ps->bindValue(7,$_POST[''],PDO::PARAM_STR);
-        $ps->bindValue(8,$_POST[''],PDO::PARAM_STR);
+        $ps->bindValue(1,$_POST['user'],PDO::PARAM_STR);
+        $ps->bindValue(2,$_POST['usernamek'],PDO::PARAM_STR);
+        $ps->bindValue(3,$_POST['email'],PDO::PARAM_STR);
+        $ps->bindValue(4,$_POST['passw'],PDO::PARAM_STR);
+        $ps->bindValue(5,$_POST['bangou'],PDO::PARAM_INT);
+        $ps->bindValue(6,$_POST['address'],PDO::PARAM_STR);
+        $ps->bindValue(7,$_POST['phone'],PDO::PARAM_INT);
+        $ps->bindValue(8,$_POST['birth'],PDO::PARAM_STR);
+        $ps->bindValue(9,$_POST['gender'],PDO::PARAM_STR);
         $ps->execute();
         $Insert= $ps->fetchAll();
         return $Insert;

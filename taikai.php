@@ -20,6 +20,16 @@
         #main_nav{
           border-bottom: 5px solid 	#8a2be2;
         }
+        .btn{
+          width: 300px;
+        }
+        .botton{
+          text-align: center;
+        }
+        .btna{
+          margin-bottom: 30px;
+          margin-top: 30px;
+        }
         </style>
 </head>
 <body>
@@ -77,7 +87,8 @@
 <style>
  .taikai{
   text-align: center;
-  margin-top: 1%;
+  margin-top: 3%;
+  margin-bottom: 3%;
   font-size: 160%;
 
  }
@@ -122,6 +133,8 @@
 }
   .mozi1{
     text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
   }
 
 .aiueo{
@@ -134,6 +147,8 @@
   display: inline-block;
   margin-left: 25%;
   margin-right: 75%;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 input[type=checkbox]{
@@ -211,14 +226,14 @@ input[type=checkbox].blue:checked,input[type=checkbox].blue:indeterminate,input[
   display: inline-block;
   margin-left: 25%;
   margin-right: 75%;
+  margin-top: 2%;
 }
 
 .ringo{
 display: inline-block;
 margin-left: 25%;
-  margin-right: 75%;
-
-
+margin-right: 75%;
+margin-bottom: 2%;
 }
 
  </style>
@@ -234,20 +249,23 @@ margin-left: 25%;
     <div class="mozi1">下記項目をご理解いただけましたら、チェックボックスにチェックを入れてお進みください。</div>
     <hr class="cp_hr02" />
     <div class="row">
-      <div class="col-sm-1"><input class="blue" type="checkbox"></div>
+      <div class="col-sm-1"><input class="blue" type="checkbox" name="checka"></div>
       <div class="aiueo col-sm-6">会員登録情報</div>
       <div class="kozinn">個人情報規定ならびに弊社のセキュリティーシステム上、退会後は会員情報の内容確認はできなくなります。</div>
       <hr class="cp_hr03" />
     </div>
 
     <div class="row">
-      <div class="col-sm-1"><input class="blue" type="checkbox"></div>
+      <div class="col-sm-1"><input class="blue" type="checkbox" name="checkb"></div>
       <div class="aiueo col-sm-6">ご注文商品について</div>
       <div align="center"></div>
       <div class="cyumon">ご注文いただきました商品は、退会お手続きをいただきましてもキャンセルとはなりません。</div>
       <div class="ringo">出荷準備が完了次第商品をお届けさせていただきます。</div>
-      <hr class="cp_hr03" />
-      <input type="submit" class="">
+      <hr class="cp_hr03" /><br>
+      <div class="botton">
+        <input class="btn text-white rounded-pill btna" style="background-color: #800080;" type="button" value="確認ページへ" onclick="location.href='taikai_confirm.php'"><br>
+        <input class="btn btn-outline-dark rounded-pill" style="background-color: #dcdcdc;" type="button" onclick="location.href = 'mypage.php'" value="マイページに戻る">
+      </div>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>

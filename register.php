@@ -69,6 +69,13 @@
           color: red;
           box-sizing: border-box;
         }
+        .btn{
+          width: 500px;
+        }
+        .btna{
+          margin-top: 10%;
+          text-align: center;
+        }
     </style>  
 </head>
 
@@ -133,11 +140,11 @@
     <main>
       <div class="row">
         <div class="col-12 offset-md-3 col-md-6"><!--col-md-7 col-lg-8-->
-          <form name="myForm" class="validationForm" novalidate>
+          <form action="register_confirm.php" name="myForm" class="validationForm" novalidate>
             <!--<div class="row g-3">-->
               <div class="col-12">
                 <label for="username" class="form-label">お客様名（全角）</label>
-                <input type="text" class="form-control" id="username">
+                <input type="text" class="form-control" id="username" name="user">
               </div>
               <div class="col-12">
                 <label for="usernamek" class="form-label">お客様名（カナ）</label>
@@ -153,20 +160,15 @@
               <div class="col-12">
                 <label for="pass" class="form-label">パスワード</label>
                 <div class="input-group has-validation">
-                  <input type="text" class="form-control" id="pass" placeholder="" required="">
+                  <input type="text" class="form-control" id="pass" placeholder="" required="" name="passw">
                 </div>
               </div>
-              <div class="col-12">
-                <label for="passk" class="form-label">パスワード確認</label>
-                <div class="input-group has-validation">
-                  <input type="text" class="form-control" id="passk" placeholder="" required="">
-                </div>
-              </div>
+  
               <div class="row">
               <div class="col-3">
                 <label for="post" class="form-label">郵便番号</label>
                 <div class="input-group has-validation">
-                  <input type="text" class="form-control" id="post" placeholder="" required="">
+                  <input type="text" class="form-control" id="post" placeholder="" required="" name="bangou">
                 </div>
               </div>
               <div class="col-1">
@@ -175,23 +177,23 @@
               <div class="col-4" style="margin-top: 25px;">
                 <label for="username" class="form-label"></label>
                 <div class="input-group has-validation">
-                  <input type="text" class="form-control" id="username" placeholder="" required="">
+                  <input type="text" class="form-control" id="username" placeholder="" required="" name="bangou">
                 </div>
               </div>
               </div>
               <div class="row">
               <div class="col-12">
                 <label for="address" class="form-label">住所</label>
-                <input type="text" class="form-control" id="address" placeholder="" required="">
+                <input type="text" class="form-control" id="address" placeholder="" required="" name="address">
               </div>
               <div class="col-sm-12">
                 <label for="tel" class="form-label">電話番号</label>
-                <input type="text" class="form-control" id="tel" placeholder="" value="" required="">
+                <input type="text" class="form-control" id="tel" placeholder="" value="" required="" name="phone">
               </div>
 
               <div class="col-3">
                 <label for="birth" class="form-label">生年月日</label>
-                <select class="form-select d-block w-100" id="birth" required="">
+                <select class="form-select d-block w-100" id="birth" required="" name="birth">
                 <option value="">-</option>
                 <option value="1900">1900</option><option value="1901">1901</option>
                 <option value="1902">1902</option><option value="1903">1903</option>
@@ -266,7 +268,7 @@
               </div>
               <div class="col-3">
                 <label for="mbirth" class="form-label" style="margin-top: 25px;"></label>
-                <select class="form-select d-block w-100" id="mbirth" required="">
+                <select class="form-select d-block w-100" id="mbirth" required="" name="birth">
                 <option selected></option>
                 <option value="1">1</option><option value="2">2</option>
                 <option value="3">3</option><option value="4">4</option>
@@ -281,7 +283,7 @@
               </div>
               <div class="col-3">
                 <label for="dbirth" class="form-label" style="margin-top: 25px;"></label>
-                <select class="form-select d-block w-100" id="dbirth" required="">
+                <select class="form-select d-block w-100" id="dbirth" required="" name="birth">
                 <option selected></option>
                 <option value="1">1</option><option value="2">2</option>
                 <option value="3">3</option><option value="4">4</option>
@@ -309,11 +311,11 @@
             <label for="seibetu" class="form-label">性別</label>
             <div class="my-3">
               <div class="form-check-inline">
-                <input id="man" name="paymentMethod" type="radio" class="form-check-input" checked="" required="">
+                <input id="man" name="paymentMethod" type="radio" class="form-check-input" checked="" required="" name="gender">
                 <label class="form-check-label" style="margin-right: 220px;" for="man">男性</label>
               </div>
               <div class="form-check-inline">
-                <input id="woman" name="paymentMethod" type="radio" class="form-check-input" required="">
+                <input id="woman" name="paymentMethod" type="radio" class="form-check-input" required="" name="gender">
                 <label class="form-check-label" for="woman">女性</label>
               </div>
             </div>
@@ -344,7 +346,9 @@
 							  <label class="form-check-label" for="jp">「個人情報の取り扱いについて」、「利用規約」に同意する</label>
 							</div>
             </div>
-            <button class="w-100 btn btn-primary btn-lg" style="margin-top: 40px;" type="submit">確認ページへ</button>
+            <div class="btna">
+              <input class="btn text-white rounded-pill btn-lg" style="background-color: #800080;" type="submit" value="確認ページへ"><br>
+            </div>
             </form>
             </div>
         </div>
