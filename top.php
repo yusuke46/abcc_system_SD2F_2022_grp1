@@ -1,4 +1,8 @@
-<?php session_start();?>
+<?php 
+session_start();
+
+
+?>
 <html>
     <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -166,6 +170,14 @@
             top: 50%;
             transform: translate(0, -50%);
         }
+        .pickup{
+          text-align: center;
+          margin-top: 10%;
+          margin-bottom: 10%;
+        }
+        .card{
+          margin-bottom: 10%;
+        }
     </style>
 </head>
 <body>
@@ -284,25 +296,30 @@
     </div>
   </div>
   
-  <p>注目商品</p>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card">
-        <form action="shohin_detail.php">
-          <?php
-          $pdo= new PDO('mysql:host=localhost;dbname=osigoto;charset=utf8','webuser', 'abccsd2');
-          $sql="SELECT * FROM shohin_tbl";
-          $ps=$pdo->prepare($sql);
-          $ps->execute();
-          $result=$ps->fetchAll();
-          ?>
-          <?php foreach($result as $row)
-            echo '<img src="'.$row['shohin_img'].'" class="img">';
-          ?>
-        </form>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="pickup">注目商品</h2>
       </div>
+      <?php
+      require_once 'DBManager.php';
+      $dbmng = new DBManager();
+      $PickUp = $dbmng->topPickUp();
+      foreach($PickUp as $row){
+        echo '<div class="col-md-4">';
+        echo '<div class="card" style="width: 26rem;">';
+        echo '<img src="'.$row['shohin_img'].'" class="card-img-top">';
+        echo '<div class="card-body">';
+        echo '<h5 class="card-title">'.$row['shohin_mei'].'</h5>';
+        echo '<p class="card-text">'.$row['shohin_tanka'].'</p>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+      }
+      ?>
     </div>
   </div>
+  
 
   <hr>
   

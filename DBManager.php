@@ -1,7 +1,7 @@
 <?php
 class DBManager{
     private function dbConnect(){
-        $pdo= new PDO('mysql:host=localhost;dbname=osigoto;charset=utf8','webuser', 'abccsd2');
+        $pdo = new PDO('mysql:host=mysql209.phy.lolipop.lan;dbname=LAA1418456-osigotodb;charset=utf8','LAA1418456','2101406');
         return $pdo;
     }
 
@@ -114,11 +114,11 @@ class DBManager{
         return $array;
     }
 
-    public function searchPickUp(){
+    public function topPickUp(){
         $pdo = $this->dbConnect();
-        $sql="SELECT * FROM shohin_tbl WHERE shohin_attention = ?";
+        $sql="SELECT * FROM shohin_tbl WHERE shohin_attention = 1 LIMIT 12";
         $ps=$pdo->prepare($sql);
-        $ps->bindValue(1,'1',PDO::PARAM_STR);
+        $ps->execute();
         $PickUp=$ps->fetchAll();
         return $PickUp;
     }
