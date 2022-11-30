@@ -170,13 +170,25 @@ session_start();
             top: 50%;
             transform: translate(0, -50%);
         }
-        .pickup{
-          text-align: center;
-          margin-top: 10%;
-          margin-bottom: 10%;
+        .k{
+            margin-top: 10%;
         }
-        .card{
-          margin-bottom: 10%;
+        .a{
+            margin-top: 5%;
+            margin-bottom: 30%;
+        }
+        .b{
+            margin-top: 5%;
+        }
+        .c{
+            margin-bottom: 30%;
+        }
+        .btn{
+          width: 450px;
+        }
+        .btna{
+          margin-top: 10%;
+          text-align: center;
         }
     </style>
 </head>
@@ -234,125 +246,44 @@ session_start();
       </ul>
     </div>
   </div>
-      </nav>
-      <!--ここまでNB-->
-  <!--この下から書き加える-->
-  <div style="background: linear-gradient(to left top, black, white);">
-        <!-- ここが回る画像の場所 -->
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="img/1.jfif"></div>
-        <div class="swiper-slide"><img src="img/2.jfif"></div>
-        <div class="swiper-slide"><img src="img/3.jfif"></div>
-        <div class="swiper-slide"><img src="img/4.jfif"></div>
-        <div class="swiper-slide"><img src="img/5.jfif"></div>
-      </div>
-        <!-- これはいじっちゃダメ -->
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
-    </div>
+</nav>
 
-    <!-- Swiper JS --><!-- CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+   <div class="container">
+    <div class="row k">
+        <?php
+        require_once 'DBManager.php';
+        $dbmng = new DBManager();
+        $Shohin = $dbmng->getByShohin($_POST['shohinid']);
+        foreach($Shohin as $row){
+            echo '<div class="col-4">';
+            echo '<form action="buy_cart.php" method="post">';
+            echo '<img src="'.$row['shohin_img'].'">';
+            echo '</div>';
+            echo '<div class="col-4">';
+            echo '</div>';
+            echo '<div class="col-4">';
+            echo '<h2 class="b">'.$row['shohin_mei'].'</h2>';
+            echo '<h5 class="a">￥'.$row['shohin_tanka'].'</h5>';
+            echo '<h4 class="c">'.$row['shohin_information'].'</h4>';
+            echo '<label for="suuryo" class="form-label">数量</label>';
+            echo '<select class="form-select d-block w-100" id="mbirth" required="" name="suuryou">
+            <option selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option><option value="4">4</option>
+            <option value="5">5</option><option value="6">6</option>
+            <option value="7">7</option><option value="8">8</option>
+            <option value="9">9</option><option value="10">10</option>
+            </select><br>';
+            echo '<div class="btna">
+            <input class="btn text-white rounded-pill btn-lg" style="background-color: #800080;" type="submit" value="カートに入れる" onclick="location.href='.'buy_cart.php'.'">
+            </div>';
+            echo '</form>';
+            echo '</div>';
+        }
+        ?>
+    </div>
+   </div>
 
-    <!-- Initialize Swiper -->
-    <!-- ここ回るためのコード!いじるのなし！！！ -->
-    <script>
-      var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 'auto',
-        spaceBetween: 200,
-        centeredSlides : true,
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-      },
-        grabCursor: true,
-        loop: true,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
-    </script>
-  </div>
-      
-  <div class="container">
-    <div class="row">
-      <div class="col-48">　</div>
-        <button class="button col-md-4 offset-md-2 btn btn-primary">
-          <img src="img/tokino_2.png" class="img">
-          <br>推し事
-        </button>
-      <button class="button col-md-4 btn btn-danger">
-        <img src="img/otaku.png" class="img">
-        <br>ヲタク
-      </button>
-    </div>
-  </div>
-  
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <h2 class="pickup">注目商品</h2>
-      </div>
-      <?php
-      require_once 'DBManager.php';
-      $dbmng = new DBManager();
-      $PickUp = $dbmng->topPickUp();
-      foreach($PickUp as $row){
-        echo '<div class="col-md-4">';
-        echo '<form action="shohin_detail.php" method="post">';
-        echo '<div class="card" style="width: 26rem;">';
-        echo '<button type="submit" class="border border-white" style="background-color: white;">';
-        echo '<input type="hidden" value="'.$row['shohin_id'].'" name="shohinid">';
-        echo '<img src="'.$row['shohin_img'].'" class="card-img-top">';
-        echo '<div class="card-body">';
-        echo '<h5 class="card-title">'.$row['shohin_mei'].'</h5>';
-        echo '<input type="hidden" value="' . $row['shohin_id'] . '">';
-        echo '<p class="card-text">￥'.$row['shohin_tanka'].'</p>';
-        echo '</div>';
-        echo '</button>';
-        echo '</div>';
-        echo '</form>';
-        echo '</div>';
-      }
-      ?>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <h2 class="pickup">特集</h2>
-      </div>
-      <?php
-      require_once 'DBManager.php';
-      $dbmng = new DBManager();
-      $Feature = $dbmng->topFeature();
-      foreach($Feature as $row){
-        echo '<div class="col-md-4">';
-        echo '<form action="shohin_detail.php" method="post">';
-        echo '<div class="card" style="width: 26rem;">';
-        echo '<button type="submit" class="border border-white" style="background-color: white;">';
-        echo '<input type="hidden" value="'.$row['shohin_id'].'" name="shohinid">';
-        echo '<img src="'.$row['shohin_img'].'" class="card-img-top">';
-        echo '<div class="card-body">';
-        echo '<h5 class="card-title" name="shohin">'.$row['shohin_mei'].'</h5>';
-        echo '<p class="card-text">￥'.$row['shohin_tanka'].'</p>';
-        echo '</div>';
-        echo '</button>';
-        echo '</div>';
-        echo '</form>';
-        echo '</div>';
-      }
-      ?>
-    </div>
-  </div>
-    </form>
   <hr>
   
   <div class="companySet">

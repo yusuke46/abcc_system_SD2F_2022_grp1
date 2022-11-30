@@ -1,7 +1,7 @@
 <?php
 class DBManager{
     private function dbConnect(){
-        $pdo = new PDO('mysql:host=mysql209.phy.lolipop.lan;dbname=LAA1418456-osigotodb;charset=utf8','LAA1418456','2101406');
+        $pdo = new PDO('mysql:host=localhost;dbname=osigoto;charset=utf8','webuser','abccsd2');
         return $pdo;
     }
 
@@ -116,18 +116,36 @@ class DBManager{
 
     public function topPickUp(){
         $pdo = $this->dbConnect();
-        $sql="SELECT * FROM shohin_tbl WHERE shohin_attention = 1 LIMIT 12";
+        $sql="SELECT * FROM shohin_tbl WHERE shohin_attention = 1 ORDER BY shohin_id DESC LIMIT 12";
         $ps=$pdo->prepare($sql);
         $ps->execute();
         $PickUp=$ps->fetchAll();
         return $PickUp;
     }
 
+    public function searchPickUp(){
+        $pdo = $this->dbConnect();
+        $sql="SELECT * FROM shohin_tbl WHERE shohin_attention = 1";
+        $ps=$pdo->prepare($sql);
+        $ps->execute();
+        $PickUp=$ps->fetchAll();
+        return $PickUp;
+    }
+
+    public function topFeature(){
+        $pdo = $this->dbConnect();
+        $sql="SELECT * FROM shohin_tbl WHERE shohin_feature = 1 ORDER BY shohin_id DESC LIMIT 12";
+        $ps=$pdo->prepare($sql);
+        $ps->execute();
+        $Feature=$ps->fetchAll();
+        return $Feature;
+    }
+
     public function searchFeature(){
         $pdo = $this->dbConnect();
-        $sql="SELECT * FROM shohin_tbl WHERE shohin_feature = ?";
+        $sql="SELECT * FROM shohin_tbl WHERE shohin_feature = 1";
         $ps=$pdo->prepare($sql);
-        $ps->bindValue(1,$_POST[''],PDO::PARAM_STR);
+        $ps->execute();
         $Feature=$ps->fetchAll();
         return $Feature;
     }
@@ -136,6 +154,7 @@ class DBManager{
         $pdo = $this->dbConnect();
         $sql="SELECT * FROM shohin_tbl";
         $ps=$pdo->prepare($sql);
+        $ps->execute();
         $ShohinSource=$ps->fetchAll();
         return $ShohinSource;
     }
@@ -143,6 +162,16 @@ class DBManager{
     public function getByMemeber(){
         $pdo = $this->dbConnect();
         $sql="";
+    }
+
+    public function getByShohin($shohin){
+        $pdo = $this->dbConnect();
+        $sql="SELECT * FROM shohin_tbl WHERE shohin_id = ?";
+        $ps=$pdo->prepare($sql);
+        $ps->bindValue(1,$shohin,PDO::PARAM_STR);
+        $ps->execute();
+        $Shohin=$ps->fetchAll();
+        return $Shohin;
     }
 }
 ?>

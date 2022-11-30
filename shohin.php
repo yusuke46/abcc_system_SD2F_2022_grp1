@@ -16,6 +16,14 @@
         #main_nav{
           border-bottom: 5px solid 	#8a2be2;
         }
+        .pickup{
+          text-align: center;
+          margin-top: 10%;
+          margin-bottom: 10%;
+        }
+        .card{
+          margin-bottom: 10%;
+        }
         </style>
 </head>
 <body>
@@ -46,7 +54,7 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link" href="#" style="text-align:left;">&nbsp;ログイン/新規登録<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
+              <a class="nav-link" href="#" style="text-align:left;">&nbsp;ログイン/新規登録<i class="bi bi-chevron-right" id="icon" style="text-align:right; float:right"></i></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#" style="text-align:left;">&nbsp;商品<i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a>
@@ -69,24 +77,29 @@
       </div>
       </div>
   </nav>
-      <!--ここまでNB-->
-        <h1 class="text-center">商品一覧</h1>
-    <!--ここからcard-->
-    <div name="maindiv" class="container">
-        <div class="row mt-5 gy-3 gt-3">
-            <!--PCサイズで横3枚、tablet以下で横2枚にしてます。-->
-            <div class="col-6 col-md-4">
-                <div class="card">
-                    <img src="" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">【予約商品】衣装キーホルダー/好きというのはロックだぜ！</h5>
-                        <h5 class="card-money">¥9999</h5>
-                    </div>
-                </div>
-            </div>
-            <!--カード区切り-->
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="pickup">商品一覧</h2>
+      </div>
+      <?php
+      require_once 'DBManager.php';
+      $dbmng = new DBManager();
+      $ShohinSource = $dbmng->getByShohinSource();
+      foreach($ShohinSource as $row){
+        echo '<div class="col-md-3">';
+        echo '<div class="card" style="width: 18rem;">';
+        echo '<img src="'.$row['shohin_img'].'" class="card-img-top">';
+        echo '<div class="card-body">';
+        echo '<h5 class="card-title">'.$row['shohin_mei'].'</h5>';
+        echo '<p class="card-text">￥'.$row['shohin_tanka'].'</p>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+      }
+      ?>
     </div>
+  </div>
     <!--ここまでcard-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
