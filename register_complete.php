@@ -1,4 +1,5 @@
 <!DOCKTYPE HTML>
+
 <html>
     <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -216,9 +217,10 @@
       </nav>
   <!--この下から書き加える-->
         <?php
+        session_start();
             require 'DBManager.php';
             $dbmng = new DBManager();
-            $searchArray = $dbmng->getInsert($_POST['use'],$_POST['usernamek'],$_POST['email'],$_POST['passw'],$_POST['bangou1'],$_POST['bangou2'],$_POST['address'],$_POST['phone'],$_POST['year'],$_POST['month'],$_POST['day'],$_POST['paymentMethod']);
+            $searchArray = $dbmng->getLogin($_POST['user1'],$_POST['user2'],$_POST['email'],$_POST['pass'],$_POST['post1'],$_POST['post2'],$_POST['address'],$_POST['phone'],$_POST['year'],$_POST['month'],$_POST['day'],$_POST['sei']);
         ?>
         <div class="py-5 text-center">
             <h2>登録しました</h2>

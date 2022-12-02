@@ -9,7 +9,6 @@
     
     <style>
       body { 
-        
       }
       .nav-item{
         border-bottom: 1px solid #C0C0C0;
@@ -222,7 +221,12 @@
     </div>
   </div>
 </nav>
-
+<?php
+require 'DBManager.php';
+$dbmng = new DBManager();
+$searchArray = $dbmng->Delete($_POST['deleteid']);
+echo $_POST['deleteid'];
+?>
     <div class="taikai content">退会手続き</div>
     <div class="a">退会しました</div>
     <div class="botton">
