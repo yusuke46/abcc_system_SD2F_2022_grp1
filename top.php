@@ -51,6 +51,7 @@ session_start();
       .img{
         width: 200px;
         height: 200px;
+        border-radius:100px;
       }
       .button{
         font-size: 40px;
@@ -293,20 +294,32 @@ session_start();
       });
     </script>
   </div>
-      
-  <div class="container">
-    <div class="row">
-      <div class="col-48">　</div>
-        <button class="button col-md-4 offset-md-2 btn btn-primary">
-          <img src="img/tokino_2.png" class="img">
-          <br>推し事
-        </button>
-      <button class="button col-md-4 btn btn-danger">
-        <img src="img/otaku.png" class="img">
-        <br>ヲタク
-      </button>
-    </div>
-  </div>
+      <!-- 改行 -->
+
+  <div class="nl"></div>
+
+
+
+<!-- 商品一覧へ行くやつ -->
+<div class="container">
+<div class="row osigoto">
+  <button class="button col-5 btn" style="background-color:#eeeeee;">
+    <img src="img/tokino_2.png" class="img">
+    <br>推し事
+  </button>
+  <button class="button col-5 offset-2 btn"  style="background-color:#eeeeee;">
+    <img src="img/otaku.png" class="img">
+    <br>ヲタク
+  </button>
+</div>
+
+</div>
+
+
+
+<!-- 改行 -->
+
+<div class="nl"></div>
   
   <div class="container">
     <div class="row">
