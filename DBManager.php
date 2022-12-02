@@ -173,5 +173,34 @@ class DBManager{
         $Shohin=$ps->fetchAll();
         return $Shohin;
     }
+
+
+    
+    public function getLogin($name,$namek,$mail,$pass,$post1,$post2,$address,$phone,$year,$month,$day,$sei){
+        $pdo = $this->dbConnect();
+        $sql = "INSERT INTO login_tbl (user_mei,user_meikata,user_email,user_pass,user_post1,user_post2,user_address,user_phone,user_year,user_month,user_day,user_gender) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);";
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1,$name,PDO::PARAM_STR);
+        $ps->bindValue(2,$namek,PDO::PARAM_STR);
+        $ps->bindValue(3,$mail,PDO::PARAM_STR);
+        $ps->bindValue(4,$pass,PDO::PARAM_STR);
+        $ps->bindValue(5,$post1,PDO::PARAM_STR);
+        $ps->bindValue(6,$post2,PDO::PARAM_STR);
+        $ps->bindValue(7,$address,PDO::PARAM_STR);
+        $ps->bindValue(8,$phone,PDO::PARAM_STR);
+        $ps->bindValue(9,$year,PDO::PARAM_STR);
+        $ps->bindValue(10,$month,PDO::PARAM_STR);
+        $ps->bindValue(11,$day,PDO::PARAM_STR);
+        $ps->bindValue(12,$sei,PDO::PARAM_STR);
+        $ps->execute();
+    }
+
+    public function Delete($userid){
+        $pdo = $this->dbConnect();
+        $sql = "UPDATE login_tbl SET user_mei = '',user_meikata = '',user_mail = '',user_pass = '',user_addressnumber1 = '',user_addressnumber2 = '',user_address = '',user_phone = '',user_year = '',user_month = '',user_day = '',user_gender = '' WHERE user_id = ?";
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1,$userid,PDO::PARAM_INT);
+        $ps->execute();
+    }
 }
 ?>
