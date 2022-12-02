@@ -97,11 +97,11 @@
             <!--<div class="row g-3">-->
               <div class="col-12">
                 <label for="username" class="form-label">お客様名（全角）</label>
-                <input type="text" name="use" class="form-control" id="username" value="<?php echo $_POST['user'];?>" disabled>
+                <input type="text" name="user" class="form-control" id="username" value="<?php echo $_POST['user'];?>" disabled>
               </div>
               <div class="col-12">
                 <label for="usernamek" class="form-label">お客様名（カナ）</label>
-                <input type="text" name="usernamek" class="form-control" id="usernamek" data-maxlength="10" name="usernamek" value="<?php echo $_POST['usernamek'];?>" disabled>
+                <input type="text" name="usernamek" class="form-control" id="usernamek" data-maxlength="10" name="usernamek" value="<?php echo $_POST['namekana'];?>" disabled>
               </div>
               
               <div class="col-12">
@@ -110,19 +110,19 @@
               </div>
               <div class="col-12">
                 <label for="pass" class="form-label">パスワード</label>
-                  <input type="text" name="passw" class="form-control" id="pass" placeholder="" required="" value="<?php echo $_POST['passw'];?>" disabled>
+                  <input type="text" name="passw" class="form-control" id="pass" placeholder="" required="" value="<?php echo $_POST['password'];?>" disabled>
               </div>
               <div class="row">
               <div class="col-3">
                 <label for="post" class="form-label">郵便番号</label>
-                  <input type="text" name="bangou1" class="form-control" id="post" placeholder="" required="" value="<?php echo $_POST['bangou1'];?>" disabled>
+                  <input type="text" name="bangou1" class="form-control" id="post" placeholder="" required="" value="<?php echo $_POST['post'];?>" disabled>
               </div>
               <div class="col-1">
               <p class="text-success" style="margin-top: 35px;">ー</p>
               </div>
               <div class="col-4" style="margin-top: 25px;">
                 <label for="username" class="form-label"></label>
-                  <input type="text" name="bangou2" class="form-control" id="username" placeholder="" required="" value="<?php echo $_POST['bangou2'];?>" disabled>
+                  <input type="text" name="bangou2" class="form-control" id="username" placeholder="" required="" value="<?php echo $_POST['post2'];?>" disabled>
               </div>
               </div>
               <div class="row">

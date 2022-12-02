@@ -57,6 +57,7 @@
           border-top-left-radius: 0;
           border-top-right-radius: 0;
         }
+
         .Form{
             text-align : center;
         }
@@ -69,14 +70,154 @@
           color: red;
           box-sizing: border-box;
         }
+
         .btn{
           width: 500px;
         }
+
         .btna{
           margin-top: 10%;
           text-align: center;
         }
+
+        #name_error{
+          text-align: center;
+          color: 	#FF2400;
+        }
+
+        #namekana_error{
+          text-align: center;
+          color: 	#FF2400;
+        }
+
+        #email_error{
+          text-align: center;
+          color: 	#FF2400;
+        }
+
+        #password_error{
+          text-align: center;
+          color: 	#FF2400;
+        }
+
+        #post_error{
+          text-align: center;
+          color: 	#FF2400;
+        }
+
+        #address_error{
+          text-align: center;
+          color: 	#FF2400;
+        }
+
+        #phone_error{
+          text-align: center;
+          color: 	#FF2400;
+        }
+
+        #day_error{
+          text-align: center;
+          color: 	#FF2400;
+        }
+
+        #check_error{
+          text-align: center;
+          color: 	#FF2400;
+        }
     </style>  
+    <script>
+function cancel(){
+  let ngflg = 0;
+        let name = document.getElementById("name").value;
+        let namekana = document.getElementById("namekana").value;
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+        let post = document.getElementById("post").value;
+        let post2 = document.getElementById("post2").value;
+        let address = document.getElementById("address").value;
+        let tel = document.getElementById("tel").value;
+        let day1 = document.getElementById("birth").value;
+        let day2 = document.getElementById("mbirth").value;
+        let day3 = document.getElementById("dbirth").value;
+        
+        name_error.innerHTML = "";
+        if(name == ""){ 
+          name_error.innerHTML = "入力は必須です。";
+          ngflg = 1;
+        }
+
+       namekana_error.innerHTML = "";
+        if(namekana == ""){
+          namekana_error.innerHTML = "入力は必須です。";
+          ngflg = 1;
+        }else{
+          var regexp =/^[ァ-ンヴー]*$/;
+        if(regexp.test(namekana) != true){
+          namekana_error.innerHTML = "全角カタカナで入力をお願いします";
+          ngflg = 1;
+           }
+          }
+
+        email_error.innerHTML = "";
+        if(email == ""){
+          email_error.innerHTML = "入力は必須です。";
+          ngflg = 1;
+        }else{
+          var regexp = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
+        if(regexp.test(email) != true){
+          email_error.innerHTML = "ちがいます";
+          ngflg = 1;
+           }
+          }
+
+        password_error.innerHTML = "";
+        if(password == ""){
+          password_error.innerHTML = "入力は必須です。";
+          ngflg = 1;
+        }
+        
+        post_error.innerHTML = "";
+        if(post == "" || post2 == ""){
+          post_error.innerHTML = "入力は必須です。";
+          ngflg = 1;
+        }else{
+          var regexp = /^\d{3}$/;
+          var regexp2 = /^\d{4}$/;
+        if(regexp.test(post) != true || regexp2.test(post2) != true){ 
+          ngflg = 1;
+          post_error.innerHTML = "正しい郵便番号を入力してください。";
+         }
+        }
+
+        address_error.innerHTML = "";
+        if(address == ""){
+          address_error.innerHTML = "入力は必須です。";
+          ngflg = 1;
+        }
+
+        phone_error.innerHTML = "";
+        if(tel == ""){
+          phone_error.innerHTML = "入力は必須です。";
+          ngflg = 1;
+        }
+
+        day_error.innerHTML = "";
+        if(day1 == "" || day2 == "" || day3 == ""){
+          day_error.innerHTML = "入力は必須です。";
+          ngflg = 1;
+        }
+
+        check_error.innerHTML = "";
+        if(document.getElementById("jp").checked != true){
+          check_error.innerHTML = "利用規約に同意してください。";
+          ngflg = 1;
+        }
+
+        if(ngflg == 1){
+          return false;
+        }
+      }
+      </script>
 </head>
 
 <body>
@@ -140,60 +281,59 @@
     <main>
       <div class="row">
         <div class="col-12 offset-md-3 col-md-6"><!--col-md-7 col-lg-8-->
-          <form action="register_confirm.php" name="myForm" class="validationForm" method="post">
+          <form action="register_confirm.php" name="myForm" class="validationForm" method="post"  onsubmit="return cancel()">
             <!--<div class="row g-3">-->
               <div class="col-12">
                 <label for="username" class="form-label">お客様名（全角）</label>
-                <input type="text" class="form-control required" id="username" name="user">
+                <input type="text" class="form-control" id="name" name="user"placeholder="例：山田太郎">
+                <p id="name_error"></p>
               </div>
               <div class="col-12">
-                <label for="usernamek" class="form-label">お客様名（カナ）</label>
-                <div class="input-group has-validation">
-                <input type="text" class="form-control required maxlength" id="usernamek" data-maxlength="10" name="usernamek">
-                </div>
+                <label for="namekana" class="form-label">お客様名（カナ）</label>
+                <input type="text" class="form-control" id="namekana" name="namekana" placeholder="例：ヤマダタロウ">
+                <p id="namekana_error"></p>
               </div>
               
               <div class="col-12">
                 <label for="email" class="form-label">メールアドレス</label>
-                <input type="email" class="form-control required email" id="email" autocomplete="new-password" size="30" name="email">
+                <input type="text" class="form-control" id="email" name="email"placeholder="例：xxxx@example.com">
+                <p id="email_error"></p>
               </div>
               <div class="col-12">
-                <label for="pass" class="form-label">パスワード</label>
-                <div class="input-group has-validation">
-                  <input type="password" class="form-control required" id="pass" placeholder="" required="" name="passw">
+                <label for="password" class="form-label">パスワード</label>
+                  <input type="password" class="form-control" id="password" name="password"placeholder="パスワードを入力してください">
+                  <p id="password_error"></p>
                 </div>
-              </div>
   
               <div class="row">
               <div class="col-3">
                 <label for="post" class="form-label">郵便番号</label>
-                <div class="input-group has-validation">
-                  <input type="text" class="form-control required" id="post" placeholder="" required="" name="bangou1">
-                </div>
+                  <input type="text" class="form-control" id="post" name="post"placeholder="例：xxx">
               </div>
               <div class="col-1">
               <p class="text-success" style="margin-top: 35px;">ー</p>
               </div>
               <div class="col-4" style="margin-top: 25px;">
-                <label for="username" class="form-label"></label>
-                <div class="input-group has-validation">
-                  <input type="text" class="form-control" id="username" placeholder="" required="" name="bangou2">
-                </div>
+                <label for="post2" class="form-label"></label>
+                  <input type="text" class="form-control" id="post2" name="post2"placeholder="例：xxxx">
               </div>
+              <p id="post_error" style="white-space: nowrap"></p>
               </div>
               <div class="row">
               <div class="col-12">
                 <label for="address" class="form-label">住所</label>
-                <input type="text" class="form-control required" id="address" placeholder="" required="" name="address">
+                <input type="text" class="form-control" id="address" name="address"placeholder="●●マンション000号/会社名など">
+                <p id="address_error"></p>
               </div>
               <div class="col-sm-12">
                 <label for="tel" class="form-label">電話番号</label>
-                <input type="text" class="form-control required" id="tel" placeholder="" value="" required="" name="phone">
+                <input type="text" class="form-control" id="tel" name="phone"placeholder="012-3456-7891">
+                <p id = "phone_error"></p>
               </div>
 
               <div class="col-3">
                 <label for="birth" class="form-label">生年月日</label>
-                <select class="form-select d-block w-100 required" id="birth" required="" name="year">
+                <select class="form-select d-block w-100 " id="birth" name="year">
                 <option value="">-</option>
                 <option value="1900">1900</option><option value="1901">1901</option>
                 <option value="1902">1902</option><option value="1903">1903</option>
@@ -268,8 +408,8 @@
               </div>
               <div class="col-3">
                 <label for="mbirth" class="form-label" style="margin-top: 25px;"></label>
-                <select class="form-select d-block w-100" id="mbirth" required="" name="month">
-                <option selected></option>
+                <select class="form-select d-block w-100" id="mbirth" name="month">
+                <option value="">-</option>
                 <option value="1">1</option><option value="2">2</option>
                 <option value="3">3</option><option value="4">4</option>
                 <option value="5">5</option><option value="6">6</option>
@@ -283,8 +423,8 @@
               </div>
               <div class="col-3">
                 <label for="dbirth" class="form-label" style="margin-top: 25px;"></label>
-                <select class="form-select d-block w-100" id="dbirth" required="" name="day">
-                <option selected></option>
+                <select class="form-select d-block w-100" id="dbirth" name="day">
+                <option value="">-</option>
                 <option value="1">1</option><option value="2">2</option>
                 <option value="3">3</option><option value="4">4</option>
                 <option value="5">5</option><option value="6">6</option>
@@ -306,16 +446,18 @@
                 <div class="col-1">
               <p class="text-success" style="margin-top: 35px;">日</p>
               </div>
+              <p id = "day_error"></p>
                 </div>
             <!--</div>-->
             <label for="seibetu" class="form-label">性別</label>
             <div class="my-3">
               <div class="form-check-inline">
-                <input id="man" name="paymentMethod" type="radio" class="form-check-input" required="" value="男性">
+                <input id="man" name="paymentMethod" type="radio" class="form-check-input" value="男性">
                 <label class="form-check-label" style="margin-right: 220px;" for="man">男性</label>
+                <p id = "error"></p>
               </div>
               <div class="form-check-inline">
-                <input id="woman" name="paymentMethod" type="radio" class="form-check-input" required="" value="女性">
+                <input id="woman" name="paymentMethod" type="radio" class="form-check-input" value="女性">
                 <label class="form-check-label" for="woman">女性</label>
               </div>
             </div>
@@ -345,173 +487,21 @@
 							  <input class="form-check-input" type="checkbox" id="jp" value="jpop">
 							  <label class="form-check-label" for="jp">「個人情報の取り扱いについて」、「利用規約」に同意する</label>
 							</div>
+              <p id = "check_error"></p>
             </div>
             <div class="btna">
-              <input class="btn text-white rounded-pill btn-lg" style="background-color: #800080;" type="submit" value="確認ページへ" onclick="location.href='register_confirm.php'"><br>
+              <input class="btn text-white rounded-pill btn-lg" style="background-color: #800080;" type="submit" value="確認ページへ" id = "kakunin"><br>
             </div>
             </form>
             </div>
         </div>
     </main>
-
   </div>
 
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10/build/highlight.min.js"></script>
 	<script>hljs.highlightAll();</script>
-	  <!-- JSの設定ファイル -->
-    <script src="form-validation.js"></script>
-	<script>
-    document.addEventListener('DOMContentLoaded', () => {
-  //.validationForm を指定した最初の form 要素を取得
-  const validationForm = document.querySelector('.validationForm');
-  //.validationForm を指定した form 要素が存在すれば
-  if(validationForm) {
-    //エラーを表示する span 要素に付与するクラス名（エラー用のクラス）
-    const errorClassName = 'error';
-    
-    //required クラスを指定された要素の集まり  
-    const requiredElems = document.querySelectorAll('.required');
-    //email クラスを指定された要素の集まり
-    const emailElems =  document.querySelectorAll('.email');
-    //tel クラスを指定された要素の集まり
-    const telElems =  document.querySelectorAll('.tel');
-    //maxlength クラスを指定された要素の集まり
-    const maxlengthElems =  document.querySelectorAll('.maxlength');
-    //equal-to クラスを指定された要素の集まり
-    const equalToElems = document.querySelectorAll('.equal-to'); 
-    
-    //エラーメッセージを表示する span 要素を生成して親要素に追加する関数
-    //elem ：対象の要素
-    //errorMessage ：表示するエラーメッセージ
-    const createError = (elem, errorMessage) => {
-      //span 要素を生成
-      const errorSpan = document.createElement('span');
-      //エラー用のクラスを追加（設定）
-      errorSpan.classList.add(errorClassName);
-      //aria-live 属性を設定
-      errorSpan.setAttribute('aria-live', 'polite');
-      //引数に指定されたエラーメッセージを設定
-      errorSpan.textContent = errorMessage;
-      //elem の親要素の子要素として追加
-      elem.parentNode.appendChild(errorSpan);
-    }
- 
-    //form 要素の submit イベントを使った送信時の処理
-    validationForm.addEventListener('submit', (e) => {
-      //エラーを表示する要素を全て取得して削除（初期化）
-      const errorElems = validationForm.querySelectorAll('.' + errorClassName);
-      errorElems.forEach( (elem) => {
-        elem.remove(); 
-      });
-      
-      //.required を指定した要素を検証
-      requiredElems.forEach( (elem) => {
-        //値（value プロパティ）の前後の空白文字を削除
-        const elemValue = elem.value.trim(); 
-        //値が空の場合はエラーを表示してフォームの送信を中止
-        if(elemValue.length === 0) {
-          createError(elem, '入力は必須です');
-          e.preventDefault();
-        }
-      });
-      
-      //.email を指定した要素を検証
-      emailElems.forEach( (elem) => {
-        //Email の検証に使用する正規表現パターン
-        const pattern = /^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ui;
-        //値が空でなければ
-        if(elem.value !=='') {
-          //test() メソッドで値を判定し、マッチしなければエラーを表示してフォームの送信を中止
-          if(!pattern.test(elem.value)) {
-            createError(elem, 'Email アドレスの形式が正しくないようです。');
-            e.preventDefault();
-          }
-        }
-      });
-      
-      //.tel を指定した要素を検証
-      telElems.forEach( (elem) => {
-        //電話番号の検証に使用する正規表現パターン
-        const pattern = /^\(?\d{2,5}\)?[-(\.\s]{0,2}\d{1,4}[-)\.\s]{0,2}\d{3,4}$/;
-        //値が空でなければ
-        if(elem.value !=='') {
-          //test() メソッドで値を判定し、マッチしなければエラーを表示してフォームの送信を中止
-          if(!pattern.test(elem.value)) {
-            createError(elem, '電話番号の形式が正しくないようです。');
-            e.preventDefault();
-          }
-        }
-      });
-      
-      //.maxlength を指定した要素を検証
-      maxlengthElems.forEach( (elem) => {
-        //data-maxlength 属性から最大文字数を取得
-        const maxlength = elem.dataset.maxlength;
-        //または const maxlength = elem.getAttribute('data-maxlength');
-        //値が空でなければ
-        if(elem.value !=='') {
-          //値が maxlength を超えていればエラーを表示してフォームの送信を中止
-          if(elem.value.length > maxlength) {
-            createError(elem, maxlength + '文字以内でご入力ください');
-            e.preventDefault();
-          }
-        }
-      });
-      
-      //.equal-to を指定した要素を検証
-      equalToElems.forEach( (elem) => {
-        //比較対象の要素の id 
-        const equalToId = elem.dataset.equalTo;
-        //または const equalToId = elem.getAttribute('data-equal-to');
-        //比較対象の要素
-        const equalToElem = document.getElementById(equalToId);
-        //値が空でなければ
-        if(elem.value !=='' && equalToElem.value !==''){
-          if(equalToElem.value !== elem.value) {
-            createError(elem, '入力された値が異なります');
-            e.preventDefault();
-          }
-        }
-      });
- 
-      //エラーの最初の要素を取得
-      const errorElem =  validationForm.querySelector('.' + errorClassName);
-      //エラーがあればエラーの最初の要素の位置へスクロール
-      if(errorElem) {
-        const errorElemOffsetTop = errorElem.offsetTop;
-        window.scrollTo({
-          top: errorElemOffsetTop - 40,  //40px 上に位置を調整
-          //スムーススクロール
-          behavior: 'smooth'
-        });
-      }
-    }); 
-  }
-});
-	</script>
-  <script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-(function () {
-  'use strict'
-
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  var forms = document.querySelectorAll('.needs-validation')
-
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-
-        form.classList.add('was-validated')
-      }, false)
-    })
-})()
 </script>
 	<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 	<script src="https://bootstrap-guide.com/js/samples.js"></script>
