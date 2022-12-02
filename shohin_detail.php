@@ -1,53 +1,4 @@
-<?php 
-$id = isset($_POST['id'])? htmlspecialchars($_POST['id'], ENT_QUOTES, 'utf-8') : '';
-$img = isset($_POST['img'])? htmlspecialchars($_POST['img'], ENT_QUOTES, 'utf-8') : '';
-$mei = isset($_POST['mei'])? htmlspecialchars($_POST['mei'], ENT_QUOTES, 'utf-8') : '';
-$tanka = isset($_POST['tanka'])? htmlspecialchars($_POST['tanka'], ENT_QUOTES, 'utf-8') : '';
-$information = isset($_POST['information'])? htmlspecialchars($_POST['information'], ENT_QUOTES, 'utf-8') : '';
-$count = isset($_POST['count'])? htmlspecialchars($_POST['count'], ENT_QUOTES, 'utf-8') : '';
-
-session_start();
-if(isset($_SESSION['products'])){  
-  $products = $_SESSION['products']; 
-  foreach($products as $key => $product){  
-    if($key == $name){      
-      $count = (int)$count + (int)$product['count'];
-    }
-  }
-}  
-    //配列に入れるには、$name,$count,$priceの値が取得できていることが前提なのでif文で空のデータを排除する
-    if($id!=''&&$img!=''&&$mei!=''&&$tanka!=''&&$information!=''&&$count!=''){
-      $_SESSION['products'][$mei]=[
-        'img' => $img,
-        'id' => $id,
-        'tanka' => $tanka,
-        'information' => $information,
-        'count' => $count
-      ];
-    }
-
-    $products = isset($_SESSION['products'])? $_SESSION['products']:[];
-
-    if(isset($products)){
-      foreach($products as $key => $product){
-        echo "<br>";
-        echo "<br>";
-        echo "<br>";
-        echo "<br>";
-        echo "<br>";
-        echo $key;      //商品
-        echo "<br>";
-        echo $product['img'];
-        echo "<br>";
-        echo $product['information'];
-        echo "<br>";
-        echo $product['count'];  //商品の個
-        echo "<br>";
-        echo $product['tanka']; //商品の金額
-        echo "<br>";
-      }
-    }
-?>
+<?php session_start()?>
 <html>
     <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -296,12 +247,13 @@ if(isset($_SESSION['products'])){
    <div class="container">
     <div class="row k">
         <?php
+        $i=0;
         require_once 'DBManager.php';
         $dbmng = new DBManager();
         $Shohin = $dbmng->getByCartShohinSourse($_POST['shohinid']);
         foreach($Shohin as $row){
             echo '<div class="col-4">';
-            echo '<form action="cart.php" method="post">';
+            echo '<form action="shohincheck.php" method="post">';
             echo '<input type="hidden" value="'.$row['shohin_id'].'" name="id">';
             echo '<img src="'.$row['shohin_img'].'" value="'.$row['shohin_img'].'" name="img">';
             echo '</div>';
@@ -313,7 +265,7 @@ if(isset($_SESSION['products'])){
             echo '<h4 class="c" value="'.$row['shohin_information'].'" name="information">'.$row['shohin_information'].'</h4>';
             echo '<label for="suuryo" class="form-label">数量</label>';
             echo '<select class="form-select d-block w-100 required" name="count">';
-            for($i=1;$i<10;$i++){
+            for($i=1;$i<11;$i++){
               echo '<option value="'.$i.'">'.$i.'</option>';
             }
             echo '</select>'; 

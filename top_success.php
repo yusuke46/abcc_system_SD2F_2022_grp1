@@ -167,6 +167,14 @@
             top: 50%;
             transform: translate(0, -50%);
         }
+        .pickup{
+          text-align: center;
+          margin-top: 10%;
+          margin-bottom: 10%;
+        }
+        .card{
+          margin-bottom: 10%;
+        }
     </style>
 </head>
 <body>
@@ -212,6 +220,8 @@
                   <li class="nav_menu_li"><a href="feature.php"style="text-align:left;" >&nbsp;<h3>特集商品</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
                   <hr>
                   <li class="nav_menu_li"><a href="#" style="text-align:left;">&nbsp;<h3>商品の登録はこちら</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
+                  <hr>
+                  <li class="nav_menu_li"><a href="question.php" style="text-align:left;">&nbsp;<h3>お問い合わせ・Q&A</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
                   <hr>
                   <li class="nav_menu_li"><a href="question.php" style="text-align:left;">&nbsp;<h3>お問い合わせ・Q&A</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
                   <hr>
@@ -285,25 +295,65 @@
     </div>
   </div>
   
-  <p>注目商品</p>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card">
-        <form action="shohin_detail.php">
-          <?php
-          $pdo= new PDO('mysql:host=localhost;dbname=osigoto;charset=utf8','webuser', 'abccsd2');
-          $sql="SELECT * FROM shohin_tbl";
-          $ps=$pdo->prepare($sql);
-          $ps->execute();
-          $result=$ps->fetchAll();
-          ?>
-          <?php foreach($result as $row)
-            echo '<img src="'.$row['shohin_img'].'" class="img">';
-          ?>
-        </form>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="pickup">注目商品</h2>
       </div>
+      <?php
+      require_once 'DBManager.php';
+      $dbmng = new DBManager();
+      $PickUp = $dbmng->topPickUp();
+      foreach($PickUp as $row){
+        echo '<div class="col-md-4">';
+        echo '<form action="shohin_detail.php" method="post">';
+        echo '<div class="card" style="width: 26rem;">';
+        echo '<button type="submit" class="border border-white" style="background-color: white;">';
+        echo '<input type="hidden" value="'.$row['shohin_id'].'" name="shohinid">';
+        echo '<input type="hidden" value="'.$row['shohin_information'].'" name="information">';
+        echo '<img src="'.$row['shohin_img'].'" class="card-img-top" name="img">';
+        echo '<div class="card-body">';
+        echo '<h5 class="card-title" name="mei">'.$row['shohin_mei'].'</h5>';
+        echo '<input type="hidden" value="' . $row['shohin_id'] . '">';
+        echo '<p class="card-text" name="tanka">￥'.$row['shohin_tanka'].'</p>';
+        echo '</div>';
+        echo '</button>';
+        echo '</div>';
+        echo '</form>';
+        echo '</div>';
+      }
+      ?>
     </div>
   </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="pickup">特集</h2>
+      </div>
+      <?php
+      require_once 'DBManager.php';
+      $dbmng = new DBManager();
+      $Feature = $dbmng->topFeature();
+      foreach($Feature as $row){
+        echo '<div class="col-md-4">';
+        echo '<form action="shohin_detail.php" method="post">';
+        echo '<div class="card" style="width: 26rem;">';
+        echo '<button type="submit" class="border border-white" style="background-color: white;">';
+        echo '<input type="hidden" value="'.$row['shohin_id'].'" name="shohinid">';
+        echo '<img src="'.$row['shohin_img'].'" class="card-img-top">';
+        echo '<div class="card-body">';
+        echo '<h5 class="card-title" name="shohin">'.$row['shohin_mei'].'</h5>';
+        echo '<p class="card-text">￥'.$row['shohin_tanka'].'</p>';
+        echo '</div>';
+        echo '</button>';
+        echo '</div>';
+        echo '</form>';
+        echo '</div>';
+      }
+      ?>
+    </div>
+  </div>
+    </form>
 
   <hr>
   

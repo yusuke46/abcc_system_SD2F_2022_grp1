@@ -20,6 +20,9 @@
             $_SESSION['user_gender'] = $row['user_gender'];
             $_SESSION['user_id'] = $row['user_id'];
             header('Location:top_success.php');
+        }else{
+            $er = 1;
+            header('Location:login.php');
         }
     }
     if(count($searchArray)==0){

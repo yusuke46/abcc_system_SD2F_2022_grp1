@@ -1,7 +1,4 @@
-<?php
-session_start();
-$products = isset($_SESSION['products'])? $_SESSION['products']:[];
-?>
+<?php session_start();?>
 <html>
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -146,6 +143,18 @@ $products = isset($_SESSION['products'])? $_SESSION['products']:[];
             top: 50%;
             transform: translate(0, -50%);
         }
+        .i{
+          width: 180%;
+        }
+        .mozi{
+          margin-top: 5%;
+        }
+        .h{
+          margin-top: 5%;
+        }
+        .c{
+          margin-top: 35%;
+        }
   </style>
 </head>
 <body>
@@ -203,23 +212,36 @@ $products = isset($_SESSION['products'])? $_SESSION['products']:[];
   </div>
       </nav>
     <!--この下から書き加える-->
-    <h2 class="text-center mt-5">ショッピングカート</h2>
+    <h2 class="text-center mt-5">カートの中身</h2>
     <p style="border-bottom: 3px solid  #A9A9A9" class="mt-5 mx-5 rounded"></p>
     <div class="container">
+      <div class="row h">
+        <div class="col-2">
+          <img src="<?php echo $_SESSION['shohin_img']; ?>" class="i">
+        </div>
+        <div class="col-2"></div>
+        <div class="col-6">
+          <h5 class="mozi"><?php echo $_SESSION['shohin_mei']; ?></h5>
+          <h5 class="c">単価：<?php echo $_SESSION['shohin_tanka']; ?></h5>
+          <h5 class="">小計：<?php echo $_SESSION['shohin_tanka']*$_SESSION['count']; ?></5>
+        </div>
+        <div class="col-2">
+          <form action="shohincheck2.php" method="post">
+            <input type="number" min="0" max="10" value="<?php echo $_SESSION['count']; ?>" name="ucount">
+            <input type="hidden" value="<?php echo $_SESSION['shohin_id'];?>" name="uid">
+            <input type="submit" value="数量変更">
+          </form>
+        </div>
+        <p style="border-bottom: 3px solid  #A9A9A9" class="mt-5 mx-5 rounded"></p>
+      </div>
       <div class="row">
-        <div class="col-2">
-          <?php foreach($products as $name => $product): ?>
-            <img src="<?php echo $product['img']?>">
-          <?php endforeach; ?>
+        <div class="col-6">
+          <h5 class="l">商品合計数：</h5>
         </div>
-        <div class="col-8">
-          <?php foreach($products as $name => $product): ?>
-            <h2><?php echo $product['information']?></h2>
-            <h5><?php echo $product['tanka']?></h5>
-          <?php endforeach; ?>
-        </div>
-        <div class="col-2">
+        <div class="col-6">
+          <h5 class="k">
 
+          </h5>
         </div>
       </div>
     </div>
