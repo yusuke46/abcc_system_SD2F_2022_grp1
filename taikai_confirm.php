@@ -225,8 +225,14 @@
 
     <div class="taikai content">退会手続き</div>
     <div class="a">本当に退会しますか？<br>退会したらアカウントは戻りません</div>
+    <form action="taikai_complete.php" method="post">
+    <?php
+    echo '<input type="hidden" name="deleteid" value="' . $_POST['user_id_delete'] . '">';
+    echo $_POST['user_id_delete'];
+    ?>
     <div class="botton">
-        <input class="btn text-white rounded-pill btna" style="background-color: #800080;" type="button" value="退会する" onclick="location.href='taikai_complete.php'"><br>
+        <input class="btn text-white rounded-pill btna" style="background-color: #800080;" type="submit" value="退会する" ><br>
+      </form>
         <input class="btn btn-outline-dark rounded-pill" style="background-color: #dcdcdc;" type="button" onclick="location.href = 'mypage.php'" value="マイページに戻る">
     </div>
   <hr>

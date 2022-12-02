@@ -1,4 +1,7 @@
-<?php session_start();?>
+<!DOCKTYPE HTML>
+<?php
+session_start();
+?>
 <html>
     <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -20,6 +23,7 @@
         #main_nav{
           border-bottom: 5px solid 	#8a2be2;
         }
+<<<<<<< Updated upstream
         .btn{
           width: 300px;
         }
@@ -152,7 +156,17 @@
             top: 50%;
             transform: translate(0, -50%);
         }
+=======
+>>>>>>> Stashed changes
         </style>
+        <script>
+          function check(){
+            if(document.getElementById("check1").checked != true || document.getElementById("check2").checked != true){
+              error.innerHTML = "下記項目にチェックを入れてください。";
+              return false;
+            }
+          }
+        </script>
 </head>
 <body>
 
@@ -213,10 +227,9 @@
 <style>
  .taikai{
   text-align: center;
+  margin-top: 1%;
+  font-size: 260%;
   margin-top: 3%;
-  margin-bottom: 3%;
-  font-size: 160%;
-
  }
 
  .cp_hr01 {
@@ -224,6 +237,7 @@
 	border-style: solid;
 	border-color: #b8b8b8;
   width: 93%;
+  margin-top: 3%;
   margin-left: auto;
   margin-right: auto;
   border-top-left-radius: 10px;
@@ -259,8 +273,6 @@
 }
   .mozi1{
     text-align: center;
-    margin-top: 2%;
-    margin-bottom: 2%;
   }
 
 .aiueo{
@@ -273,8 +285,6 @@
   display: inline-block;
   margin-left: 25%;
   margin-right: 75%;
-  margin-top: 2%;
-  margin-bottom: 2%;
 }
 
 input[type=checkbox]{
@@ -352,21 +362,30 @@ input[type=checkbox].blue:checked,input[type=checkbox].blue:indeterminate,input[
   display: inline-block;
   margin-left: 25%;
   margin-right: 75%;
-  margin-top: 2%;
 }
 
 .ringo{
 display: inline-block;
 margin-left: 25%;
-margin-right: 75%;
-margin-bottom: 2%;
+  margin-right: 75%;
+padding: auto;
+
 }
 
+#error{
+  text-align: center;
+  color: red;
+}
+
+.botton{
+          text-align: center;
+}
+
+.btn{
+          width: 300px;
+        }
+
  </style>
-
-
-
-
 
   <div class="taikai content">退会手続き</div>
   <hr class="cp_hr01" />
@@ -374,26 +393,45 @@ margin-bottom: 2%;
   <div class="container">
     <div class="mozi1">下記項目をご理解いただけましたら、チェックボックスにチェックを入れてお進みください。</div>
     <hr class="cp_hr02" />
+    <form action="taikai_confirm.php" method = "post" onsubmit="return check()">
     <div class="row">
-      <div class="col-sm-1"><input class="blue" type="checkbox" name="checka"></div>
+      <div class="col-sm-1"><input class="blue" type="checkbox" id="check1" value="sakana"></div>
       <div class="aiueo col-sm-6">会員登録情報</div>
       <div class="kozinn">個人情報規定ならびに弊社のセキュリティーシステム上、退会後は会員情報の内容確認はできなくなります。</div>
       <hr class="cp_hr03" />
     </div>
 
     <div class="row">
-      <div class="col-sm-1"><input class="blue" type="checkbox" name="checkb"></div>
+      <div class="col-sm-1"><input class="blue" type="checkbox" id="check2" value="aho"></div>
       <div class="aiueo col-sm-6">ご注文商品について</div>
-      <div align="center"></div>
+      <div style="text-align:center"></div>
       <div class="cyumon">ご注文いただきました商品は、退会お手続きをいただきましてもキャンセルとはなりません。</div>
       <div class="ringo">出荷準備が完了次第商品をお届けさせていただきます。</div>
-      <hr class="cp_hr03" /><br>
+      <hr class="cp_hr03" />
+      <p id="error"></p>
+      <?php
+  
+      echo '<input type="hidden" name="user_id_delete" value="' . $_SESSION['user_id'] . '">';
+      ?>
+
       <div class="botton">
-        <input class="btn text-white rounded-pill btna" style="background-color: #800080;" type="button" value="確認ページへ" onclick="location.href='taikai_confirm.php'"><br>
+        <input class="btn text-white rounded-pill mb-3" style="background-color: #800080;" type="submit" value="確認ページへ"><br>
         <input class="btn btn-outline-dark rounded-pill" style="background-color: #dcdcdc;" type="button" onclick="location.href = 'mypage.php'" value="マイページに戻る">
       </div>
     </div>
   </div>
+</form>
+
+
+
+  
+
+
+
+
+
+
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
     </html>
