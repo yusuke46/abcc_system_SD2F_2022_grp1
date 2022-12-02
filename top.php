@@ -115,20 +115,32 @@ session_start();
       }
       .nav {
         position: fixed;
-        top: 5rem;
-        left: 1100;
-        right: 1100;
-        bottom: 1100;
-        padding: 1rem;
+        top: 4.73rem;
+        left: 70%;
         opacity: 0;
-        visibility: hidden;
-        transition: opacity .5s, visibility .5s;
+        transition: opacity .5s;
         background-color: white;
         height: 100%;
         width: 100%;
-        z-index: 10;
+        z-index:10;
+	      overflow-y: scroll;
       }
+      .hamburger-demo-cover{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 4.73rem;
+        right: 30%;
+        z-index: 10;
+        opacity: 0;
+        transition: opacity .5s;
+        background-color: rgba(3,3,3,.5);
+        }
       .nav.show {
+        opacity: 1;
+        visibility: visible;
+      }
+      .hamburger-demo-cover.show {
         opacity: 1;
         visibility: visible;
       }
@@ -214,7 +226,7 @@ session_start();
             <div class="offcanvas-body">
               <nav class="nav">
                 <ul class="nav_menu_ul justify-content-end flex-grow-1 pe-3">
-                  <li class="nav_menu_li"><a href="login.php" style="text-align:left;">&nbsp;<h3>ログイン/新規登録</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right; float:right"></i></a></li>
+                  <li class="nav_menu_li"><a href="login.php" style="text-align:left;">&nbsp;<h3>ログイン/新規登録</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
                   <hr>
                   <li class="nav_menu_li"><a href="shohin.php" style="text-align:left;">&nbsp;<h3>商品</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
                   <hr>
@@ -228,6 +240,7 @@ session_start();
                   <hr>
                 </ul>
               </nav>
+              <div class="hamburger-demo-cover"></div>
             </div>
           </div>
         </li>
@@ -383,7 +396,7 @@ session_start();
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
     $('.nav_toggle').on('click', function () {
-      $('.nav_toggle, .nav').toggleClass('show');
+      $('.nav_toggle, .nav, .hamburger-demo-cover').toggleClass('show');
     }); 
   </script>
 </body>
