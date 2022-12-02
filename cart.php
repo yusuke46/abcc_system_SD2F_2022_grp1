@@ -1,51 +1,30 @@
-<?php session_start(); ?>
-
+<?php
+session_start();
+$products = isset($_SESSION['products'])? $_SESSION['products']:[];
+?>
 <html>
-    <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     
-    <style>
-      body { 
+  <style>
+    body { padding-top: 90px; }
+
+    .nav-item{
+      border-bottom: 1px solid #C0C0C0;
+      padding-bottom: 2px;
+      padding-top: 2px;
+    }
+
+    #icon{
+      padding-top: 2px;
+    }
         
-      }
-      .nav-item{
-        border-bottom: 1px solid #C0C0C0;
-        padding-bottom: 2px;
-        padding-top: 2px;
-      }
-      #icon{
-        padding-top: 2px;
-      }
-      #main_nav{
-        border-bottom: 5px solid 	#8a2be2;
-      }
-      .swiper{
-        background-color: white;
-      }
-      .swiper-container{
-        height: 350px;
-      }
-      .swiper-wrapper{
-        align-items: center;
-      }
-      .swiper-slide{
-        width: 350px;
-        height: 350px;
-        border-radius: 5px;
-      }
-      .swiper-slide img{
-        width: 370px;
-        height: 370px;
-        border-radius: 5px;
-      }
-      .swiper-slide-active{
-        transform: scale(1.2);
-        transition: 1s;
-      }
-      .img{
+    #main_nav{
+      border-bottom: 5px solid 	#8a2be2;
+    }
+    .img{
         width: 200px;
         height: 200px;
       }
@@ -69,7 +48,7 @@
         margin-left: 10px;
       }
       .login{
-        width: 60px;
+        width: 50px;
         height: 40px;
         padding-right: 2px;
         padding-left: 2px;
@@ -167,10 +146,9 @@
             top: 50%;
             transform: translate(0, -50%);
         }
-    </style>
+  </style>
 </head>
 <body>
-<!--ここからNB-->
 <nav class="navbar navbar-light navbar-expand-md py-2 navbar-bg fixed-top bg-white" id="main_nav" aria-label="Light offcanvas navbar">
   <div class="container-fluid">
     <div>
@@ -185,7 +163,7 @@
           <a class="navbar-brand" href="cart.php"><img src="img/cart.jpg" class="cart"></a>
         </li>
         <li class="nav-item d-flex justify-content-center align-items-center">
-          <a class="navbar-brand" href="mypage.php"><img src="img/mypage.jpg" class="login"></a>
+          <a class="navbar-brand" href="login.php"><img src="img/login.jpg" class="login"></a>
         </li>
         <li class="nav-item d-flex justify-content-center align-items-center">
           <span class="nav_toggle">
@@ -203,7 +181,7 @@
             <div class="offcanvas-body">
               <nav class="nav">
                 <ul class="nav_menu_ul justify-content-end flex-grow-1 pe-3">
-                  <li class="nav_menu_li"><a href="mypage.php" style="text-align:left;">&nbsp;<h3>マイページ</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
+                  <li class="nav_menu_li"><a href="login.php" style="text-align:left;">&nbsp;<h3>ログイン/新規登録</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right; float:right"></i></a></li>
                   <hr>
                   <li class="nav_menu_li"><a href="shohin.php" style="text-align:left;">&nbsp;<h3>商品</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
                   <hr>
@@ -223,120 +201,39 @@
       </ul>
     </div>
   </div>
-</nav>
+      </nav>
+    <!--この下から書き加える-->
+    <h2 class="text-center mt-5">ショッピングカート</h2>
+    <p style="border-bottom: 3px solid  #A9A9A9" class="mt-5 mx-5 rounded"></p>
+    <div class="container">
+      <div class="row">
+        <div class="col-2">
+          <?php foreach($products as $name => $product): ?>
+            <img src="<?php echo $product['img']?>">
+          <?php endforeach; ?>
+        </div>
+        <div class="col-8">
+          <?php foreach($products as $name => $product): ?>
+            <h2><?php echo $product['information']?></h2>
+            <h5><?php echo $product['tanka']?></h5>
+          <?php endforeach; ?>
+        </div>
+        <div class="col-2">
 
-      <!--ここまでNB-->
-  <!--この下から書き加える-->
-  <div style="background: linear-gradient(to left top, black, white);">
-        <!-- ここが回る画像の場所 -->
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="img/1.jfif"></div>
-        <div class="swiper-slide"><img src="img/2.jfif"></div>
-        <div class="swiper-slide"><img src="img/3.jfif"></div>
-        <div class="swiper-slide"><img src="img/4.jfif"></div>
-        <div class="swiper-slide"><img src="img/5.jfif"></div>
+        </div>
       </div>
-        <!-- これはいじっちゃダメ -->
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
     </div>
+    
 
-    <!-- Swiper JS --><!-- CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-
-    <!-- Initialize Swiper -->
-    <!-- ここ回るためのコード!いじるのなし！！！ -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./script/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script>
-      var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 'auto',
-        spaceBetween: 200,
-        centeredSlides : true,
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-      },
-        grabCursor: true,
-        loop: true,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
-    </script>
-  </div>
-      
-  <div class="container">
-    <div class="row">
-      <div class="col-48">　</div>
-        <button class="button col-md-4 offset-md-2 btn btn-primary">
-          <img src="img/tokino_2.png" class="img">
-          <br>推し事
-        </button>
-      <button class="button col-md-4 btn btn-danger">
-        <img src="img/otaku.png" class="img">
-        <br>ヲタク
-      </button>
-    </div>
-  </div>
-  
-  <p>注目商品</p>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card">
-        <form action="shohin_detail.php">
-          <?php
-          $pdo= new PDO('mysql:host=localhost;dbname=osigoto;charset=utf8','webuser', 'abccsd2');
-          $sql="SELECT * FROM shohin_tbl";
-          $ps=$pdo->prepare($sql);
-          $ps->execute();
-          $result=$ps->fetchAll();
-          ?>
-          <?php foreach($result as $row)
-            echo '<img src="'.$row['shohin_img'].'" class="img">';
-          ?>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <hr>
-  
-  <div class="companySet">
-        <ul class="companySetLists">
-            <li class="companySetList">
-                <a href="https://www.yahoo.co.jp/">運営企業情報</a>
-            </li>
-            <li class="companySetList">
-                <a href="https://www.google.co.jp/">特定商取引法に基づく表示</a>
-            </li>
-            <li class="companySetList">
-                <a href="https://www.google.co.jp/intl/ja/chrome/">ご利用ガイド</a>
-            </li>
-            <li class="companySetList">
-                <a href="https://www.metro.tokyo.lg.jp/">プライバシーポリシー</a>
-            </li>
-            <li class="companySetList">
-                <a href="https://www.kunaicho.go.jp/about/shisetsu/kokyo/kokyo.html">お問い合わせ・Q&A</a>
-            </li>
-        </ul>
-    </div>
-
-      <!-- CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="script/script.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script>
     $('.nav_toggle').on('click', function () {
       $('.nav_toggle, .nav').toggleClass('show');
     }); 
   </script>
+  </div>
 </body>
 </html>
+    

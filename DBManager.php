@@ -104,11 +104,11 @@ class DBManager{
         return $searchArray;
     }
 
-    public function getByCartShohinSourse(){
+    public function getByCartShohinSourse($id){
         $pdo = $this->dbConnect();
-        $sql="SELECT * FROM shohin_tbl WHERE shohin_mei = ?";
+        $sql="SELECT * FROM shohin_tbl WHERE shohin_id = ?";
         $ps=$pdo->prepare($sql);
-        $ps->bindValue(1,$_POST[''],PDO::PARAM_STR);
+        $ps->bindValue(1,$_POST['shohinid'],PDO::PARAM_STR);
         $ps->execute();
         $array=$ps->fetchAll();
         return $array;

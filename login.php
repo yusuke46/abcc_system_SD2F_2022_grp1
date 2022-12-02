@@ -181,7 +181,7 @@
             <a class="navbar-brand" href="search.php"><img src="img/search.jpg" class="search"></a>
           </li>
           <li class="nav-item d-flex justify-content-center align-items-center">
-            <a class="navbar-brand" href="buy_cart.php"><img src="img/cart.jpg" class="cart"></a>
+            <a class="navbar-brand" href="cart.php"><img src="img/cart.jpg" class="cart"></a>
           </li>
           <li class="nav-item d-flex justify-content-center align-items-center">
             <a class="navbar-brand" href="login.php"><img src="img/login.jpg" class="login"></a>

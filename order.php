@@ -167,6 +167,20 @@
             top: 50%;
             transform: translate(0, -50%);
         }
+        .mo{
+            margin-top: 10%;
+            margin-bottom: 10%;
+            text-align: center;
+        }
+        .mozi{
+            text-align: left;
+        }
+        .m{
+            text-align: right;
+        }
+        .ab{
+            margin-bottom: 5%;
+        }
     </style>
 </head>
 <body>
@@ -224,86 +238,41 @@
     </div>
   </div>
 </nav>
-
-      <!--ここまでNB-->
-  <!--この下から書き加える-->
-  <div style="background: linear-gradient(to left top, black, white);">
-        <!-- ここが回る画像の場所 -->
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="img/1.jfif"></div>
-        <div class="swiper-slide"><img src="img/2.jfif"></div>
-        <div class="swiper-slide"><img src="img/3.jfif"></div>
-        <div class="swiper-slide"><img src="img/4.jfif"></div>
-        <div class="swiper-slide"><img src="img/5.jfif"></div>
-      </div>
-        <!-- これはいじっちゃダメ -->
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
-    </div>
-
-    <!-- Swiper JS --><!-- CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-
-    <!-- Initialize Swiper -->
-    <!-- ここ回るためのコード!いじるのなし！！！ -->
-    <script>
-      var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 'auto',
-        spaceBetween: 200,
-        centeredSlides : true,
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-      },
-        grabCursor: true,
-        loop: true,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
-    </script>
-  </div>
-      
-  <div class="container">
+<div class="container">
     <div class="row">
-      <div class="col-48">　</div>
-        <button class="button col-md-4 offset-md-2 btn btn-primary">
-          <img src="img/tokino_2.png" class="img">
-          <br>推し事
-        </button>
-      <button class="button col-md-4 btn btn-danger">
-        <img src="img/otaku.png" class="img">
-        <br>ヲタク
-      </button>
+        <h2 class="mo">注文履歴</h2>
+        <div class="col-3"></div>
+        <div class="col-6">
+            <h5 class="mozi">注文状況：<span class="m">発注待ち</span></h5>
+        </div>
+        <div class="col-3 ab"></div>
+        <div class="col-3"></div>
+        <div class="col-6">
+            <h5 class="mozi">注文番号：<span class="m">発注待ち</span></h5>
+        </div>
+        <div class="col-3 ab"></div>
+        <div class="col-3"></div>
+        <div class="col-6">
+            <h5 class="mozi">注文日時：<span class="m">発注待ち</span></h5>
+        </div>
+        <div class="col-3 ab"></div>
+        <div class="col-3"></div>
+        <div class="col-6">
+            <h5 class="mozi">商品名：<span class="m">発注待ち</span></h5>
+        </div>
+        <div class="col-3 ab"></div>
+        <div class="col-3"></div>
+        <div class="col-6">
+            <h5 class="mozi">お支払金額：<span class="m">発注待ち</span></h5>
+        </div>
+        <div class="col-3 ab"></div>
+        <div class="col-3"></div>
+        <div class="col-6">
+            <h5 class="mozi">支払方法：<span class="m">発注待ち</span></h5>
+        </div>
+        <div class="col-3 ab"></div>
     </div>
-  </div>
-  
-  <p>注目商品</p>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card">
-        <form action="shohin_detail.php">
-          <?php
-          $pdo= new PDO('mysql:host=localhost;dbname=osigoto;charset=utf8','webuser', 'abccsd2');
-          $sql="SELECT * FROM shohin_tbl";
-          $ps=$pdo->prepare($sql);
-          $ps->execute();
-          $result=$ps->fetchAll();
-          ?>
-          <?php foreach($result as $row)
-            echo '<img src="'.$row['shohin_img'].'" class="img">';
-          ?>
-        </form>
-      </div>
-    </div>
-  </div>
+</div>
 
   <hr>
   

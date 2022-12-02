@@ -1,7 +1,52 @@
 <?php 
+$id = isset($_POST['id'])? htmlspecialchars($_POST['id'], ENT_QUOTES, 'utf-8') : '';
+$img = isset($_POST['img'])? htmlspecialchars($_POST['img'], ENT_QUOTES, 'utf-8') : '';
+$mei = isset($_POST['mei'])? htmlspecialchars($_POST['mei'], ENT_QUOTES, 'utf-8') : '';
+$tanka = isset($_POST['tanka'])? htmlspecialchars($_POST['tanka'], ENT_QUOTES, 'utf-8') : '';
+$information = isset($_POST['information'])? htmlspecialchars($_POST['information'], ENT_QUOTES, 'utf-8') : '';
+$count = isset($_POST['count'])? htmlspecialchars($_POST['count'], ENT_QUOTES, 'utf-8') : '';
+
 session_start();
+if(isset($_SESSION['products'])){  
+  $products = $_SESSION['products']; 
+  foreach($products as $key => $product){  
+    if($key == $name){      
+      $count = (int)$count + (int)$product['count'];
+    }
+  }
+}  
+    //配列に入れるには、$name,$count,$priceの値が取得できていることが前提なのでif文で空のデータを排除する
+    if($id!=''&&$img!=''&&$mei!=''&&$tanka!=''&&$information!=''&&$count!=''){
+      $_SESSION['products'][$mei]=[
+        'img' => $img,
+        'id' => $id,
+        'tanka' => $tanka,
+        'information' => $information,
+        'count' => $count
+      ];
+    }
 
+    $products = isset($_SESSION['products'])? $_SESSION['products']:[];
 
+    if(isset($products)){
+      foreach($products as $key => $product){
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
+        echo $key;      //商品
+        echo "<br>";
+        echo $product['img'];
+        echo "<br>";
+        echo $product['information'];
+        echo "<br>";
+        echo $product['count'];  //商品の個
+        echo "<br>";
+        echo $product['tanka']; //商品の金額
+        echo "<br>";
+      }
+    }
 ?>
 <html>
     <head>
@@ -205,7 +250,7 @@ session_start();
           <a class="navbar-brand" href="search.php"><img src="img/search.jpg" class="search"></a>
         </li>
         <li class="nav-item d-flex justify-content-center align-items-center">
-          <a class="navbar-brand" href="buy_cart.php"><img src="img/cart.jpg" class="cart"></a>
+          <a class="navbar-brand" href="cart.php"><img src="img/cart.jpg" class="cart"></a>
         </li>
         <li class="nav-item d-flex justify-content-center align-items-center">
           <a class="navbar-brand" href="login.php"><img src="img/login.jpg" class="login"></a>
@@ -253,29 +298,28 @@ session_start();
         <?php
         require_once 'DBManager.php';
         $dbmng = new DBManager();
-        $Shohin = $dbmng->getByShohin($_POST['shohinid']);
+        $Shohin = $dbmng->getByCartShohinSourse($_POST['shohinid']);
         foreach($Shohin as $row){
             echo '<div class="col-4">';
-            echo '<form action="buy_cart.php" method="post">';
-            echo '<img src="'.$row['shohin_img'].'">';
+            echo '<form action="cart.php" method="post">';
+            echo '<input type="hidden" value="'.$row['shohin_id'].'" name="id">';
+            echo '<img src="'.$row['shohin_img'].'" value="'.$row['shohin_img'].'" name="img">';
             echo '</div>';
             echo '<div class="col-4">';
             echo '</div>';
             echo '<div class="col-4">';
-            echo '<h2 class="b">'.$row['shohin_mei'].'</h2>';
-            echo '<h5 class="a">￥'.$row['shohin_tanka'].'</h5>';
-            echo '<h4 class="c">'.$row['shohin_information'].'</h4>';
+            echo '<h2 class="b" value="'.$row['shohin_mei'].'" name="mei">'.$row['shohin_mei'].'</h2>';
+            echo '<h5 class="a" value="'.$row['shohin_tanka'].'" name="tanka">￥'.$row['shohin_tanka'].'</h5>';
+            echo '<h4 class="c" value="'.$row['shohin_information'].'" name="information">'.$row['shohin_information'].'</h4>';
             echo '<label for="suuryo" class="form-label">数量</label>';
-            echo '<select class="form-select d-block w-100" id="mbirth" required="" name="suuryou">
-            <option selected>1</option>
-            <option value="2">2</option>
-            <option value="3">3</option><option value="4">4</option>
-            <option value="5">5</option><option value="6">6</option>
-            <option value="7">7</option><option value="8">8</option>
-            <option value="9">9</option><option value="10">10</option>
-            </select><br>';
+            echo '<select class="form-select d-block w-100 required" name="count">';
+            for($i=1;$i<10;$i++){
+              echo '<option value="'.$i.'">'.$i.'</option>';
+            }
+            echo '</select>'; 
+            echo '<br>';
             echo '<div class="btna">
-            <input class="btn text-white rounded-pill btn-lg" style="background-color: #800080;" type="submit" value="カートに入れる" onclick="location.href='.'buy_cart.php'.'">
+            <input class="btn text-white rounded-pill btn-lg" style="background-color: #800080;" type="submit" value="カートに入れる" onclick="location.href='.'cart.php'.'">
             </div>';
             echo '</form>';
             echo '</div>';
