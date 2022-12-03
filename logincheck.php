@@ -21,11 +21,10 @@
             $_SESSION['user_id'] = $row['user_id'];
             header('Location:top_success.php');
         }else{
-            $er = 1;
-            header('Location:login.php');
+            header('Location:loginmiss.php');
         }
     }
     if(count($searchArray)==0){
-        header('Location:login.php');
+        header('Location:loginmiss.php');
     }
     ?>
