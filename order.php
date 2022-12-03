@@ -240,37 +240,66 @@
 </nav>
 <div class="container">
     <div class="row">
+    <?php
+    require 'DBManager.php';
+    $dbmng = new DBManager();
+    $id = 2;
+    $seachArray = $dbmng->shohin_rireki($id);
+    ?>
+
+    <?php foreach($seachArray as $row): ?>
         <h2 class="mo">注文履歴</h2>
         <div class="col-3"></div>
         <div class="col-6">
-            <h5 class="mozi">注文状況：<span class="m">発注待ち</span></h5>
+            <h5 class="mozi">注文状況：<span class="m">
+              <?php
+              if($row['order_situation'] == '0'){
+                echo '発注待ち';
+              }else{
+                echo '発送済み';
+              }
+              ?>
+              </span></h5>
         </div>
         <div class="col-3 ab"></div>
         <div class="col-3"></div>
         <div class="col-6">
-            <h5 class="mozi">注文番号：<span class="m">発注待ち</span></h5>
+            <h5 class="mozi">注文番号：<span class="m"><?php echo $row['order_number']; ?></span></h5>
         </div>
         <div class="col-3 ab"></div>
         <div class="col-3"></div>
         <div class="col-6">
-            <h5 class="mozi">注文日時：<span class="m">発注待ち</span></h5>
+            <h5 class="mozi">注文日時：<span class="m"><?php echo $row['order_date']; ?></span></h5>
         </div>
         <div class="col-3 ab"></div>
         <div class="col-3"></div>
         <div class="col-6">
-            <h5 class="mozi">商品名：<span class="m">発注待ち</span></h5>
+            <h5 class="mozi">商品名：<span class="m"><?php echo $row['shohin_name']; ?></span></h5>
         </div>
         <div class="col-3 ab"></div>
         <div class="col-3"></div>
         <div class="col-6">
-            <h5 class="mozi">お支払金額：<span class="m">発注待ち</span></h5>
+            <h5 class="mozi">お支払金額：<span class="m">
+              <?php 
+                echo '￥' . $row['shohin_tanka']*$row['shohin_suu'];
+              ?>
+              </span></h5>
         </div>
         <div class="col-3 ab"></div>
         <div class="col-3"></div>
         <div class="col-6">
-            <h5 class="mozi">支払方法：<span class="m">発注待ち</span></h5>
+            <h5 class="mozi">支払方法：<span class="m">
+              <?php 
+              if($row['payment'] == 0){
+              echo '現金';
+              }else{
+                echo 'クレジットカード';
+              }
+              ?></span></h5>
         </div>
         <div class="col-3 ab"></div>
+        <?php endforeach; ?>
+       
     </div>
 </div>
 

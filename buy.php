@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <style>
-        body { padding-top: 90px; }
+        body {
+           padding-top: 90px;
+           }
 
         .nav-item{
             border-bottom: 1px solid #C0C0C0;
@@ -20,13 +22,16 @@
         #main_nav{
           border-bottom: 5px solid 	#8a2be2;
         }
+
         .img{
         width: 200px;
         height: 200px;
       }
+
       .button{
         font-size: 40px;
       }
+
       .search{
         width: 30px;
         height: 40px;
@@ -35,6 +40,7 @@
         margin-right: 10px;
         margin-left: 10px;
       }
+
       .cart{
         width: 40px;
         height: 40px;
@@ -43,6 +49,7 @@
         margin-right: 10px;
         margin-left: 10px;
       }
+
       .login{
         width: 50px;
         height: 40px;
@@ -51,12 +58,14 @@
         margin-right: 10px;
         margin-left: 10px;
       }
+
       .nav_toggle {
         display: block;
         position: relative;
         width: 1.75rem;
         height: 1.5rem;
       }
+
       .nav_toggle i {
         display: block;
         width: 100%;
@@ -65,26 +74,33 @@
         position: absolute;
         transition: transform .5s, opacity .5s;
       }
+
       .nav_toggle i:nth-child(1) {
         top: 0;
       }
+
       .nav_toggle i:nth-child(2) {
         top: 0;
         bottom: 0;
         margin: auto;
       }
+
       .nav_toggle i:nth-child(3) {
         bottom: 0;
       }
+
       .nav_toggle.show i:nth-child(1) {
         transform: translateY(10px) rotate(-45deg);
       }
+
       .nav_toggle.show i:nth-child(2) {
         opacity: 0;
       }
+
       .nav_toggle.show i:nth-child(3) {
         transform: translateY(-12px) rotate(45deg);
       }
+
       .nav {
         position: fixed;
         top: 5rem;
@@ -100,10 +116,12 @@
         width: 100%;
         z-index: 10;
       }
+
       .nav.show {
         opacity: 1;
         visibility: visible;
       }
+
       a, a:link, a:active, a:visited, a:hover{
         color: inherit;
         list-style: none;
@@ -112,6 +130,7 @@
         ul {
             list-style: none;
         }
+
         .companySet .companySetLists {
             display: -webkit-box;
             display: flex;
@@ -122,16 +141,20 @@
             flex-flow: wrap;
             width: 90%;
         }
+
         .companySet .companySetList {
             margin: 0 0 1em;
         }
+
         .companySet .companySetList a {
             color: inherit;
         }
+
         .companySet .companySetList + .companySetList {
             margin: 0 0 1em 2em;
             position: relative;
         }
+
         .companySet .companySetList + .companySetList::before {
             content: "";
             width: 1px;
@@ -142,6 +165,52 @@
             top: 50%;
             transform: translate(0, -50%);
         }
+
+        .abody{
+          background-color:#DCDCDC;
+          border-top: 2px solid #A9A9A9;
+          border-left: 2px solid #A9A9A9;
+        }
+
+        .shoukeiA{
+          border-bottom: 2px solid #A9A9A9;
+        }
+
+        .bbody{
+          border-right: 2px solid #A9A9A9;
+          border-top: 2px solid #A9A9A9;
+          border-left: 2px solid #A9A9A9;
+        }
+
+        .shoukeiB{
+          border: 2px solid #A9A9A9;
+        }
+
+        .kiyakuA{
+          border-bottom: 3px solid  #A9A9A9;
+        }
+
+        #CheckBox{
+          transform: scale(3.0);
+        }
+
+        .kiyakuB{
+          position:relative;bottom:10px;margin-left:60px;
+        }
+
+        .kiyakuC{
+          position:relative;bottom:15px;margin-left:120px;
+        }
+
+        .buttonA{
+          background-color: #800080;
+        }
+
+        .buttonB{
+          background-color: #dcdcdc;
+          padding-left: 50px;
+          padding-right: 50px;
+        }
         </style>
         <script>  //ここにjavascript
           function onButtonClickToConfirmationPage(){
@@ -149,7 +218,7 @@
             error = document.getElementById("error");
 
             if(check == true){
-              location.href = 'http://localhost/web/buy_ConfirmationPage.php'; //仮の遷移
+              location.href = 'buy_ConfirmationPage.php'; //仮の遷移
             }else{
               error.innerHTML = "※「個人情報の取り扱いについて」「利用規約（会員規約）」に同意をしてください。<br>";
             }
@@ -216,42 +285,42 @@
     <div class="container-fluid">
       <div class="row">
           <!--   phpループ↓   -->
-        <div class="col-3 offset-2" style="background-color:#DCDCDC; border-top: 2px solid #A9A9A9; border-left: 2px solid #A9A9A9">
+        <div class="col-3 offset-2 abody">
           <p>型番</p>
         </div>
-        <div class="col-5" style="border-right: 2px solid #A9A9A9; border-top: 2px solid #A9A9A9; border-left: 2px solid #A9A9A9">
+        <div class="col-5 bbody">
           <p> . $_POST['shohin_model'] . </p>
         </div>
           <div class="col-2">
         </div>
-        <div class="col-3 offset-2" style="background-color:#DCDCDC; border-top: 2px solid #A9A9A9; border-left: 2px solid #A9A9A9">
+        <div class="col-3 offset-2 abody">
           <p>商品名</p>
         </div>
-        <div class="col-5 pb-5" style="border-right: 2px solid #A9A9A9; border-top: 2px solid #A9A9A9; border-left: 2px solid #A9A9A9">
+        <div class="col-5 pb-5 bbody">
           <p> . $_POST['shohin_name'] . </p>
         </div>
         <div class="col-2">
         </div>
-        <div class="col-3 offset-2" style="background-color:#DCDCDC; border-top: 2px solid #A9A9A9; border-left: 2px solid #A9A9A9">
+        <div class="col-3 offset-2 abody">
           <p>数量</p>
         </div>
-        <div class="col-5" style="border-right: 2px solid #A9A9A9; border-top: 2px solid #A9A9A9; border-left: 2px solid #A9A9A9">
+        <div class="col-5 bbody">
           <p> . $_POST['shohin_model'] . </p>
         </div>
         <div class="col-2">
         </div>
-        <div class="col-3 offset-2" style="background-color:#DCDCDC; border-top: 2px solid #A9A9A9; border-left: 2px solid #A9A9A9">
+        <div class="col-3 offset-2 abody">
           <p>単価(税込)</p>
         </div>
-        <div class="col-5" style="border-right: 2px solid #A9A9A9; border-top: 2px solid #A9A9A9; border-left: 2px solid #A9A9A9">
+        <div class="col-5 bbody">
           <p> . $_POST['shohin_name'] . </p>
         </div>
         <div class="col-2">
         </div>
-        <div class="col-3 offset-2" style="background-color:#DCDCDC; border-top: 2px solid #A9A9A9; border-bottom: 2px solid #A9A9A9;  border-left: 2px solid #A9A9A9">
+        <div class="col-3 offset-2 abody shoukeiA">
           <p>小計</p>
         </div>
-        <div class="col-5" style="border: 2px solid #A9A9A9;">
+        <div class="col-5 shoukeiB">
           <p> . $_POST['shohin_model'] . </p>
         </div>
         <div class="col-2">
@@ -307,7 +376,7 @@
     <?php
       //お客様情報の情報を取得
     ?>
-    <p style="border-bottom: 3px solid  #A9A9A9" class="m-5 rounded"></p>
+    <p class="kiyakuA m-5 rounded"></p>
     <!-- ここから利用規約 -->
     <p class="text-center mb-5">下記「個人情報の取り扱いについて」、<br>「利用規約（会員規約）」にご同意の上、お申込みください。</p>
     <p class="text-center mb-4"><b>個人情報の取り扱いについて</b></p>
@@ -322,18 +391,18 @@
     <p class="text-center mb-5">本規約においては、次の各記号記載の用語はそれぞれ次の意味で使用します。<br>「推し事」は商品またはサービスの規定において、</p>
     <form name="form" action="">
       <div class="text-center">
-        <input type="checkbox" name="kiyaku" id="CheckBox" style="transform: scale(3.0);">　　<a style="position:relative;bottom:10px;margin-left:60px">「個人情報の取り扱いについて」、</a><br>
-        <a style="position:relative;bottom:15px;margin-left:120px">「ご利用規約（会員規約）」「注意事項」に同意する</a><br>
+        <input type="checkbox" name="kiyaku" id="CheckBox">　　<a class="kiyakuB">「個人情報の取り扱いについて」、</a><br>
+        <a class="kiyakuC">「ご利用規約（会員規約）」「注意事項」に同意する</a><br>
         <div id="error" class="mt-2 text-danger" ></div>
       </div>
       <div class="text-center mb-5">
         <div class="container-fluid">
           <div class="row">
             <div class="mt-3 col-lg-2 offset-lg-4">
-              <input class="btn text-white rounded-pill" style="background-color: #800080;" type="button" value="注文内容確認ページへ" onclick="onButtonClickToConfirmationPage();"/><br>
+              <input class="btn text-white rounded-pill buttonA" type="button" value="注文内容確認ページへ" onclick="onButtonClickToConfirmationPage();"/><br>
             </div>  
             <div class="mt-3 col-lg-2">
-              <input class="btn btn-outline-dark rounded-pill" style="background-color: #dcdcdc;" type="button" onclick="location.href = '??????'" value="カートに戻る">
+              <input class="btn btn-outline-dark rounded-pill buttonB" type="button" onclick="location.href = '??????'" value="カートに戻る">
             </div>
           </div>
         </div>

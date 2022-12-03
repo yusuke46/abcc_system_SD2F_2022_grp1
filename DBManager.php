@@ -202,5 +202,15 @@ class DBManager{
         $ps->bindValue(1,$userid,PDO::PARAM_INT);
         $ps->execute();
     }
+
+    public function shohin_rireki($userid){
+        $pdo = $this->dbConnect();
+        $sql = "SELECT * FROM order_tbl WHERE user_id = ?";
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1,$userid,PDO::PARAM_INT);
+        $ps->execute();
+        $seachArray = $ps->fetchAll();
+        return  $seachArray;
+    }
 }
 ?>

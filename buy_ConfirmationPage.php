@@ -142,10 +142,22 @@
             top: 50%;
             transform: translate(0, -50%);
         }
+
+        .abody{
+          background-color:#DCDCDC;
+          border-top: 2px solid #A9A9A9;
+          border-left: 2px solid #A9A9A9;
+        }
+
+        .syoukeiA{
+          border-bottom: 2px solid #A9A9A9;
+        }
+
+
         </style>
         <script>  //ここにjavascript
           function onButtonClickToCompletionPage(){
-              location.href = 'http://localhost/web/buy_CompletionPage.php'; //仮の遷移
+              location.href = 'buy_CompletionPage.php'; //仮の遷移
           }
           </script>
 </head>
@@ -210,7 +222,7 @@
   <div class="container-fluid">
     <div class="row">
         <!--   phpループ↓   -->
-        <div class="col-3 offset-2" style="background-color:#DCDCDC; border-top: 2px solid #A9A9A9; border-left: 2px solid #A9A9A9">
+        <div class="col-3 offset-2 abody">
         <p>型番</p>
     </div>
     <div class="col-5" style="border-right: 2px solid #A9A9A9; border-top: 2px solid #A9A9A9; border-left: 2px solid #A9A9A9">
@@ -218,7 +230,7 @@
     </div>
         <div class="col-2">
     </div>
-    <div class="col-3 offset-2" style="background-color:#DCDCDC; border-top: 2px solid #A9A9A9; border-left: 2px solid #A9A9A9">
+    <div class="col-3 offset-2">
         <p>商品名</p>
     </div>
     <div class="col-5 pb-5" style="border-right: 2px solid #A9A9A9; border-top: 2px solid #A9A9A9; border-left: 2px solid #A9A9A9">
@@ -226,7 +238,7 @@
     </div>
         <div class="col-2">
     </div>
-    <div class="col-3 offset-2" style="background-color:#DCDCDC; border-top: 2px solid #A9A9A9; border-left: 2px solid #A9A9A9">
+    <div class="col-3 offset-2 abody">
         <p>数量</p>
     </div>
     <div class="col-5" style="border-right: 2px solid #A9A9A9; border-top: 2px solid #A9A9A9; border-left: 2px solid #A9A9A9">
@@ -234,7 +246,7 @@
     </div>
         <div class="col-2">
     </div>
-    <div class="col-3 offset-2" style="background-color:#DCDCDC; border-top: 2px solid #A9A9A9; border-left: 2px solid #A9A9A9">
+    <div class="col-3 offset-2 abody">
         <p>単価(税込)</p>
     </div>
     <div class="col-5" style="border-right: 2px solid #A9A9A9; border-top: 2px solid #A9A9A9; border-left: 2px solid #A9A9A9">
@@ -242,7 +254,7 @@
     </div>
         <div class="col-2">
     </div>
-    <div class="col-3 offset-2" style="background-color:#DCDCDC; border-top: 2px solid #A9A9A9; border-bottom: 2px solid #A9A9A9;  border-left: 2px solid #A9A9A9">
+    <div class="col-3 offset-2 abody syoukeiA;">
         <p>小計</p>
     </div>
     <div class="col-5" style="border: 2px solid #A9A9A9;">
