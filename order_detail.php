@@ -1,57 +1,36 @@
-<?php session_start(); ?>
-
 <html>
     <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-    
     <style>
-      body { 
-        padding-top: 90px;
-      }
-      .nav-item{
-        border-bottom: 1px solid #C0C0C0;
-        padding-bottom: 2px;
-        padding-top: 2px;
-      }
-      #icon{
-        padding-top: 2px;
-      }
-      #main_nav{
-        border-bottom: 5px solid 	#8a2be2;
-      }
-      .swiper{
-        background-color: white;
-      }
-      .swiper-container{
-        height: 350px;
-      }
-      .swiper-wrapper{
-        align-items: center;
-      }
-      .swiper-slide{
-        width: 350px;
-        height: 350px;
-        border-radius: 5px;
-      }
-      .swiper-slide img{
-        width: 370px;
-        height: 370px;
-        border-radius: 5px;
-      }
-      .swiper-slide-active{
-        transform: scale(1.2);
-        transition: 1s;
-      }
-      .img{
+        body {
+           padding-top: 90px;
+           }
+
+        .nav-item{
+            border-bottom: 1px solid #C0C0C0;
+            padding-bottom: 2px;
+            padding-top: 2px;
+        }
+
+        #icon{
+            padding-top: 2px;
+        }
+
+        #main_nav{
+          border-bottom: 5px solid 	#8a2be2;
+        }
+
+        .img{
         width: 200px;
         height: 200px;
       }
+
       .button{
         font-size: 40px;
       }
+
       .search{
         width: 30px;
         height: 40px;
@@ -60,6 +39,7 @@
         margin-right: 10px;
         margin-left: 10px;
       }
+
       .cart{
         width: 40px;
         height: 40px;
@@ -68,20 +48,23 @@
         margin-right: 10px;
         margin-left: 10px;
       }
+
       .login{
-        width: 60px;
+        width: 50px;
         height: 40px;
         padding-right: 2px;
         padding-left: 2px;
         margin-right: 10px;
         margin-left: 10px;
       }
+
       .nav_toggle {
         display: block;
         position: relative;
         width: 1.75rem;
         height: 1.5rem;
       }
+
       .nav_toggle i {
         display: block;
         width: 100%;
@@ -90,26 +73,33 @@
         position: absolute;
         transition: transform .5s, opacity .5s;
       }
+
       .nav_toggle i:nth-child(1) {
         top: 0;
       }
+
       .nav_toggle i:nth-child(2) {
         top: 0;
         bottom: 0;
         margin: auto;
       }
+
       .nav_toggle i:nth-child(3) {
         bottom: 0;
       }
+
       .nav_toggle.show i:nth-child(1) {
         transform: translateY(10px) rotate(-45deg);
       }
+
       .nav_toggle.show i:nth-child(2) {
         opacity: 0;
       }
+
       .nav_toggle.show i:nth-child(3) {
         transform: translateY(-12px) rotate(45deg);
       }
+
       .nav {
         position: fixed;
         top: 5rem;
@@ -125,10 +115,12 @@
         width: 100%;
         z-index: 10;
       }
+
       .nav.show {
         opacity: 1;
         visibility: visible;
       }
+
       a, a:link, a:active, a:visited, a:hover{
         color: inherit;
         list-style: none;
@@ -137,6 +129,7 @@
         ul {
             list-style: none;
         }
+
         .companySet .companySetLists {
             display: -webkit-box;
             display: flex;
@@ -147,16 +140,20 @@
             flex-flow: wrap;
             width: 90%;
         }
+
         .companySet .companySetList {
             margin: 0 0 1em;
         }
+
         .companySet .companySetList a {
             color: inherit;
         }
+
         .companySet .companySetList + .companySetList {
             margin: 0 0 1em 2em;
             position: relative;
         }
+
         .companySet .companySetList + .companySetList::before {
             content: "";
             width: 1px;
@@ -167,23 +164,106 @@
             top: 50%;
             transform: translate(0, -50%);
         }
-        .mo{
-            margin-bottom: 10%;
+        
+        .midashi{
+            margin-left: 20px;
+            margin-right: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #c0c0c0;
             text-align: center;
         }
-        .mozi{
+
+        .gazou{
+            width: 200px;
+            height: 200px;
+        }
+        
+        @media screen and (min-width: 375px) {
+        /*　画面サイズ375px~　*/
+        .gazou{
+            width: 300px;
+            height: 300px;
+        } 
+        }
+
+        @media screen and (min-width: 680px) {
+        /*　画面サイズ680px~　*/
+        .gazou{
+            width: 400px;
+            height: 400px;
+        } 
+        }
+
+        @media screen and (min-width: 960px) {
+        /*　画面サイズ960px以上　*/
+        .gazou{
+            margin-left: 8%;
+            width: 500px;
+            height: 500px;
+        } 
+        }   
+
+        .flex{
+            display: flex;
+            margin-top: 10px;
+            white-space: nowrap;
+        }
+        
+        .mojiA{
+            padding-top: 20px;
+        }
+
+        .mojiB{
+            margin-left: 4%;
+            margin-bottom: 10px;
             text-align: left;
         }
-        .m{
+
+        .mojiC{
             text-align: right;
+            float: right;
         }
-        .ab{
-            margin-bottom: 5%;
+
+        .line{
+            padding-bottom: 10px;
+            padding-top: 5px;
+            border-bottom: 2px solid #c0c0c0;
         }
-    </style>
+
+        .mojioya{
+            width: 50%;
+        }
+
+        .shohinN{
+            margin-left: 130px;
+        }
+
+        .shohinS{
+            margin-left: 230px;
+        }
+
+        .btnA{
+          background-color: #8b008b;
+          margin-right: 40px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+
+        .btnB{
+          background-color: #dcdcdc;
+          margin-left: 40px;
+          padding-left: 80px;
+          padding-right: 80px;
+        }
+
+        .btnM{
+          margin-top: 50px;
+          margin-bottom: 30px;
+          text-align: center;
+        }
+</style>
 </head>
 <body>
-<!--ここからNB-->
 <nav class="navbar navbar-light navbar-expand-md py-2 navbar-bg fixed-top bg-white" id="main_nav" aria-label="Light offcanvas navbar">
   <div class="container-fluid">
     <div>
@@ -198,7 +278,7 @@
           <a class="navbar-brand" href="cart.php"><img src="img/cart.jpg" class="cart"></a>
         </li>
         <li class="nav-item d-flex justify-content-center align-items-center">
-          <a class="navbar-brand" href="mypage.php"><img src="img/mypage.jpg" class="login"></a>
+          <a class="navbar-brand" href="login.php"><img src="img/login.jpg" class="login"></a>
         </li>
         <li class="nav-item d-flex justify-content-center align-items-center">
           <span class="nav_toggle">
@@ -216,7 +296,7 @@
             <div class="offcanvas-body">
               <nav class="nav">
                 <ul class="nav_menu_ul justify-content-end flex-grow-1 pe-3">
-                  <li class="nav_menu_li"><a href="mypage.php" style="text-align:left;">&nbsp;<h3>マイページ</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
+                  <li class="nav_menu_li"><a href="login.php" style="text-align:left;">&nbsp;<h3>ログイン/新規登録</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right; float:right"></i></a></li>
                   <hr>
                   <li class="nav_menu_li"><a href="shohin.php" style="text-align:left;">&nbsp;<h3>商品</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
                   <hr>
@@ -236,84 +316,47 @@
       </ul>
     </div>
   </div>
-</nav>
-<div class="container">
-    <div class="row">
-    <?php
-    require 'DBManager.php';
-    $dbmng = new DBManager();
-    $id = 2;
-    $seachArray = $dbmng->shohin_rireki($id);
-    ?>
-    <h2 class="mo">注文履歴</h2>
-    <?php foreach($seachArray as $row): ?>
-      <form action="order_detail.php" method="post">
-        <div class="col-3"></div>
-        <div class="col-6">
-            <h5 class="mozi">注文状況：<span class="m">
-              <?php
-              if($row['order_situation'] == '0'){
-                echo '発注待ち';
-              }else{
-                echo '発送済み';
-              }
-              ?>
-              </span></h5>
-              <input type="hidden" name="orderS" value="<?php echo $row['order_situation']; ?>">
-        </div>
-        <div class="col-3 ab"></div>
-        <div class="col-3"></div>
-        <div class="col-6">
-            <h5 class="mozi">注文番号：<span class="m"><?php echo $row['order_number']; ?></span></h5>
-            <input type="hidden" name="orderNum" value="<?php echo $row['order_number']; ?>">
-          </div>
-        <div class="col-3 ab"></div>
-        <div class="col-3"></div>
-        <div class="col-6">
-            <h5 class="mozi">注文日時：<span class="m"><?php echo $row['order_date']; ?></span></h5>
-        </div>
-        <input type="hidden" name="orderD" value="<?php echo $row['order_date']; ?>">
-        <div class="col-3 ab"></div>
-        <div class="col-3"></div>
-        <div class="col-6">
-            <h5 class="mozi">商品名：<span class="m"><?php echo $row['shohin_name']; ?></span></h5>
-        </div>
-        <input type="hidden" name="orderN" value="<?php echo $row['shohin_name']; ?>">
-        <div class="col-3 ab"></div>
-        <div class="col-3"></div>
-        <div class="col-6">
-            <h5 class="mozi">お支払金額：<span class="m">
-              <?php 
-                echo '￥' . $row['shohin_tanka']*$row['shohin_suu'];
-              ?>
-              </span></h5>
-        </div>
-        <input type="hidden" name="orderTanka" value="<?php echo $row['shohin_tanka']; ?>">
-        <input type="hidden" name="orderSuu" value="<?php echo $row['shohin_suu']; ?>">
-        <div class="col-3 ab"></div>
-        <div class="col-3"></div>
-        <div class="col-6">
-            <h5 class="mozi">支払方法：<span class="m">
-              <?php 
-              if($row['payment'] == 0){
-              echo '現金';
-              }else{
-                echo 'クレジットカード';
-              }
-              ?></span></h5>
-              <input type="hidden" name="orderP" value="<?php echo $row['payment']; ?>">
-        </div>
-        <input type="hidden" name="gazou" value="<?php echo $row['shohin_img']; ?>">
-        <div class="col-3 ab"></div>
-        <input type="submit" value="詳細画面へ">
-            </form>
-            <?php endforeach; ?>
+      </nav>
+<!--ここから-->
+<h2 class="midashi">注文履歴詳細</h2>
+<div class="flex">
+        <img src="<?php echo $_POST['gazou']; ?>" class="gazou">
+        <div class="mojioya">
+        <h4 class="mojiA mojiB">注文状況：<span class="mojiC"><?php 
+        if($_POST['orderS'] == 0){
+            echo '発注待ち';
+         }else{
+            echo '発注済み';
+         } ?>&nbsp;</span></h4>
+        <h4 class="mojiB">注文番号：<span class="mojiC"><?php echo $_POST['orderNum']; ?>&nbsp;</span></h4>
+        <h4 class="mojiB line">注文日時：<span class="mojiC"><?php echo $_POST['orderD']; ?>&nbsp;</span></h4>
+        <h3>支払金額</h3>
+        <h4 class="mojiB">支払金額：<span class="mojiC"><?php echo '￥' . $_POST['orderSuu']*$_POST['orderTanka']; ?>&nbsp;</span></h4>
+        <h4 class="mojiB">送料：<span class="mojiC">￥500&nbsp;</span></h4>
+        <h4 class="mojiB line">お支払金額(税込み)：<span class="mojiC"><?php echo $_POST['orderSuu']*$_POST['orderTanka']*1.1+500; ?>&nbsp;</span></h4>
+        <h3>支払方法</h3>
+        <h4 class="mojiB"><?php if($_POST['orderP'] == 0){
+            echo '現金';
+        }else{
+            echo 'クレジットカード';
+        }?></h4>
+        <h4 class="mojiB line">お支払金額(税込み)：<span class="mojiC"><?php echo $_POST['orderSuu']*$_POST['orderTanka']*1.1; ?>&nbsp;</span></h4>
     </div>
-</div>
+    </div>
+    <h5 class="shohinN"><?php echo $_POST['orderN'];?></h5>
+    <h5 class="shohinS"><?php
+     echo '数量：' . $_POST['orderSuu'] . '/単価：￥' . $_POST['orderTanka'] . '/小計：￥' . $_POST['orderSuu']*$_POST['orderTanka'];
+     ?></h5>
+     <div class="btnM">
+      <input class="btn btn-outline-dark rounded-pill btnA" type="button" onclick="location.href = 'order.php'" value="注文履歴一覧に戻る">
+     <input class="btn btn-outline-dark rounded-pill btnB" type="button" onclick="location.href = 'mypage.php'" value="戻る">
+      </div>
+     
 
-  <hr>
-  
-  <div class="companySet">
+
+
+<hr>
+      <div class="companySet">
         <ul class="companySetLists">
             <li class="companySetList">
                 <a href="https://www.yahoo.co.jp/">運営企業情報</a>
@@ -332,7 +375,6 @@
             </li>
         </ul>
     </div>
-
       <!-- CDN -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
