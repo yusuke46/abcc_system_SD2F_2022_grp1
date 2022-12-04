@@ -168,17 +168,53 @@
             transform: translate(0, -50%);
         }
         .mo{
-            margin-bottom: 10%;
             text-align: center;
+            border-bottom: 2px solid #c0c0c0;
+            margin-left: 20px;
+            margin-right: 20px;
+            padding-bottom: 20px;
         }
+
         .mozi{
             text-align: left;
+            margin-left: 30%; 
+            margin-top: 10px;
         }
+
         .m{
+            margin-right: 40%; 
             text-align: right;
+            float: right;
+
         }
+
         .ab{
             margin-bottom: 5%;
+        }
+
+        .btnA{
+          margin-top: 20px;
+          text-align: center;
+          color: #FF00FF;
+        }
+
+        .btn2{
+          background-color: #FF00FF;
+        }
+
+        .btnB{
+          margin-top: 30px;
+          margin-bottom: 50px;
+          text-align: center;
+        }
+
+        .line{
+          margin-left: 40px;
+          margin-right: 40px;
+        }
+
+        .moziT{
+          margin-top: 20px;
         }
     </style>
 </head>
@@ -237,8 +273,6 @@
     </div>
   </div>
 </nav>
-<div class="container">
-    <div class="row">
     <?php
     require 'DBManager.php';
     $dbmng = new DBManager();
@@ -248,10 +282,8 @@
     <h2 class="mo">注文履歴</h2>
     <?php foreach($seachArray as $row): ?>
       <form action="order_detail.php" method="post">
-        <div class="col-3"></div>
-        <div class="col-6">
-            <h5 class="mozi">注文状況：<span class="m">
-              <?php
+        <h5 class="mozi moziT">注文状況：<span class="m">
+          <?php
               if($row['order_situation'] == '0'){
                 echo '発注待ち';
               }else{
@@ -260,40 +292,20 @@
               ?>
               </span></h5>
               <input type="hidden" name="orderS" value="<?php echo $row['order_situation']; ?>">
-        </div>
-        <div class="col-3 ab"></div>
-        <div class="col-3"></div>
-        <div class="col-6">
-            <h5 class="mozi">注文番号：<span class="m"><?php echo $row['order_number']; ?></span></h5>
-            <input type="hidden" name="orderNum" value="<?php echo $row['order_number']; ?>">
-          </div>
-        <div class="col-3 ab"></div>
-        <div class="col-3"></div>
-        <div class="col-6">
-            <h5 class="mozi">注文日時：<span class="m"><?php echo $row['order_date']; ?></span></h5>
-        </div>
-        <input type="hidden" name="orderD" value="<?php echo $row['order_date']; ?>">
-        <div class="col-3 ab"></div>
-        <div class="col-3"></div>
-        <div class="col-6">
-            <h5 class="mozi">商品名：<span class="m"><?php echo $row['shohin_name']; ?></span></h5>
-        </div>
-        <input type="hidden" name="orderN" value="<?php echo $row['shohin_name']; ?>">
-        <div class="col-3 ab"></div>
-        <div class="col-3"></div>
-        <div class="col-6">
-            <h5 class="mozi">お支払金額：<span class="m">
+              <h5 class="mozi">注文番号：<span class="m"><?php echo $row['order_number']; ?></span></h5>
+              <input type="hidden" name="orderNum" value="<?php echo $row['order_number']; ?>">
+              <h5 class="mozi">注文日時：<span class="m"><?php echo $row['order_date']; ?></span></h5>
+              <input type="hidden" name="orderD" value="<?php echo $row['order_date']; ?>">
+              <h5 class="mozi">商品名：<span class="m"><?php echo $row['shohin_name']; ?></span></h5>
+              <input type="hidden" name="orderN" value="<?php echo $row['shohin_name']; ?>">
+              <h5 class="mozi">お支払金額：<span class="m">
               <?php 
                 echo '￥' . $row['shohin_tanka']*$row['shohin_suu'];
               ?>
               </span></h5>
-        </div>
-        <input type="hidden" name="orderTanka" value="<?php echo $row['shohin_tanka']; ?>">
-        <input type="hidden" name="orderSuu" value="<?php echo $row['shohin_suu']; ?>">
-        <div class="col-3 ab"></div>
-        <div class="col-3"></div>
-        <div class="col-6">
-            <h5 class="mozi">支払方法：<span class="m">
+              <input type="hidden" name="orderTanka" value="<?php echo $row['shohin_tanka']; ?>">
+              <input type="hidden" name="orderSuu" value="<?php echo $row['shohin_suu']; ?>">
+              <h5 class="mozi">支払方法：<span class="m">
               <?php 
               if($row['payment'] == 0){
               echo '現金';
@@ -302,16 +314,18 @@
               }
               ?></span></h5>
               <input type="hidden" name="orderP" value="<?php echo $row['payment']; ?>">
-        </div>
-        <input type="hidden" name="gazou" value="<?php echo $row['shohin_img']; ?>">
-        <div class="col-3 ab"></div>
-        <input type="submit" value="詳細画面へ">
+              <input type="hidden" name="gazou" value="<?php echo $row['shohin_img']; ?>">
+              <div class="btnA">
+              <input type="submit" class="btn btn-outline-dark rounded-pill btn2" value="詳細画面へ">
+            </div>
+              <hr size="5px" class="line">
             </form>
             <?php endforeach; ?>
-    </div>
-</div>
-
-  <hr>
+            <div class="btnB">
+            <input class="btn btn-outline-dark rounded-pill btn2" type="button" onclick="location.href = 'mypage.php'" value="マイページトップに戻る">
+            </div>
+            <hr>
+            
   
   <div class="companySet">
         <ul class="companySetLists">
