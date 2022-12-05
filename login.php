@@ -6,20 +6,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     
   <style>
-    .nav-item{
-      border-bottom: 1px solid #C0C0C0;
-      padding-bottom: 2px;
-      padding-top: 2px;
-    }
-
-    #icon{
-      padding-top: 2px;
-    }
-          
-    #main_nav{
-      border-bottom: 5px solid 	#8a2be2;
-    }
-
     .bd-placeholder-img {
       font-size: 1.125rem;
       text-anchor: middle;
@@ -61,88 +47,6 @@
         text-align : center;
         display :flex;
     }
-    .search{
-        width: 30px;
-        height: 40px;
-        padding-right: 2px;
-        padding-left: 2px;
-        margin-right: 10px;
-        margin-left: 10px;
-      }
-      .cart{
-        width: 40px;
-        height: 40px;
-        padding-right: 2px;
-        padding-left: 2px;
-        margin-right: 10px;
-        margin-left: 10px;
-      }
-      .login{
-        width: 50px;
-        height: 40px;
-        padding-right: 2px;
-        padding-left: 2px;
-        margin-right: 10px;
-        margin-left: 10px;
-      }
-      .nav_toggle {
-        display: block;
-        position: relative;
-        width: 1.75rem;
-        height: 1.5rem;
-      }
-      .nav_toggle i {
-        display: block;
-        width: 100%;
-        height: 2px;
-        background-color: purple;
-        position: absolute;
-        transition: transform .5s, opacity .5s;
-      }
-      .nav_toggle i:nth-child(1) {
-        top: 0;
-      }
-      .nav_toggle i:nth-child(2) {
-        top: 0;
-        bottom: 0;
-        margin: auto;
-      }
-      .nav_toggle i:nth-child(3) {
-        bottom: 0;
-      }
-      .nav_toggle.show i:nth-child(1) {
-        transform: translateY(10px) rotate(-45deg);
-      }
-      .nav_toggle.show i:nth-child(2) {
-        opacity: 0;
-      }
-      .nav_toggle.show i:nth-child(3) {
-        transform: translateY(-12px) rotate(45deg);
-      }
-      .nav {
-        position: fixed;
-        top: 5rem;
-        left: 1100;
-        right: 1100;
-        bottom: 1100;
-        padding: 1rem;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity .5s, visibility .5s;
-        background-color: white;
-        height: 100%;
-        width: 100%;
-        z-index: 10;
-      }
-      .nav.show {
-        opacity: 1;
-        visibility: visible;
-      }
-      a, a:link, a:active, a:visited, a:hover{
-        color: inherit;
-        list-style: none;
-        text-decoration: none;
-      }
       .btn{
         width: 300px;
       }
@@ -170,43 +74,13 @@
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-light navbar-expand-md py-2 navbar-bg fixed-top bg-white" id="main_nav" aria-label="Light offcanvas navbar">
-    <div class="container-fluid">
-      <div>
-        <a class="navbar-brand" href="#">タイトル名</a>
-      </div>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item d-flex justify-content-center align-items-center">
-            <a class="navbar-brand" href="search.php"><img src="img/search.jpg" class="search"></a>
-          </li>
-          <li class="nav-item d-flex justify-content-center align-items-center">
-            <a class="navbar-brand" href="cart.php"><img src="img/cart.jpg" class="cart"></a>
-          </li>
-          <li class="nav-item d-flex justify-content-center align-items-center">
-            <a class="navbar-brand" href="login.php"><img src="img/login.jpg" class="login"></a>
-          </li>
-          <li class="nav-item d-flex justify-content-center align-items-center">
-            <span class="nav_toggle">
-              <i></i>
-              <i></i>
-              <i></i>
-            </span>
-            <nav class="nav">
-              <ul class="nav_menu_ul">
-                <li class="nav_menu_li"><a href="login.php">ログイン・新規登録</a></li>
-                <li class="nav_menu_li"><a href="shohin.php">商品</a></li>
-                <li class="nav_menu_li"><a href="pickup.php">注目商品</a></li>
-                <li class="nav_menu_li"><a href="feature.php">特集商品</a></li>
-                <li class="nav_menu_li"><a href="#">商品の登録はこちら</a></li>
-                <li class="nav_menu_li"><a href="question.php">お問い合わせ・Q&A</a></li>
-              </ul>
-            </nav>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+<?php
+if(isset($_SESSION['user_id'])){
+  include_once 'navar_success.php';
+}else{
+  include_once 'navar.php';
+}
+?>
     <!--この下から書き加える-->
     <div class="example">
       <div class="Form">
@@ -354,5 +228,10 @@
     }
   });
 	</script>
+  <script>
+    $('.nav_toggle').on('click', function () {
+      $('.nav_toggle, .nav, .hamburger-demo-cover').toggleClass('show');
+    }); 
+  </script>
 </body>
 </html>

@@ -1,8 +1,4 @@
-<?php 
-session_start();
-
-
-?>
+<?php session_start(); ?>
 <html>
     <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -13,17 +9,6 @@ session_start();
     <style>
       body { 
         
-      }
-      .nav-item{
-        border-bottom: 1px solid #C0C0C0;
-        padding-bottom: 2px;
-        padding-top: 2px;
-      }
-      #icon{
-        padding-top: 2px;
-      }
-      #main_nav{
-        border-bottom: 5px solid 	#8a2be2;
       }
       .swiper{
         background-color: white;
@@ -40,8 +25,8 @@ session_start();
         border-radius: 5px;
       }
       .swiper-slide img{
-        width: 370px;
-        height: 370px;
+        width: 120%;
+        height: 120%;
         border-radius: 5px;
       }
       .swiper-slide-active{
@@ -55,134 +40,8 @@ session_start();
       }
       .button{
         font-size: 40px;
+        text-align: center;
       }
-      .search{
-        width: 30px;
-        height: 40px;
-        padding-right: 2px;
-        padding-left: 2px;
-        margin-right: 10px;
-        margin-left: 10px;
-      }
-      .cart{
-        width: 40px;
-        height: 40px;
-        padding-right: 2px;
-        padding-left: 2px;
-        margin-right: 10px;
-        margin-left: 10px;
-      }
-      .login{
-        width: 50px;
-        height: 40px;
-        padding-right: 2px;
-        padding-left: 2px;
-        margin-right: 10px;
-        margin-left: 10px;
-      }
-      .nav_toggle {
-        display: block;
-        position: relative;
-        width: 1.75rem;
-        height: 1.5rem;
-      }
-      .nav_toggle i {
-        display: block;
-        width: 100%;
-        height: 2px;
-        background-color: purple;
-        position: absolute;
-        transition: transform .5s, opacity .5s;
-      }
-      .nav_toggle i:nth-child(1) {
-        top: 0;
-      }
-      .nav_toggle i:nth-child(2) {
-        top: 0;
-        bottom: 0;
-        margin: auto;
-      }
-      .nav_toggle i:nth-child(3) {
-        bottom: 0;
-      }
-      .nav_toggle.show i:nth-child(1) {
-        transform: translateY(10px) rotate(-45deg);
-      }
-      .nav_toggle.show i:nth-child(2) {
-        opacity: 0;
-      }
-      .nav_toggle.show i:nth-child(3) {
-        transform: translateY(-12px) rotate(45deg);
-      }
-      .nav {
-        position: fixed;
-        top: 4.73rem;
-        left: 70%;
-        opacity: 0;
-        transition: opacity .5s;
-        background-color: white;
-        height: 100%;
-        width: 100%;
-        z-index:10;
-	      overflow-y: scroll;
-      }
-      .hamburger-demo-cover{
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 4.73rem;
-        right: 30%;
-        z-index: 10;
-        opacity: 0;
-        transition: opacity .5s;
-        background-color: rgba(3,3,3,.5);
-        }
-      .nav.show {
-        opacity: 1;
-        visibility: visible;
-      }
-      .hamburger-demo-cover.show {
-        opacity: 1;
-        visibility: visible;
-      }
-      a, a:link, a:active, a:visited, a:hover{
-        color: inherit;
-        list-style: none;
-        text-decoration: none;
-      }
-        ul {
-            list-style: none;
-        }
-        .companySet .companySetLists {
-            display: -webkit-box;
-            display: flex;
-            margin: 3rem auto 0;
-            -webkit-box-pack: center;
-            justify-content: center;
-            -ms-flex-flow: wrap;
-            flex-flow: wrap;
-            width: 90%;
-        }
-        .companySet .companySetList {
-            margin: 0 0 1em;
-        }
-        .companySet .companySetList a {
-            color: inherit;
-        }
-        .companySet .companySetList + .companySetList {
-            margin: 0 0 1em 2em;
-            position: relative;
-        }
-        .companySet .companySetList + .companySetList::before {
-            content: "";
-            width: 1px;
-            height: 60%;
-            background: #000;
-            position: absolute;
-            left: -1em;
-            top: 50%;
-            transform: translate(0, -50%);
-        }
         .pickup{
           text-align: center;
           margin-top: 10%;
@@ -195,60 +54,13 @@ session_start();
 </head>
 <body>
 <!--ここからNB-->
-<nav class="navbar navbar-light navbar-expand-md py-2 navbar-bg fixed-top bg-white" id="main_nav" aria-label="Light offcanvas navbar">
-  <div class="container-fluid">
-    <div>
-      <a class="navbar-brand" href="#">タイトル名</a>
-    </div>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item d-flex justify-content-center align-items-center">
-          <a class="navbar-brand" href="search.php"><img src="img/search.jpg" class="search"></a>
-        </li>
-        <li class="nav-item d-flex justify-content-center align-items-center">
-          <a class="navbar-brand" href="cart.php"><img src="img/cart.jpg" class="cart"></a>
-        </li>
-        <li class="nav-item d-flex justify-content-center align-items-center">
-          <a class="navbar-brand" href="login.php"><img src="img/login.jpg" class="login"></a>
-        </li>
-        <li class="nav-item d-flex justify-content-center align-items-center">
-          <span class="nav_toggle">
-            <i></i>
-            <i></i>
-            <i></i>
-          </span>
-          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbarLight" aria-labelledby="offcanvasNavbarLightLabel">
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarLight" aria-controls="offcanvasNavbarLight">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasNavbarLightLabel">メニュー一覧</h5>
-            </div>
-            <div class="offcanvas-body">
-              <nav class="nav">
-                <ul class="nav_menu_ul justify-content-end flex-grow-1 pe-3">
-                  <li class="nav_menu_li"><a href="login.php" style="text-align:left;">&nbsp;<h3>ログイン/新規登録</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
-                  <hr>
-                  <li class="nav_menu_li"><a href="shohin.php" style="text-align:left;">&nbsp;<h3>商品</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
-                  <hr>
-                  <li class="nav_menu_li"><a href="pickup.php" style="text-align:left;">&nbsp;<h3>注目商品</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
-                  <hr>
-                  <li class="nav_menu_li"><a href="feature.php"style="text-align:left;" >&nbsp;<h3>特集商品</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
-                  <hr>
-                  <li class="nav_menu_li"><a href="#" style="text-align:left;">&nbsp;<h3>商品の登録はこちら</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
-                  <hr>
-                  <li class="nav_menu_li"><a href="question.php" style="text-align:left;">&nbsp;<h3>お問い合わせ・Q&A</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
-                  <hr>
-                </ul>
-              </nav>
-              <div class="hamburger-demo-cover"></div>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-      </nav>
+<?php
+if(isset($_SESSION['user_id'])){
+  include_once 'navar_success.php';
+}else{
+  include_once 'navar.php';
+}
+ ?>
       <!--ここまでNB-->
   <!--この下から書き加える-->
   <div style="background: linear-gradient(to left top, black, white);">
@@ -303,14 +115,20 @@ session_start();
 <!-- 商品一覧へ行くやつ -->
 <div class="container">
 <div class="row osigoto">
-  <button class="button col-5 btn" style="background-color:#eeeeee;">
-    <img src="img/tokino_2.png" class="img">
-    <br>推し事
-  </button>
-  <button class="button col-5 offset-2 btn"  style="background-color:#eeeeee;">
-    <img src="img/otaku.png" class="img">
-    <br>ヲタク
-  </button>
+  <form action="osigoto.php" method="post" class="button">
+    <button class="button col-5 btn mt-5" style="background-color:#eeeeee;" onclick="Location.href='osigoto.php'">
+      <input type="hidden" value="1" name="osi">
+      <img src="img/tokino_2.png" class="img">
+      <br>推し事
+    </button>
+  </form>
+  <form action="wotaku.php" method="post" class="button">
+    <button class="button col-5 btn"  style="background-color:#eeeeee;" onclick="Location.href='wotaku.php'">
+      <input type="hidden" value="1" name="wota">
+      <img src="img/otaku.png" class="img">
+      <br>ヲタク
+    </button>
+  </form>
 </div>
 
 </div>
@@ -321,7 +139,7 @@ session_start();
 
 <div class="nl"></div>
   
-  <div class="container">
+<div class="container">
     <div class="row">
       <div class="col-12">
         <h2 class="pickup">注目商品</h2>
@@ -330,25 +148,24 @@ session_start();
       require_once 'DBManager.php';
       $dbmng = new DBManager();
       $PickUp = $dbmng->topPickUp();
-      foreach($PickUp as $row){
-        echo '<div class="col-md-4">';
-        echo '<form action="shohin_detail.php" method="post">';
-        echo '<div class="card" style="width: 26rem;">';
-        echo '<button type="submit" class="border border-white" style="background-color: white;">';
-        echo '<input type="hidden" value="'.$row['shohin_id'].'" name="shohinid">';
-        echo '<input type="hidden" value="'.$row['shohin_information'].'" name="information">';
-        echo '<img src="'.$row['shohin_img'].'" class="card-img-top" name="img">';
-        echo '<div class="card-body">';
-        echo '<h5 class="card-title" name="mei">'.$row['shohin_mei'].'</h5>';
-        echo '<input type="hidden" value="' . $row['shohin_id'] . '">';
-        echo '<p class="card-text" name="tanka">￥'.$row['shohin_tanka'].'</p>';
-        echo '</div>';
-        echo '</button>';
-        echo '</div>';
-        echo '</form>';
-        echo '</div>';
-      }
-      ?>
+      foreach($PickUp as $row): ?>
+      <div class="col-md-4">
+        <form action="shohin_detail.php" method="post">
+          <div class="card" style="width: 26rem;">
+            <button type="submit" class="border border-white" style="background-color: white;">
+              <input type="hidden" value="<?php echo $row['shohin_id']; ?>" name="shohinid">
+              <input type="hidden" value="<?php echo $row['shohin_information']; ?>" name="information">
+              <img src="<?php echo $row['shohin_img']; ?>" class="card-img-top" name="img">
+              <div class="card-body">
+                <h5 class="card-title" name="mei"><?php echo $row['shohin_mei']; ?></h5>
+                <input type="hidden" value="<?php echo $row['shohin_id']; ?>">
+                <p class="card-text" name="tanka">￥<?php echo $row['shohin_tanka']; ?></p>
+              </div>
+            </button>
+          </div>
+        </form>
+      </div>
+      <?php endforeach; ?>
     </div>
   </div>
   <div class="container">
@@ -360,26 +177,26 @@ session_start();
       require_once 'DBManager.php';
       $dbmng = new DBManager();
       $Feature = $dbmng->topFeature();
-      foreach($Feature as $row){
-        echo '<div class="col-md-4">';
-        echo '<form action="shohin_detail.php" method="post">';
-        echo '<div class="card" style="width: 26rem;">';
-        echo '<button type="submit" class="border border-white" style="background-color: white;">';
-        echo '<input type="hidden" value="'.$row['shohin_id'].'" name="shohinid">';
-        echo '<img src="'.$row['shohin_img'].'" class="card-img-top">';
-        echo '<div class="card-body">';
-        echo '<h5 class="card-title" name="shohin">'.$row['shohin_mei'].'</h5>';
-        echo '<p class="card-text">￥'.$row['shohin_tanka'].'</p>';
-        echo '</div>';
-        echo '</button>';
-        echo '</div>';
-        echo '</form>';
-        echo '</div>';
-      }
-      ?>
+      foreach($Feature as $row): ?>
+        <div class="col-md-4">
+          <form action="shohin_detail.php" method="post">
+            <div class="card" style="width: 26rem;">
+              <button type="submit" class="border border-white" style="background-color: white;">
+                <input type="hidden" value="<?php echo $row['shohin_id']; ?>" name="shohinid">
+                <input type="hidden" value="<?php echo $row['shohin_information']; ?>" name="information">
+                <img src="<?php echo $row['shohin_img']; ?>" class="card-img-top" name="img">
+                <div class="card-body">
+                  <h5 class="card-title" name="mei"><?php echo $row['shohin_mei']; ?></h5>
+                  <input type="hidden" value="<?php echo $row['shohin_id']; ?>">
+                  <p class="card-text" name="tanka">￥<?php echo $row['shohin_tanka']; ?></p>
+                </div>
+              </button>
+            </div>
+          </form>
+        </div>
+        <?php endforeach; ?>
+      </div>
     </div>
-  </div>
-    </form>
   <hr>
   
   <div class="companySet">
@@ -410,7 +227,7 @@ session_start();
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
     $('.nav_toggle').on('click', function () {
-      $('.nav_toggle, .nav, .hamburger-demo-cover').toggleClass('show');
+      $('.nav_toggle, .nav').toggleClass('show');
     }); 
   </script>
 </body>

@@ -36,8 +36,8 @@ if(isset($_SESSION['user_id'])){
       <?php
       require_once 'DBManager.php';
       $dbmng = new DBManager();
-      $PickUp = $dbmng->searchPickUp();
-      foreach($PickUp as $row): ?>
+      $ShohinSource = $dbmng->getByOsigotoSource(1);
+      foreach($ShohinSource as $row): ?>
       <div class="col-md-3">
         <div class="card" style="width: 18rem;">
           <img src="<?php echo $row['shohin_img']; ?>" class="card-img-top">

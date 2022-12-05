@@ -8,165 +8,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     
     <style>
-      body { 
-        
-      }
-      .nav-item{
-        border-bottom: 1px solid #C0C0C0;
-        padding-bottom: 2px;
-        padding-top: 2px;
-      }
-      #icon{
-        padding-top: 2px;
-      }
-      #main_nav{
-        border-bottom: 5px solid 	#8a2be2;
-      }
-      .swiper{
-        background-color: white;
-      }
-      .swiper-container{
-        height: 350px;
-      }
-      .swiper-wrapper{
-        align-items: center;
-      }
-      .swiper-slide{
-        width: 350px;
-        height: 350px;
-        border-radius: 5px;
-      }
-      .swiper-slide img{
-        width: 370px;
-        height: 370px;
-        border-radius: 5px;
-      }
-      .swiper-slide-active{
-        transform: scale(1.2);
-        transition: 1s;
-      }
-      .img{
-        width: 200px;
-        height: 200px;
-      }
-      .button{
-        font-size: 40px;
-      }
-      .search{
-        width: 30px;
-        height: 40px;
-        padding-right: 2px;
-        padding-left: 2px;
-        margin-right: 10px;
-        margin-left: 10px;
-      }
-      .cart{
-        width: 40px;
-        height: 40px;
-        padding-right: 2px;
-        padding-left: 2px;
-        margin-right: 10px;
-        margin-left: 10px;
-      }
-      .login{
-        width: 60px;
-        height: 40px;
-        padding-right: 2px;
-        padding-left: 2px;
-        margin-right: 10px;
-        margin-left: 10px;
-      }
-      .nav_toggle {
-        display: block;
-        position: relative;
-        width: 1.75rem;
-        height: 1.5rem;
-      }
-      .nav_toggle i {
-        display: block;
-        width: 100%;
-        height: 2px;
-        background-color: purple;
-        position: absolute;
-        transition: transform .5s, opacity .5s;
-      }
-      .nav_toggle i:nth-child(1) {
-        top: 0;
-      }
-      .nav_toggle i:nth-child(2) {
-        top: 0;
-        bottom: 0;
-        margin: auto;
-      }
-      .nav_toggle i:nth-child(3) {
-        bottom: 0;
-      }
-      .nav_toggle.show i:nth-child(1) {
-        transform: translateY(10px) rotate(-45deg);
-      }
-      .nav_toggle.show i:nth-child(2) {
-        opacity: 0;
-      }
-      .nav_toggle.show i:nth-child(3) {
-        transform: translateY(-12px) rotate(45deg);
-      }
-      .nav {
-        position: fixed;
-        top: 5rem;
-        left: 1100;
-        right: 1100;
-        bottom: 1100;
-        padding: 1rem;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity .5s, visibility .5s;
-        background-color: white;
-        height: 100%;
-        width: 100%;
-        z-index: 10;
-      }
-      .nav.show {
-        opacity: 1;
-        visibility: visible;
-      }
-      a, a:link, a:active, a:visited, a:hover{
-        color: inherit;
-        list-style: none;
-        text-decoration: none;
-      }
-        ul {
-            list-style: none;
-        }
-        .companySet .companySetLists {
-            display: -webkit-box;
-            display: flex;
-            margin: 3rem auto 0;
-            -webkit-box-pack: center;
-            justify-content: center;
-            -ms-flex-flow: wrap;
-            flex-flow: wrap;
-            width: 90%;
-        }
-        .companySet .companySetList {
-            margin: 0 0 1em;
-        }
-        .companySet .companySetList a {
-            color: inherit;
-        }
-        .companySet .companySetList + .companySetList {
-            margin: 0 0 1em 2em;
-            position: relative;
-        }
-        .companySet .companySetList + .companySetList::before {
-            content: "";
-            width: 1px;
-            height: 60%;
-            background: #000;
-            position: absolute;
-            left: -1em;
-            top: 50%;
-            transform: translate(0, -50%);
-        }
         .mo{
             margin-top: 10%;
             margin-bottom: 10%;
@@ -181,97 +22,53 @@
         .ab{
             margin-bottom: 5%;
         }
+        .or{
+            margin-top: 10%;
+            margin-bottom: 8%;
+        }
+        .btna{
+          text-align: center;
+          margin-bottom: 6%;
+        }
+        .btn{
+          height: 150%;
+          width: 100%;
+        }
     </style>
 </head>
 <body>
 <!--ここからNB-->
-<nav class="navbar navbar-light navbar-expand-md py-2 navbar-bg fixed-top bg-white" id="main_nav" aria-label="Light offcanvas navbar">
-  <div class="container-fluid">
-    <div>
-      <a class="navbar-brand" href="#">タイトル名</a>
-    </div>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item d-flex justify-content-center align-items-center">
-          <a class="navbar-brand" href="search.php"><img src="img/search.jpg" class="search"></a>
-        </li>
-        <li class="nav-item d-flex justify-content-center align-items-center">
-          <a class="navbar-brand" href="cart.php"><img src="img/cart.jpg" class="cart"></a>
-        </li>
-        <li class="nav-item d-flex justify-content-center align-items-center">
-          <a class="navbar-brand" href="mypage.php"><img src="img/mypage.jpg" class="login"></a>
-        </li>
-        <li class="nav-item d-flex justify-content-center align-items-center">
-          <span class="nav_toggle">
-            <i></i>
-            <i></i>
-            <i></i>
-          </span>
-          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbarLight" aria-labelledby="offcanvasNavbarLightLabel">
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarLight" aria-controls="offcanvasNavbarLight">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasNavbarLightLabel">メニュー一覧</h5>
-            </div>
-            <div class="offcanvas-body">
-              <nav class="nav">
-                <ul class="nav_menu_ul justify-content-end flex-grow-1 pe-3">
-                  <li class="nav_menu_li"><a href="mypage.php" style="text-align:left;">&nbsp;<h3>マイページ</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
-                  <hr>
-                  <li class="nav_menu_li"><a href="shohin.php" style="text-align:left;">&nbsp;<h3>商品</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
-                  <hr>
-                  <li class="nav_menu_li"><a href="pickup.php" style="text-align:left;">&nbsp;<h3>注目商品</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
-                  <hr>
-                  <li class="nav_menu_li"><a href="feature.php"style="text-align:left;" >&nbsp;<h3>特集商品</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
-                  <hr>
-                  <li class="nav_menu_li"><a href="#" style="text-align:left;">&nbsp;<h3>商品の登録はこちら</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
-                  <hr>
-                  <li class="nav_menu_li"><a href="question.php" style="text-align:left;">&nbsp;<h3>お問い合わせ・Q&A</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
-                  <hr>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<?php
+if(isset($_SESSION['user_id'])){
+  include_once 'navar_success.php';
+}else{
+  include_once 'navar.php';
+}
+?>
 <div class="container">
-    <div class="row">
-        <h2 class="mo">注文履歴</h2>
-        <div class="col-3"></div>
-        <div class="col-6">
-            <h5 class="mozi">注文状況：<span class="m">発注待ち</span></h5>
+<h2 class="or" style="text-align:center">注文履歴一覧</h2>
+<form action="ordercheck.php" method="post">
+    <?php 
+    require 'DBManager.php';
+    $dbmng = new DBManager();
+    $searchArray = $dbmng->getOrder($_SESSION['user_id']);
+    foreach($searchArray as $row):?>
+        <div class="row">
+            <div class="col-2">
+                <h5 class="mozi">注文番号：</h5>
+            </div>
+            
+                <div class="col-3">
+                    <h5 class="mozi" value="<?php echo $row['order_id']; ?>" name="oid"><?php echo $row['order_id']; ?></h5>
+                </div>
+                <div class="col-4 btna">
+                    <input class="btn text-white rounded-pill" style="background-color: #800080;" type="submit" value="詳細を見る" onclick="Location.href='ordercheck.php'"><br>
+                </div>  
+            
         </div>
-        <div class="col-3 ab"></div>
-        <div class="col-3"></div>
-        <div class="col-6">
-            <h5 class="mozi">注文番号：<span class="m">発注待ち</span></h5>
-        </div>
-        <div class="col-3 ab"></div>
-        <div class="col-3"></div>
-        <div class="col-6">
-            <h5 class="mozi">注文日時：<span class="m">発注待ち</span></h5>
-        </div>
-        <div class="col-3 ab"></div>
-        <div class="col-3"></div>
-        <div class="col-6">
-            <h5 class="mozi">商品名：<span class="m">発注待ち</span></h5>
-        </div>
-        <div class="col-3 ab"></div>
-        <div class="col-3"></div>
-        <div class="col-6">
-            <h5 class="mozi">お支払金額：<span class="m">発注待ち</span></h5>
-        </div>
-        <div class="col-3 ab"></div>
-        <div class="col-3"></div>
-        <div class="col-6">
-            <h5 class="mozi">支払方法：<span class="m">発注待ち</span></h5>
-        </div>
-        <div class="col-3 ab"></div>
-    </div>
+    
+    <?php endforeach; ?>
+    </form>
 </div>
 
   <hr>

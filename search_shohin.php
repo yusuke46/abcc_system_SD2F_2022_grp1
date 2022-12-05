@@ -36,20 +36,28 @@ if(isset($_SESSION['user_id'])){
       <?php
       require_once 'DBManager.php';
       $dbmng = new DBManager();
-      $PickUp = $dbmng->searchPickUp();
-      foreach($PickUp as $row): ?>
-      <div class="col-md-3">
-        <div class="card" style="width: 18rem;">
-          <img src="<?php echo $row['shohin_img']; ?>" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title"><?php echo $row['shohin_mei']; ?></h5>
-            <p class="card-text">￥<?php echo $row['shohin_tanka']; ?></p>
-          </div>
+      $result = $dbmng->getSearch($_POST['kid']);
+      foreach($result as $row): ?>
+        <div class="col-md-4">
+          <form action="shohin_detail.php" method="post">
+            <div class="card" style="width: 26rem;">
+              <button type="submit" class="border border-white" style="background-color: white;">
+                <input type="hidden" value="<?php echo $row['shohin_id']; ?>" name="shohinid">
+                <input type="hidden" value="<?php echo $row['shohin_information']; ?>" name="information">
+                <img src="<?php echo $row['shohin_img']; ?>" class="card-img-top" name="img">
+                <div class="card-body">
+                  <h5 class="card-title" name="mei"><?php echo $row['shohin_mei']; ?></h5>
+                  <input type="hidden" value="<?php echo $row['shohin_id']; ?>">
+                  <p class="card-text" name="tanka">￥<?php echo $row['shohin_tanka']; ?></p>
+                </div>
+              </button>
+            </div>
+          </form>
         </div>
+        <?php endforeach; ?>
       </div>
-      <?php endforeach; ?>
     </div>
-  </div>
+</div>
     <!--ここまでcard-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   <script>

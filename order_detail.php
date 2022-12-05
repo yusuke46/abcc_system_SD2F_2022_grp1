@@ -1,4 +1,5 @@
-<?php session_start()?>
+<?php session_start(); ?>
+
 <html>
     <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -7,32 +8,31 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     
     <style>
-      body { 
-        
-      }
-      .img{
-        width: 200px;
-        height: 200px;
-      }
-        .k{
+        .mo{
             margin-top: 10%;
+            margin-bottom: 10%;
+            text-align: center;
         }
-        .a{
-            margin-top: 5%;
-            margin-bottom: 30%;
+        .mozi{
+            text-align: left;
         }
-        .b{
-            margin-top: 5%;
+        .m{
+            text-align: right;
         }
-        .c{
-            margin-bottom: 30%;
+        .ab{
+            margin-bottom: 5%;
         }
-        .btn{
-          width: 450px;
+        .or{
+            margin-top: 10%;
+            margin-bottom: 8%;
         }
         .btna{
-          margin-top: 10%;
           text-align: center;
+          margin-bottom: 6%;
+        }
+        .btn{
+          height: 150%;
+          width: 100%;
         }
     </style>
 </head>
@@ -45,40 +45,62 @@ if(isset($_SESSION['user_id'])){
   include_once 'navar.php';
 }
 ?>
-
-   <div class="container">
-    <div class="row k">
-        <?php
-        require_once 'DBManager.php';
-        $dbmng = new DBManager();
-        $Shohin = $dbmng->getByCartShohinSourse($_POST['shohinid']);
-        foreach($Shohin as $row):?>
-          <div class="col-4">
-            <form action="shohincheck.php" method="post">
-              <input type="hidden" value="<?php echo $row['shohin_id'];?>" name="id">
-              <img src="<?php echo $row['shohin_img']; ?>" value="<?php echo $row['shohin_img']; ?>" name="img">
-            </div>
-            <div class="col-4">
-            </div>
-            <div class="col-4">
-              <h2 class="b" value="<?php echo $row['shohin_mei'];?>" name="mei"><?php echo $row['shohin_mei']; ?></h2>
-              <h5 class="a" value="<?php echo $row['shohin_tanka'];?>" name="tanka">￥<?php echo $row['shohin_tanka']; ?></h5>
-              <h4 class="c" value="<?php echo $row['shohin_information'];?>" name="information"><?php echo $row['shohin_information']; ?></h4>
-              <label for="suuryo" class="form-label">数量</label>
-              <select class="form-select d-block w-100 required" name="count">
-                <?php for($i=1;$i<11;$i++): ?>
-                  <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                <?php endfor;?>
-              </select> 
-              <br>
-              <div class="btna">
-                <input class="btn text-white rounded-pill btn-lg" style="background-color: #800080;" type="submit" value="カートに入れる" onclick="location.href='cart.php'">
-              </div>
-            </form>
-          </div>
-        <?php endforeach; ?>
+<div class="container">
+<h2 class="or" style="text-align:center">注文履歴詳細</h2>
+<?php
+require 'DBManager.php';
+$dbmng = new DBManager();
+$searchArray = $dbmng->getOrderdetail($_SESSION['order_id']);
+foreach($searchArray as $row):?>
+    <div class="row ab">
+        <div class="col-4"></div>
+        <div class="col-3">
+            <h5 class="mozi">注文番号</h5>
+        </div>
+        <div class="col-2">
+            <h5 class="mozi"><span class="m"><?php echo $row['order_id']; ?></span></h5>
+        </div>
+        <div class="col-3"></div>
     </div>
-   </div>
+    <div class="row ab">
+        <div class="col-4"></div>
+        <div class="col-3">
+            <h5 class="mozi">注文日時</h5>
+        </div>
+        <div class="col-2">
+            <h5 class="mozi"><span class="m"><?php echo $row['order_date']; ?></span></h5>
+        </div>
+        <div class="col-3"></div>
+    </div>
+    <div class="row ab">
+        <div class="col-4"></div>
+        <div class="col-3">
+            <h5 class="mozi">商品名</h5>
+        </div>
+        <div class="col-2">
+            <h5 class="mozi"><span class="m"><?php echo $row['shohin_name']; ?></span></h5>
+        </div>
+        <div class="col-3"></div>
+    </div>
+    <div class="row ab">
+        <div class="col-4"></div>
+        <div class="col-3">
+            <h5 class="mozi">お支払金額</h5>
+        </div>
+        <div class="col-2">
+            <h5 class="mozi"><span class="m"><?php echo $row['order_subtotal']; ?></span></h5>
+        </div>
+        <div class="col-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4 btna">
+            <input class="btn text-white rounded-pill" style="background-color: #800080;" type="button" value="注文履歴一覧に戻る" onclick="location.href='order_check.php'"/><br>
+        </div>  
+        <div class="col-4"></div>
+    </div>
+    <?php endforeach; ?>
+</div>
 
   <hr>
   

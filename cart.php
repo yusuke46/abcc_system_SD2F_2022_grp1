@@ -7,142 +7,6 @@
     
   <style>
     body { padding-top: 90px; }
-
-    .nav-item{
-      border-bottom: 1px solid #C0C0C0;
-      padding-bottom: 2px;
-      padding-top: 2px;
-    }
-
-    #icon{
-      padding-top: 2px;
-    }
-        
-    #main_nav{
-      border-bottom: 5px solid 	#8a2be2;
-    }
-    .img{
-        width: 200px;
-        height: 200px;
-      }
-      .button{
-        font-size: 40px;
-      }
-      .search{
-        width: 30px;
-        height: 40px;
-        padding-right: 2px;
-        padding-left: 2px;
-        margin-right: 10px;
-        margin-left: 10px;
-      }
-      .cart{
-        width: 40px;
-        height: 40px;
-        padding-right: 2px;
-        padding-left: 2px;
-        margin-right: 10px;
-        margin-left: 10px;
-      }
-      .login{
-        width: 50px;
-        height: 40px;
-        padding-right: 2px;
-        padding-left: 2px;
-        margin-right: 10px;
-        margin-left: 10px;
-      }
-      .nav_toggle {
-        display: block;
-        position: relative;
-        width: 1.75rem;
-        height: 1.5rem;
-      }
-      .nav_toggle i {
-        display: block;
-        width: 100%;
-        height: 2px;
-        background-color: purple;
-        position: absolute;
-        transition: transform .5s, opacity .5s;
-      }
-      .nav_toggle i:nth-child(1) {
-        top: 0;
-      }
-      .nav_toggle i:nth-child(2) {
-        top: 0;
-        bottom: 0;
-        margin: auto;
-      }
-      .nav_toggle i:nth-child(3) {
-        bottom: 0;
-      }
-      .nav_toggle.show i:nth-child(1) {
-        transform: translateY(10px) rotate(-45deg);
-      }
-      .nav_toggle.show i:nth-child(2) {
-        opacity: 0;
-      }
-      .nav_toggle.show i:nth-child(3) {
-        transform: translateY(-12px) rotate(45deg);
-      }
-      .nav {
-        position: fixed;
-        top: 5rem;
-        left: 1100;
-        right: 1100;
-        bottom: 1100;
-        padding: 1rem;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity .5s, visibility .5s;
-        background-color: white;
-        height: 100%;
-        width: 100%;
-        z-index: 10;
-      }
-      .nav.show {
-        opacity: 1;
-        visibility: visible;
-      }
-      a, a:link, a:active, a:visited, a:hover{
-        color: inherit;
-        list-style: none;
-        text-decoration: none;
-      }
-        ul {
-            list-style: none;
-        }
-        .companySet .companySetLists {
-            display: -webkit-box;
-            display: flex;
-            margin: 3rem auto 0;
-            -webkit-box-pack: center;
-            justify-content: center;
-            -ms-flex-flow: wrap;
-            flex-flow: wrap;
-            width: 90%;
-        }
-        .companySet .companySetList {
-            margin: 0 0 1em;
-        }
-        .companySet .companySetList a {
-            color: inherit;
-        }
-        .companySet .companySetList + .companySetList {
-            margin: 0 0 1em 2em;
-            position: relative;
-        }
-        .companySet .companySetList + .companySetList::before {
-            content: "";
-            width: 1px;
-            height: 60%;
-            background: #000;
-            position: absolute;
-            left: -1em;
-            top: 50%;
-            transform: translate(0, -50%);
-        }
         .i{
           width: 180%;
         }
@@ -155,105 +19,173 @@
         .c{
           margin-top: 35%;
         }
+        .baka{
+          margin-top: 5%;
+          margin-bottom: 5%;
+        }
+        .k{
+          text-align: right;
+        }
+        .btn{
+          width: 50%;
+          height: 150%;
+        }
+        .btna{
+          text-align: center;
+          margin-bottom: 8%;
+        }
+        .d{
+          margin-top: 10%;
+          margin-bottom: 20%;
+        }
   </style>
 </head>
 <body>
-<nav class="navbar navbar-light navbar-expand-md py-2 navbar-bg fixed-top bg-white" id="main_nav" aria-label="Light offcanvas navbar">
-  <div class="container-fluid">
-    <div>
-      <a class="navbar-brand" href="#">タイトル名</a>
-    </div>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item d-flex justify-content-center align-items-center">
-          <a class="navbar-brand" href="search.php"><img src="img/search.jpg" class="search"></a>
-        </li>
-        <li class="nav-item d-flex justify-content-center align-items-center">
-          <a class="navbar-brand" href="cart.php"><img src="img/cart.jpg" class="cart"></a>
-        </li>
-        <li class="nav-item d-flex justify-content-center align-items-center">
-          <a class="navbar-brand" href="login.php"><img src="img/login.jpg" class="login"></a>
-        </li>
-        <li class="nav-item d-flex justify-content-center align-items-center">
-          <span class="nav_toggle">
-            <i></i>
-            <i></i>
-            <i></i>
-          </span>
-          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbarLight" aria-labelledby="offcanvasNavbarLightLabel">
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarLight" aria-controls="offcanvasNavbarLight">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasNavbarLightLabel">メニュー一覧</h5>
-            </div>
-            <div class="offcanvas-body">
-              <nav class="nav">
-                <ul class="nav_menu_ul justify-content-end flex-grow-1 pe-3">
-                  <li class="nav_menu_li"><a href="login.php" style="text-align:left;">&nbsp;<h3>ログイン/新規登録</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right; float:right"></i></a></li>
-                  <hr>
-                  <li class="nav_menu_li"><a href="shohin.php" style="text-align:left;">&nbsp;<h3>商品</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
-                  <hr>
-                  <li class="nav_menu_li"><a href="pickup.php" style="text-align:left;">&nbsp;<h3>注目商品</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
-                  <hr>
-                  <li class="nav_menu_li"><a href="feature.php"style="text-align:left;" >&nbsp;<h3>特集商品</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
-                  <hr>
-                  <li class="nav_menu_li"><a href="#" style="text-align:left;">&nbsp;<h3>商品の登録はこちら</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
-                  <hr>
-                  <li class="nav_menu_li"><a href="question.php" style="text-align:left;">&nbsp;<h3>お問い合わせ・Q&A</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
-                  <hr>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-      </nav>
+<?php
+if(isset($_SESSION['user_id'])){
+  include_once 'navar_success.php';
+}else{
+  include_once 'navar.php';
+}
+ ?>
     <!--この下から書き加える-->
-    <h2 class="text-center mt-5">カートの中身</h2>
-    <p style="border-bottom: 3px solid  #A9A9A9" class="mt-5 mx-5 rounded"></p>
-    <div class="container">
-      <div class="row h">
-        <div class="col-2">
-          <img src="<?php echo $_SESSION['shohin_img']; ?>" class="i">
-        </div>
-        <div class="col-2"></div>
-        <div class="col-6">
-          <h5 class="mozi"><?php echo $_SESSION['shohin_mei']; ?></h5>
-          <h5 class="c">単価：<?php echo $_SESSION['shohin_tanka']; ?></h5>
-          <h5 class="">小計：<?php echo $_SESSION['shohin_tanka']*$_SESSION['count']; ?></5>
-        </div>
-        <div class="col-2">
-          <form action="shohincheck2.php" method="post">
-            <input type="number" min="0" max="10" value="<?php echo $_SESSION['count']; ?>" name="ucount">
-            <input type="hidden" value="<?php echo $_SESSION['shohin_id'];?>" name="uid">
-            <input type="submit" value="数量変更">
-          </form>
-        </div>
-        <p style="border-bottom: 3px solid  #A9A9A9" class="mt-5 mx-5 rounded"></p>
-      </div>
-      <div class="row">
-        <div class="col-6">
-          <h5 class="l">商品合計数：</h5>
-        </div>
-        <div class="col-6">
-          <h5 class="k">
+    <?php
+    require 'DBManager.php';
+    $dbmng = new DBManager();
+    if(isset($_SESSION['shohin_id'])):
+      $searchArray = $dbmng->insertCart($_SESSION['user_id'],$_SESSION['shohin_id'],$_SESSION['shohin_mei'],$_SESSION['shohin_tanka'],$_SESSION['shohin_img'],$_SESSION['count'],$_SESSION['subtotal']);
+      $cartShohin = $dbmng->deleteCart();
+      $userShohin = $dbmng->getUserShohin($_SESSION['user_id']);
+      ?>
+      <h2 class="text-center mt-5">カートの中身</h2>
+      <p style="border-bottom: 3px solid  #A9A9A9" class="mt-5 mx-5 rounded"></p>
+      <?php foreach($userShohin as $row): ?>
+        <form action="shohincheck2.php" method="post">
+          <div class="container">
+            <div class="row h">
+              <div class="col-2">
+                <img src="<?php echo $row['cart_shohin_img']; ?>" class="i">
+              </div>
+              <div class="col-2"></div>
+              <div class="col-6">
+                <h5 class="mozi"><?php echo $row['cart_shohin_mei']; ?></h5>
+                <input type="hidden" value="<?php echo $row['cart_shohin_tanka']; ?>" name="tanka">
+                <h5 class="c">単価：<?php echo $row['cart_shohin_tanka']; ?></h5>
+                <input type="hidden" value="<?php echo $row['cart_shohin_tanka']*$row['cart_shohin_count']; ?>" name="subtotal">
+                <h5 class="">小計：<?php echo $row['cart_shohin_tanka']*$row['cart_shohin_count']; ?></5>
+              </div>
+              <div class="col-2">
+                <input type="number" min="1" max="10" value="<?php echo $row['cart_shohin_count']; ?>" name="ucount">
+                <input type="hidden" value="<?php echo $row['cart_id'];?>" name="uid">
+                <input type="submit" value="数量変更">
+              </div>
+            </div>
+            <p style="border-bottom: 3px solid  #A9A9A9" class="mt-5 mx-5 rounded"></p>
+          </div>
+        </form>
+        <?php endforeach; ?>
+        <div class="row baka">
+          <div class="col-2">
 
-          </h5>
+          </div>
+          <div class="col-3">
+            <h5 class="l">商品合計数：</h5>
+          </div>
+          <div class="col-2">
+
+          </div>
+          <div class="col-3">
+            <h5 class="k">
+              <?php
+              $sum = $dbmng->getSum($_SESSION['user_id']);
+              foreach($sum as $row){
+                echo $row[0];
+              }
+              ?>
+            </h5>
+          </div>
+          <div class="col-2">
+
+          </div>
+        </div>
+        <div class="row baka">
+          <div class="col-2">
+            
+          </div>
+          <div class="col-3">
+            <h5 class="l">商品合計：</h5>
+          </div>
+          <div class="col-2">
+
+          </div>
+          <div class="col-3">
+            <h5 class="k">￥
+              <?php
+              $totalsum = $dbmng->gettotalSum();
+              foreach($totalsum as $row){
+                echo $row[0];
+              }
+              ?>
+            </h5>
+          </div>
+          <div calss="col-2">
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6 btna">
+            <input class="btn btn-outline-dark rounded-pill" style="background-color: #dcdcdc;" type="button" onclick="location.href = 'top.php'" value="買い物を続ける">
+          </div>
+          <div class="col-6 btna">
+            <input class="btn text-white rounded-pill btn-lg" style="background-color: #800080;" type="submit" onclick="location.href = 'buy.php'" value="ご注文手続きへ進む"><br>
+          </div>
         </div>
       </div>
+    <?php else: ?>
+      <h2 class="text-center mt-5 mb-5">カートの中身</h2>
+      <hr>
+      <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+          <p class="d" style="text-align: center;">現在、カートには商品が入ってません。</p>
+        </div>
+        <div class="col-4"></div>
+        <div class="col-4"></div>
+        <div class="col-4 btna">
+          <input class="btn btn-outline-dark rounded-pill" style="background-color: #dcdcdc;" type="button" onclick="location.href = 'top.php'" value="買い物を続ける">
+        </div>
+        <div class="col-4"></div>
+      </div>
+    <?php endif; ?>
+    <hr>
+  
+  <div class="companySet">
+        <ul class="companySetLists">
+            <li class="companySetList">
+                <a href="https://www.yahoo.co.jp/">運営企業情報</a>
+            </li>
+            <li class="companySetList">
+                <a href="https://www.google.co.jp/">特定商取引法に基づく表示</a>
+            </li>
+            <li class="companySetList">
+                <a href="https://www.google.co.jp/intl/ja/chrome/">ご利用ガイド</a>
+            </li>
+            <li class="companySetList">
+                <a href="https://www.metro.tokyo.lg.jp/">プライバシーポリシー</a>
+            </li>
+            <li class="companySetList">
+                <a href="https://www.kunaicho.go.jp/about/shisetsu/kokyo/kokyo.html">お問い合わせ・Q&A</a>
+            </li>
+        </ul>
     </div>
-    
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="./script/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script>
-    $('.nav_toggle').on('click', function () {
-      $('.nav_toggle, .nav').toggleClass('show');
-    }); 
+      $('.nav_toggle').on('click', function () {
+        $('.nav_toggle, .nav').toggleClass('show');
+      }); 
   </script>
   </div>
 </body>

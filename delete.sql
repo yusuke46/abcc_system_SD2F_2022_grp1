@@ -1,0 +1,1 @@
+DELETE FROM cart_tbl WHERE cart_id NOT IN (SELECT min_id from (SELECT MIN(cart_id) min_id FROM cart_tbl GROUP BY cart_shohin_id, cart_shohin_mei,cart_shohin_tanka) tmp);

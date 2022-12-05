@@ -5,7 +5,7 @@ $dbmng = new DBManager();
 $searchArray = $dbmng->getByShohin($_POST['id']);
 if(isset($_SESSION['user_id'])){
     foreach($searchArray as $row){
-        $_SESSION['shohin_id'][$i] = $row['shohin_id'];
+        $_SESSION['shohin_id'] = $row['shohin_id'];
         $_SESSION['shohin_mei'] = $row['shohin_mei'];
         $_SESSION['shohin_tanka'] = $row['shohin_tanka'];
         $_SESSION['shohin_information'] = $row['shohin_information'];
@@ -15,6 +15,7 @@ if(isset($_SESSION['user_id'])){
         $_SESSION['shohin_industry'] = $row['shohin_industry'];
         $_SESSION['shohin_detail'] = $row['shohin_detail'];
         $_SESSION['count'] = $_POST['count'];
+        $_SESSION['subtotal'] = $_POST['count']*$row['shohin_tanka'];
         header('Location:cart.php');
     }
 }else{

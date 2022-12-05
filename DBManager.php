@@ -5,67 +5,102 @@ class DBManager{
         return $pdo;
     }
 
-    public function getSearch($category,$detail,$keyword){
-        if($_POST['']==' '&&$_POST['']==' '&&$_POST['']==' '){
+    public function getSearch($keyword){
+        if($keyword==' '){
             echo '検索結果がありませんでした';
-        }else if($_POST['']==' '&&$_POST['']==' '&&$_POST['']!=' '){
-            $pdo = $this->dbConnect();
-            $sql="SELECT * FROM shohin_tbl WHERE shohin_mei LIKE ?";
-            $ps=$pdo->prepare($sql);
-            $ps->bindValue(1,'%'.$_POST[''].'%',PDO::PARAM_STR);
-            $ps->execute();
-            $result=$ps->fetchAll();
-            foreach($result as $row){
-                $result = $row['shohin_mei'].$row['shohin_tanka'].$row['shohin_img'];
-                return $result;
-            }
-        }else if($_POST['']!=' '&&$_POST['']!=' '&&$_POST['']==' '){
-            $pdo = $this->dbConnect();
-            $sql="SELECT * FROM shohin_tbl WHERE shohin_industry = ? AND shohin_detail = ?";
-            $ps=$pdo->prepare($sql);
-            $ps->bindValue(1,$_POST[''],PDO::PARAM_STR);
-            $ps->bindValue(2,$_POST[''],PDO::PARAM_STR);
-            $ps->execute();
-            $result=$ps->fetchAll();
-            foreach($result as $row){
-                $result = $row['shohin_mei'].$row['shohin_tanka'].$row['shohin_img'];
-                return $result;
-            }
         }else{
             $pdo = $this->dbConnect();
-            $sql="SELECT * FROM shohin_tbl WHERE shohin_industry = ? AND shohin_detail = ? OR shohin_mei LIKE ?";
+            $sql="SELECT * FROM shohin_tbl WHERE shohin_information LIKE ?";
             $ps=$pdo->prepare($sql);
-            $ps->bindValue(1,$_POST[''],PDO::PARAM_STR);
-            $ps->bindValue(2,$_POST[''],PDO::PARAM_STR);
-            $ps->bindValue(3,'%'.$_POST[''].'%',PDO::PARAM_STR);
+            $ps->bindValue(1,'%'.$keyword.'%',PDO::PARAM_STR);
             $ps->execute();
             $result=$ps->fetchAll();
-            foreach($result as $row){
-                $result = $row['shohin_mei'].$row['shohin_tanka'].$row['shohin_img'];
-                return $result;
-            }
+            return $result;
         }
     }
 
-    public function getInsert($user,$usernamek,$email,$passw,$bangou1,$bangou2,$address,$phone,$year,$month,$day,$gender){
+    public function insertCart($userid,$shohinid,$shohin,$tanka,$img,$count,$subtotal){
         $pdo = $this->dbConnect();
-        $sql="INSERT INTO login_tbl (user_mei,user_meikata,user_e-mail,user_pass,user_addressnumber1,user_addressnumber2,user_address,user_phone,user_year,user_month,user_day,user_gender) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+        $sql="INSERT INTO cart_tbl (cart_user_id,cart_shohin_id,cart_shohin_mei,cart_shohin_tanka,cart_shohin_img,cart_shohin_count,cart_subtotal) VALUES(?,?,?,?,?,?,?)";
         $ps=$pdo->prepare($sql);
-        $ps->bindValue(1,$_POST['user'],PDO::PARAM_STR);
-        $ps->bindValue(2,$_POST['usernamek'],PDO::PARAM_STR);
-        $ps->bindValue(3,$_POST['email'],PDO::PARAM_STR);
-        $ps->bindValue(4,$_POST['passw'],PDO::PARAM_STR);
-        $ps->bindValue(5,$_POST['bangou1'],PDO::PARAM_STR);
-        $ps->bindValue(6,$_POST['bangou2'],PDO::PARAM_STR);
-        $ps->bindValue(7,$_POST['address'],PDO::PARAM_STR);
-        $ps->bindValue(8,$_POST['phone'],PDO::PARAM_STR);
-        $ps->bindValue(9,$_POST['year'],PDO::PARAM_INT);
-        $ps->bindValue(10,$_POST['month'],PDO::PARAM_INT);
-        $ps->bindValue(11,$_POST['day'],PDO::PARAM_INT);
-        $ps->bindValue(12,$_POST['gender'],PDO::PARAM_STR);
+        $ps->bindValue(1,$userid,PDO::PARAM_INT);
+        $ps->bindValue(2,$shohinid,PDO::PARAM_INT);
+        $ps->bindValue(3,$shohin,PDO::PARAM_STR);
+        $ps->bindValue(4,$tanka,PDO::PARAM_INT);
+        $ps->bindValue(5,$img,PDO::PARAM_STR);
+        $ps->bindValue(6,$count,PDO::PARAM_INT);
+        $ps->bindValue(7,$subtotal,PDO::PARAM_INT);
         $ps->execute();
         $Insert=$ps->fetchAll();
-        return $Insert;
+    }
+
+    public function getCart($cartid){
+        $pdo = $this->dbConnect();
+        $sql="SELECT * FROM cart_tbl WHERE cart_id = ?";
+        $ps=$pdo->prepare($sql);
+        $ps->bindValue(1,$cartid,PDO::PARAM_INT);
+        $ps->execute();
+        $userShohin=$ps->fetchAll();
+        return $userShohin;
+    }
+
+    public function getCount($shocount,$subtotal,$cartid){
+        $pdo = $this->dbConnect();
+        $sql="UPDATE cart_tbl SET cart_shohin_count = ?, cart_subtotal = ? WHERE cart_id = ?";
+        $ps=$pdo->prepare($sql);
+        $ps->bindValue(1,$shocount,PDO::PARAM_INT);
+        $ps->bindValue(2,$subtotal,PDO::PARAM_INT);
+        $ps->bindValue(3,$cartid,PDO::PARAM_INT);
+        $ps->execute();
+        $count=$ps->fetchAll();
+        return $count;
+    }
+
+    public function getSum($userid){
+        $pdo = $this->dbConnect();
+        $sql="SELECT SUM(cart_shohin_count) FROM cart_tbl WHERE cart_user_id = ?";
+        $ps=$pdo->prepare($sql);
+        $ps->bindValue(1,$userid,PDO::PARAM_INT);
+        $ps->execute();
+        $userShohin=$ps->fetchAll();
+        return $userShohin;
+    }
+
+    public function gettotalSum(){
+        $pdo = $this->dbConnect();
+        $sql="SELECT SUM(cart_subtotal) FROM cart_tbl";
+        $ps=$pdo->prepare($sql);
+        $ps->execute();
+        $totalsum=$ps->fetchAll();
+        return $totalsum;
+    }
+
+    public function deleteUserCart($userid){
+        $pdo = $this->dbConnect();
+        $sql="DELETE FROM cart_tbl WHERE cart_user_id = ?";
+        $ps=$pdo->prepare($sql);
+        $ps->bindValue(1,$userid,PDO::PARAM_INT);
+        $ps->execute();
+        $userShohin=$ps->fetchAll();
+        return $userShohin;
+    }
+
+    public function deleteCart(){
+        $pdo = $this->dbConnect();
+        $sql="DELETE FROM cart_tbl WHERE cart_id NOT IN (SELECT min_id from (SELECT MIN(cart_id) min_id FROM cart_tbl GROUP BY cart_shohin_id, cart_shohin_mei,cart_shohin_tanka) tmp);";
+        $ps=$pdo->prepare($sql);
+        $ps->execute();
+        $userShohin=$ps->fetchAll();
+    }
+
+    public function getUserShohin($user){
+        $pdo = $this->dbConnect();
+        $sql="SELECT * FROM cart_tbl WHERE cart_user_id = ?";
+        $ps=$pdo->prepare($sql);
+        $ps->bindValue(1,$user,PDO::PARAM_INT);
+        $ps->execute();
+        $userShohin=$ps->fetchAll();
+        return $userShohin;
     }
 
     public function getDelete(){
@@ -108,7 +143,7 @@ class DBManager{
         $pdo = $this->dbConnect();
         $sql="SELECT * FROM shohin_tbl WHERE shohin_id = ?";
         $ps=$pdo->prepare($sql);
-        $ps->bindValue(1,$_POST['shohinid'],PDO::PARAM_STR);
+        $ps->bindValue(1,$id,PDO::PARAM_STR);
         $ps->execute();
         $array=$ps->fetchAll();
         return $array;
@@ -178,7 +213,7 @@ class DBManager{
     
     public function getLogin($name,$namek,$mail,$pass,$post1,$post2,$address,$phone,$year,$month,$day,$sei){
         $pdo = $this->dbConnect();
-        $sql = "INSERT INTO login_tbl (user_mei,user_meikata,user_email,user_pass,user_post1,user_post2,user_address,user_phone,user_year,user_month,user_day,user_gender) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);";
+        $sql = "INSERT INTO login_tbl (user_mei,user_meikata,user_mail,user_pass,user_addressnumber1,user_addressnumber2,user_address,user_phone,user_year,user_month,user_day,user_gender) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);";
         $ps = $pdo->prepare($sql);
         $ps->bindValue(1,$name,PDO::PARAM_STR);
         $ps->bindValue(2,$namek,PDO::PARAM_STR);
@@ -201,6 +236,62 @@ class DBManager{
         $ps = $pdo->prepare($sql);
         $ps->bindValue(1,$userid,PDO::PARAM_INT);
         $ps->execute();
+    }
+
+    public function insertOrder($name,$tanka,$suu,$uid,$img,$subtotal){
+        $pdo = $this->dbConnect();
+        $sql="INSERT INTO order_tbl (shohin_name,shohin_tanka,order_date,shohin_suu,user_id,shohin_img,order_subtotal) VALUES(?,?,?,?,?,?,?)";
+        $ps=$pdo->prepare($sql);
+        $date = date("Y/m/d");
+        $ps->bindValue(1,$name,PDO::PARAM_STR);
+        $ps->bindValue(2,$tanka,PDO::PARAM_INT);
+        $ps->bindValue(3,$date,PDO::PARAM_STR);
+        $ps->bindValue(4,$suu,PDO::PARAM_INT);
+        $ps->bindValue(5,$uid,PDO::PARAM_INT);
+        $ps->bindValue(6,$img,PDO::PARAM_STR);
+        $ps->bindValue(7,$subtotal,PDO::PARAM_INT);
+        $ps->execute();
+        $Insert=$ps->fetchAll();
+    }
+
+    public function getOrder($id){
+        $pdo = $this->dbConnect();
+        $sql="SELECT * FROM order_tbl WHERE user_id = ?";
+        $ps=$pdo->prepare($sql);
+        $ps->bindValue(1,$id,PDO::PARAM_STR);
+        $ps->execute();
+        $searchArray=$ps->fetchAll();
+        return $searchArray;
+    }
+
+    public function getOrderdetail($id){
+        $pdo = $this->dbConnect();
+        $sql="SELECT * FROM order_tbl WHERE order_id = ?";
+        $ps=$pdo->prepare($sql);
+        $ps->bindValue(1,$id,PDO::PARAM_STR);
+        $ps->execute();
+        $searchArray=$ps->fetchAll();
+        return $searchArray;
+    }
+
+    public function getByOsigotoSource($osigoto){
+        $pdo = $this->dbConnect();
+        $sql="SELECT * FROM shohin_tbl WHERE shohin_industry = ?";
+        $ps=$pdo->prepare($sql);
+        $ps->bindValue(1,$osigoto,PDO::PARAM_STR);
+        $ps->execute();
+        $ShohinSource=$ps->fetchAll();
+        return $ShohinSource;
+    }
+
+    public function getByWotakuSource($wotaku){
+        $pdo = $this->dbConnect();
+        $sql="SELECT * FROM shohin_tbl WHERE shohin_detail = ?";
+        $ps=$pdo->prepare($sql);
+        $ps->bindValue(1,$wotaku,PDO::PARAM_STR);
+        $ps->execute();
+        $ShohinSource=$ps->fetchAll();
+        return $ShohinSource;
     }
 }
 ?>

@@ -1,35 +1,16 @@
-<?php session_start();?>
-<html>
-    <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <style>
-         body { 
-        padding-top: 130px;
-        }
-        .nav-item{
-            border-bottom: 1px solid #C0C0C0;
-            padding-bottom: 2px;
-            padding-top: 2px;
-        }
 
-        #icon{
-            padding-top: 2px;
-        }
-        
-        #main_nav{
-          border-bottom: 5px solid 	#8a2be2;
-        }
-        #BackToCartButton{
-            margin-top: 300px;
-        }
-        .img{
-        width: 200px;
-        height: 200px;
+<head>
+    <style>
+      .nav-item{
+        border-bottom: 1px solid #C0C0C0;
+        padding-bottom: 2px;
+        padding-top: 2px;
       }
-      .button{
-        font-size: 40px;
+      #icon{
+        padding-top: 2px;
+      }
+      #main_nav{
+        border-bottom: 5px solid 	#8a2be2;
       }
       .search{
         width: 30px;
@@ -48,7 +29,7 @@
         margin-left: 10px;
       }
       .login{
-        width: 50px;
+        width: 60px;
         height: 40px;
         padding-right: 2px;
         padding-left: 2px;
@@ -146,10 +127,9 @@
             top: 50%;
             transform: translate(0, -50%);
         }
-        </style>
+    </style>
 </head>
 <body>
-
 <nav class="navbar navbar-light navbar-expand-md py-2 navbar-bg fixed-top bg-white" id="main_nav" aria-label="Light offcanvas navbar">
   <div class="container-fluid">
     <div>
@@ -164,7 +144,7 @@
           <a class="navbar-brand" href="cart.php"><img src="img/cart.jpg" class="cart"></a>
         </li>
         <li class="nav-item d-flex justify-content-center align-items-center">
-          <a class="navbar-brand" href="login.php"><img src="img/login.jpg" class="login"></a>
+          <a class="navbar-brand" href="mypage.php"><img src="img/mypage.jpg" class="login"></a>
         </li>
         <li class="nav-item d-flex justify-content-center align-items-center">
           <span class="nav_toggle">
@@ -182,7 +162,7 @@
             <div class="offcanvas-body">
               <nav class="nav">
                 <ul class="nav_menu_ul justify-content-end flex-grow-1 pe-3">
-                  <li class="nav_menu_li"><a href="login.php" style="text-align:left;">&nbsp;<h3>ログイン/新規登録</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right; float:right"></i></a></li>
+                  <li class="nav_menu_li"><a href="mypage.php" style="text-align:left;">&nbsp;<h3>マイページ</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
                   <hr>
                   <li class="nav_menu_li"><a href="shohin.php" style="text-align:left;">&nbsp;<h3>商品</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
                   <hr>
@@ -194,6 +174,8 @@
                   <hr>
                   <li class="nav_menu_li"><a href="question.php" style="text-align:left;">&nbsp;<h3>お問い合わせ・Q&A</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
                   <hr>
+                  <li class="nav_menu_li"><a href="logout.php" style="text-align:left;">&nbsp;<h3>ログアウト</h3><i class="bi bi-chevron-right" id="icon" style="text-align:right;float:right"></i></a></li>
+                  <hr>
                 </ul>
               </nav>
             </div>
@@ -202,20 +184,6 @@
       </ul>
     </div>
   </div>
-      </nav>
-  <!--この下から書き加える-->
-  <h2 class="mt-5 mb-5" style="text-align:center">購入完了画面</h2>
-  <h3 style="text-align:center">購入しました</h3>
-  <div style="text-align:center">
-  <input class="btn btn-lg btn-outline-dark rounded-pill" style="background-color: #ff00ff;" type="button" id="BackToCartButton" onclick="location.href = '????????'" value="　　ホームに戻る　　">
-    </div>
+</nav>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-  <script>
-    $('.nav_toggle').on('click', function () {
-      $('.nav_toggle, .nav').toggleClass('show');
-    }); 
-  </script>
 </body>
-    </html>
-    

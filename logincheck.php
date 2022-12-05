@@ -19,7 +19,7 @@
             $_SESSION['user_day'] = $row['user_day'];
             $_SESSION['user_gender'] = $row['user_gender'];
             $_SESSION['user_id'] = $row['user_id'];
-            header('Location:top_success.php');
+            header('Location:top.php');
         }else{
             $er = 1;
             header('Location:login.php');
