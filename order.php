@@ -47,28 +47,58 @@ if(isset($_SESSION['user_id'])){
 ?>
 <div class="container">
 <h2 class="or" style="text-align:center">注文履歴一覧</h2>
-<form action="ordercheck.php" method="post">
     <?php 
     require 'DBManager.php';
     $dbmng = new DBManager();
     $searchArray = $dbmng->getOrder($_SESSION['user_id']);
     foreach($searchArray as $row):?>
+    <form action="ordercheck.php" method="post">
         <div class="row">
+            <div class="col-3 ab"></div>
+            <div class="col-1"></div>
             <div class="col-2">
                 <h5 class="mozi">注文番号：</h5>
             </div>
-            
-                <div class="col-3">
-                    <h5 class="mozi" value="<?php echo $row['order_id']; ?>" name="oid"><?php echo $row['order_id']; ?></h5>
-                </div>
-                <div class="col-4 btna">
-                    <input class="btn text-white rounded-pill" style="background-color: #800080;" type="submit" value="詳細を見る" onclick="Location.href='ordercheck.php'"><br>
-                </div>  
-            
+            <div class="col-3">
+                <h5 class="mozi" value="<?php echo $row['order_id']; ?>" name="oid"><?php echo $row['order_id']; ?></h5>
+            </div>
+            <div class="col-3"></div>
+            <div class="col-3 ab"></div>
+            <div class="col-1"></div>
+            <div class="col-2">
+                <h5 class="mozi">注文日時：</h5>
+            </div>
+            <div class="col-3">
+            <h5 class="mozi"><span class="m" value="<?php echo $row['order_date']; ?>" name="date"><?php echo $row['order_date']; ?></span></h5>
+            </div>
+            <div class="col-3"></div>
+            <div class="col-3 ab"></div>
+            <div class="col-1"></div>
+            <div class="col-2">
+                <h5 class="mozi">商品名：</h5>
+            </div>
+            <div class="col-3">
+                <h5 class="mozi"><span class="m" value="<?php echo $row['shohin_name']; ?>" name="name"><?php echo $row['shohin_name']; ?></span></h5>
+            </div>
+            <div class="col-3"></div>
+            <div class="col-3 ab"></div>
+            <div class="col-1"></div>
+            <div class="col-2">
+                <h5 class="mozi">お支払金額：</h5>
+            </div>
+            <div class="col-3">
+                <h5 class="mozi">￥<span class="m" value="<?php echo $row['order_subtotal']; ?>" name="subtotal"><?php echo $row['order_subtotal']; ?></span></h5>
+            </div>
+            <div class="col-3"></div>
+            <div class="col-3 ab"></div>
+            <div class="col-1"></div>
+            <div class="col-4 btna">
+                <input class="btn text-white rounded-pill" style="background-color: #800080;" type="submit" value="詳細を見る" onclick="Location.href='ordercheck.php'"><br>
+            </div>  
+            <div class="col-4"></div>
         </div>
-    
-    <?php endforeach; ?>
     </form>
+    <?php endforeach; ?>
 </div>
 
   <hr>
