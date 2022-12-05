@@ -17,6 +17,17 @@
         width: 200px;
         height: 200px;
       }
+      .nasi{
+        text-align: center;
+      }
+      .btn{
+          width: 50%;
+          height: 150%;
+        }
+        .btna{
+          text-align: center;
+          margin-top: 8%;
+        }
         </style>
 </head>
 <body>
@@ -37,6 +48,14 @@ if(isset($_SESSION['user_id'])){
       require_once 'DBManager.php';
       $dbmng = new DBManager();
       $result = $dbmng->getSearch($_POST['kid']);
+      if(count($result)==0): ?>
+      <h5 class="nasi">検索結果がありませんでした</h5>
+      <div class="col-4"></div>
+      <div class="col-4 btna">
+        <input class="btn btn-outline-dark rounded-pill" style="background-color: #dcdcdc;" type="button" onclick="location.href = 'search.php'" value="検索に戻る">
+      </div>
+      <div class="col-4"></div>
+      <?php else:
       foreach($result as $row): ?>
         <div class="col-md-4">
           <form action="shohin_detail.php" method="post">
@@ -55,6 +74,7 @@ if(isset($_SESSION['user_id'])){
           </form>
         </div>
         <?php endforeach; ?>
+        <?php endif; ?>
       </div>
     </div>
 </div>
