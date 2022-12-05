@@ -435,6 +435,7 @@ if(isset($_SESSION['user_id'])){
 </script>
 	<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 	<script src="https://bootstrap-guide.com/js/samples.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
     $('.nav_toggle').on('click', function () {
       $('.nav_toggle, .nav, .hamburger-demo-cover').toggleClass('show');

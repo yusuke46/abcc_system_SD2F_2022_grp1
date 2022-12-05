@@ -50,7 +50,7 @@ if(isset($_SESSION['user_id'])){
 <?php
 require 'DBManager.php';
 $dbmng = new DBManager();
-$searchArray = $dbmng->getOrderdetail($_SESSION['order_id']);
+$searchArray = $dbmng->getOrderdetail($_POST['oid']);
 foreach($searchArray as $row):?>
     <div class="row ab">
         <div class="col-4"></div>

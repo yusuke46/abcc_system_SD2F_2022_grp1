@@ -12,6 +12,11 @@
         width: 200px;
         height: 200px;
       }
+      .pickup{
+          text-align: center;
+          margin-top: 10%;
+          margin-bottom: 10%;
+        }
         </style>
 </head>
 <body>
@@ -46,6 +51,7 @@ if(isset($_SESSION['user_id'])){
     </div>
   </div>
     <!--ここまでcard-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   <script>
     $('.nav_toggle').on('click', function () {

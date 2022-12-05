@@ -52,7 +52,7 @@ if(isset($_SESSION['user_id'])){
     $dbmng = new DBManager();
     $searchArray = $dbmng->getOrder($_SESSION['user_id']);
     foreach($searchArray as $row):?>
-    <form action="ordercheck.php" method="post">
+    <form action="order_detail.php" method="post">
         <div class="row">
             <div class="col-3 ab"></div>
             <div class="col-1"></div>
@@ -60,7 +60,8 @@ if(isset($_SESSION['user_id'])){
                 <h5 class="mozi">注文番号：</h5>
             </div>
             <div class="col-3">
-                <h5 class="mozi" value="<?php echo $row['order_id']; ?>" name="oid"><?php echo $row['order_id']; ?></h5>
+                <input type="hidden" value="<?php echo $row['order_id']; ?>" name="oid">
+                <h5 class="mozi"><?php echo $row['order_id']; ?></h5>
             </div>
             <div class="col-3"></div>
             <div class="col-3 ab"></div>
@@ -93,7 +94,7 @@ if(isset($_SESSION['user_id'])){
             <div class="col-3 ab"></div>
             <div class="col-1"></div>
             <div class="col-4 btna">
-                <input class="btn text-white rounded-pill" style="background-color: #800080;" type="submit" value="詳細を見る" onclick="Location.href='ordercheck.php'"><br>
+                <input class="btn text-white rounded-pill" style="background-color: #800080;" type="submit" value="詳細を見る"><br>
             </div>  
             <div class="col-4"></div>
         </div>

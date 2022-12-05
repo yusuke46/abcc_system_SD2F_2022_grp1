@@ -49,6 +49,7 @@ if(isset($_SESSION['user_id'])){
   <div class="btnb">
       <input class="btn btn-outline-dark rounded-pill" style="background-color: #dcdcdc;" type="button" onclick="location.href = 'login.php'" value="戻る">
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
     $('.nav_toggle').on('click', function () {
       $('.nav_toggle, .nav, .hamburger-demo-cover').toggleClass('show');
