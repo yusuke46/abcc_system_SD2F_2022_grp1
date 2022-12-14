@@ -127,13 +127,17 @@
             top: 50%;
             transform: translate(0, -50%);
         }
+        .logo{
+          width: 250px;
+          height: auto;
+        }
     </style>
 </head>
 <body>
 <nav class="navbar navbar-light navbar-expand-md py-2 navbar-bg fixed-top bg-white" id="main_nav" aria-label="Light offcanvas navbar">
   <div class="container-fluid">
     <div>
-      <a class="navbar-brand" href="#">タイトル名</a>
+      <a class="navbar-brand" href="top.php"><img src="img/logo.png" class="logo"></a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ms-auto">

@@ -180,7 +180,7 @@ if(isset($_SESSION['user_id'])){
       foreach($Feature as $row): ?>
         <div class="col-md-4">
           <form action="shohin_detail.php" method="post">
-            <div class="card" style="width: 26rem;">
+            <div class="card">
               <button type="submit" class="border border-white" style="background-color: white;">
                 <input type="hidden" value="<?php echo $row['shohin_id']; ?>" name="shohinid">
                 <input type="hidden" value="<?php echo $row['shohin_information']; ?>" name="information">

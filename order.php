@@ -70,7 +70,7 @@ if(isset($_SESSION['user_id'])){
                 <h5 class="mozi">注文日時：</h5>
             </div>
             <div class="col-3">
-            <h5 class="mozi"><span class="m" value="<?php echo $row['order_date']; ?>" name="date"><?php echo $row['order_date']; ?></span></h5>
+            <h5 class="mozi"><span class="m"><?php echo $row['order_date']; ?></span></h5>
             </div>
             <div class="col-3"></div>
             <div class="col-3 ab"></div>
@@ -79,7 +79,7 @@ if(isset($_SESSION['user_id'])){
                 <h5 class="mozi">商品名：</h5>
             </div>
             <div class="col-3">
-                <h5 class="mozi"><span class="m" value="<?php echo $row['shohin_name']; ?>" name="name"><?php echo $row['shohin_name']; ?></span></h5>
+                <h5 class="mozi"><span class="m"><?php echo $row['shohin_name']; ?></span></h5>
             </div>
             <div class="col-3"></div>
             <div class="col-3 ab"></div>
@@ -88,7 +88,7 @@ if(isset($_SESSION['user_id'])){
                 <h5 class="mozi">お支払金額：</h5>
             </div>
             <div class="col-3">
-                <h5 class="mozi">￥<span class="m" value="<?php echo $row['order_subtotal']; ?>" name="subtotal"><?php echo $row['order_subtotal']; ?></span></h5>
+                <h5 class="mozi">￥<span class="m"><?php echo $row['order_subtotal']; ?></span></h5>
             </div>
             <div class="col-3"></div>
             <div class="col-3 ab"></div>

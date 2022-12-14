@@ -1,22 +1,19 @@
 <?php
 class DBManager{
     private function dbConnect(){
-        $pdo = new PDO('mysql:host=localhost;dbname=osigoto;charset=utf8','webuser','abccsd2');
+        //$pdo = new PDO('mysql:host=mysql207.phy.lolipop.lan;dbname=LAA1418475-osigoto;charset=utf8','LAA1418475','2101427');
+        $pdo= new PDO('mysql:host=localhost;dbname=osigoto;charset=utf8','webuser', 'abccsd2');
         return $pdo;
     }
 
     public function getSearch($keyword){
-        if($keyword==' '){
-            echo '検索結果がありませんでした';
-        }else{
-            $pdo = $this->dbConnect();
-            $sql="SELECT * FROM shohin_tbl WHERE shohin_information LIKE ?";
-            $ps=$pdo->prepare($sql);
-            $ps->bindValue(1,'%'.$keyword.'%',PDO::PARAM_STR);
-            $ps->execute();
-            $result=$ps->fetchAll();
-            return $result;
-        }
+        $pdo = $this->dbConnect();
+        $sql="SELECT * FROM shohin_tbl WHERE shohin_information LIKE ?";
+        $ps=$pdo->prepare($sql);
+        $ps->bindValue(1,'%'.$keyword.'%',PDO::PARAM_STR);
+        $ps->execute();
+        $result=$ps->fetchAll();
+        return $result;
     }
 
     public function insertCart($userid,$shohinid,$shohin,$tanka,$img,$count,$subtotal){

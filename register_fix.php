@@ -140,7 +140,7 @@ if(isset($_SESSION['user_id'])){
               <div class="col-3">
                 <label for="birth" class="form-label">生年月日</label>
                 <select class="form-select d-block w-100" id="birth" required="" name="year">
-                <option selected disabled><?php echo $_SESSION['user_year'];?></option>
+                <option selected><?php echo $_SESSION['user_year'];?></option>
                 <option value="1900">1900</option><option value="1901">1901</option>
                 <option value="1902">1902</option><option value="1903">1903</option>
                 <option value="1904">1904</option><option value="1905">1905</option>
